@@ -402,6 +402,26 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 </head>
 <body>
 
+<script>
+/* Яндекс Метрика 114623203: только на боевом домене */
+(function(){
+  var ID=114623203;
+  window.goal=function(n){try{if(window.ym)ym(ID,"reachGoal",n)}catch(x){}};
+  if(location.hostname!=="bf.olgapuzanovva.ru")return;
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
+  for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id="+ID,"ym");
+  ym(ID,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+  document.addEventListener("click",function(e){
+    var a=e.target.closest&&e.target.closest("a,button");if(!a)return;
+    var h=a.getAttribute("href")||"";
+    if(h==="#watch")goal("watch_click");
+    else if(a.closest(".lot"))goal("lot_click");
+    else if(h.indexOf("t.me/puzanovateam")>-1)goal("manager_click");
+  },true);
+})();
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/114623203" style="position:absolute;left:-9999px" alt=""></div></noscript>
 
 <a class="ubar js-ubar" href="#watch" hidden></a>
 <header class="top gut">
@@ -732,7 +752,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     err.hidden=true;
     var code="BF27-"+hash(contact.toLowerCase());
     if(REG_URL){try{fetch(REG_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:name,contact:contact,ads:!!form.ads.checked,cert:code,src:location.search.slice(0,120)})}).catch(function(){})}catch(x){}}
-    mem.reg={name:name,code:code,at:Date.now()};ls("bf_reg_v2",mem.reg);
+    mem.reg={name:name,code:code,at:Date.now()};ls("bf_reg_v2",mem.reg);goal("registration");
     render(true);toast("Место ваше. 3 яйца открыты");
     setTimeout(function(){$("#gifts").scrollIntoView({behavior:"smooth"})},900);
   }
@@ -790,7 +810,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     setTimeout(function(){
       chips(r.left+r.width/2,r.top+r.height*.3);
       try{navigator.vibrate&&navigator.vibrate([40,50,80])}catch(x){}
-      card.classList.add("hit1","boom");mem.eggs[card.getAttribute("data-id")]=Date.now();ls("bf_eggs_v2",mem.eggs);
+      card.classList.add("hit1","boom");mem.eggs[card.getAttribute("data-id")]=Date.now();ls("bf_eggs_v2",mem.eggs);goal("egg_break");
       setTimeout(function(){renderEggs(true);var n=GIFTS.filter(function(g){return mem.eggs[g.id]}).length;toast(card.getAttribute("data-sur")?"Сюрприз ваш!":n>=6?"Все 6 яиц разбиты. Ждём вас на эфире":"Подарок ваш. Разбито "+n+" из 6")},800);
     },200);
   }
