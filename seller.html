@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Набор селлера</title>
+<meta name="description" content="Подарок Чёрной ИИшницы: промпты для дашборда продаж, юнит-экономики и аудита карточки, плюс чек-лист 15 точек утечки маржи">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+<style>
+:root {
+  --bg: #050507;
+  --card: #10121B;
+  --card-2: #0A0B12;
+  --line: rgba(255,255,255,.08);
+  --line-2: rgba(255,255,255,.16);
+  --fg: #F5F6FA;
+  --muted: #8E93A6;
+  --blue: #5B7CFF;
+  --blue-soft: rgba(91,124,255,.14);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { overflow-x: clip; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: var(--blue); }
+.wrap { max-width: 920px; margin: 0 auto; padding: 20px max(16px, env(safe-area-inset-left, 0px)) 40px max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 640px) { .wrap { padding-left: 28px; padding-right: 28px; } }
+.back { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; font-weight: 600; font-size: 15px; padding: 10px 0; }
+.back:hover { color: var(--fg); }
+h1, h2 { text-transform: uppercase; font-weight: 800; letter-spacing: -0.05em; margin: 0; overflow-wrap: break-word; hyphens: auto; }
+h1 { font-size: clamp(36px, 9vw, 72px); line-height: .95; margin-top: 28px; }
+h2 { font-size: clamp(24px, 5.4vw, 36px); line-height: 1.02; }
+h3 { font-size: 17px; font-weight: 800; margin: 0 0 6px; }
+p { margin: 0 0 12px; }
+.lead { color: var(--muted); font-size: 18px; margin-top: 18px; max-width: 640px; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 8px; padding: 0; list-style: none; }
+.toc a { display: inline-block; padding: 8px 14px; border: 1px solid var(--line-2); border-radius: 999px; color: var(--fg); text-decoration: none; font-weight: 600; font-size: 14px; }
+.toc a:hover { border-color: var(--blue); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; margin-top: 18px; }
+@media (min-width: 640px) { .card { padding: 32px; } }
+.num { display: inline-block; color: var(--blue); font-weight: 800; font-size: 14px; letter-spacing: .08em; margin-bottom: 10px; }
+.muted { color: var(--muted); }
+ol.steps { padding-left: 22px; margin: 14px 0 18px; }
+ol.steps li { margin-bottom: 6px; }
+.prompt-box { margin-top: 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--card-2); overflow: hidden; }
+.prompt-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px 10px 16px; border-bottom: 1px solid var(--line); }
+.prompt-head span { color: var(--muted); font-size: 13px; font-weight: 600; }
+pre.prompt { margin: 0; padding: 16px; white-space: pre-wrap; overflow-wrap: anywhere; font: 14px/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: #DCE0EE; max-height: 420px; overflow-y: auto; }
+.btn-copy { flex: none; appearance: none; border: 0; background: var(--blue); color: #fff; font: 600 14px/1 "Manrope", sans-serif; padding: 10px 16px; border-radius: 999px; cursor: pointer; min-height: 40px; }
+.btn-copy:hover { filter: brightness(1.1); }
+.btn-copy:focus-visible, .check input:focus-visible + .box, .toc a:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.btn-copy.done { background: #2E9E6B; }
+.btn-copy.sm { padding: 8px 12px; min-height: 36px; font-size: 13px; background: var(--blue-soft); color: var(--fg); border: 1px solid rgba(91,124,255,.4); }
+.src { display: inline-flex; margin-top: 14px; font-weight: 600; text-decoration: none; }
+.src:hover { text-decoration: underline; }
+.progress { display: flex; align-items: center; gap: 12px; margin: 14px 0 6px; }
+.bar { flex: 1; height: 8px; background: rgba(255,255,255,.06); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--blue); border-radius: 99px; transition: width .25s ease; }
+.progress b { font-size: 14px; min-width: 52px; text-align: right; }
+ul.checklist { list-style: none; padding: 0; margin: 12px 0 0; }
+ul.checklist li { display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-top: 1px solid var(--line); }
+.check { display: flex; gap: 12px; align-items: flex-start; flex: 1; min-width: 0; cursor: pointer; }
+.check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.box { flex: none; width: 24px; height: 24px; border-radius: 7px; border: 1.5px solid var(--line-2); margin-top: 1px; display: grid; place-items: center; transition: background .15s, border-color .15s; }
+.check input:checked + .box { background: var(--blue); border-color: var(--blue); }
+.check input:checked + .box::after { content: ""; width: 7px; height: 12px; border: solid #fff; border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translate(-1px, -1px); }
+.check .t { min-width: 0; }
+.check .t strong { display: block; font-weight: 800; }
+.check .t span { color: var(--muted); font-size: 15px; }
+.check input:checked ~ .t strong { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(255,255,255,.3); }
+.row-end { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; margin-top: 18px; }
+.btn-ghost { appearance: none; background: none; border: 1px solid var(--line-2); color: var(--muted); font: 600 14px/1 "Manrope", sans-serif; padding: 10px 14px; border-radius: 999px; cursor: pointer; min-height: 40px; }
+.btn-ghost:hover { color: var(--fg); }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: #1B1E2B; border: 1px solid var(--line-2); padding: 10px 16px; border-radius: 12px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s; max-width: calc(100% - 32px); }
+.toast.on { opacity: 1; }
+footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./">← На страницу эфира</a>
+
+  <h1>Набор селлера</h1>
+  <p class="lead">Три промпта, которые закрывают самые нудные задачи селлера, и чек-лист, по которому можно за вечер найти, куда утекает маржа. Копируете, вставляете в Claude или ChatGPT, прикладываете свои данные. Всё.</p>
+
+  <ul class="toc">
+    <li><a href="#dashboard">Дашборд продаж</a></li>
+    <li><a href="#unit">Юнит-экономика</a></li>
+    <li><a href="#audit">Аудит карточки</a></li>
+    <li><a href="#leaks">15 точек утечки</a></li>
+  </ul>
+
+  <section class="card" id="dashboard">
+    <span class="num">01</span>
+    <h2>Дашборд продаж</h2>
+    <p class="lead" style="margin-top:12px">Нейросеть собирает из ваших отчётов одну понятную картину: сколько заработали, где теряете и что делать завтра. Без таблиц на сорок вкладок.</p>
+    <h3>Как пользоваться</h3>
+    <ol class="steps">
+      <li>Скачайте отчёты из личного кабинета Ozon, WB или Яндекс Маркета за нужный период: продажи, остатки, реклама, финансовый отчёт.</li>
+      <li>Откройте Claude или ChatGPT, приложите файлы и вставьте промпт ниже.</li>
+      <li>Если себестоимости нет в отчётах, нейросеть её спросит. Можно сразу приложить табличку с себестоимостью по артикулам.</li>
+      <li>Получили дашборд, дальше просто просите доработать: «добавь график по неделям», «покажи только Ozon», «сделай светлую тему».</li>
+    </ol>
+    <div class="prompt-box">
+      <div class="prompt-head"><span>Промпт</span><button class="btn-copy" type="button" data-copy="p-dash">Копировать</button></div>
+<pre class="prompt" id="p-dash">Ты аналитик маркетплейсов. Я прикладываю отчёты из личного кабинета (Ozon, Wildberries или Яндекс Маркет): продажи, заказы, остатки, реклама, финансовый отчёт. Собери из них дашборд продаж.
+
+Перед расчётом коротко перечисли, какие файлы и какие столбцы ты взял. Если в разных отчётах артикулы записаны по-разному, сопоставь их и покажи, как сопоставил.
+
+Что посчитать за период из отчётов:
+1. Выручка: всего и по дням. Если в файлах есть прошлый период, сравни.
+2. Маржа: выручка минус себестоимость, комиссия, логистика, хранение, реклама, штрафы и удержания. Если себестоимости нет в файлах, спроси её у меня по артикулам.
+3. ДРР: расходы на рекламу, делённые на выручку. В целом и по каждому SKU.
+4. Остатки: на сколько дней хватит при текущей скорости продаж, какие SKU закончатся в ближайшие 14 дней, какие лежат без движения больше 60 дней.
+5. Топ-10 SKU по марже в рублях.
+6. Антитоп-10: что продаётся в минус, где ДРР выше маржинальности, что не продаётся.
+7. Что делать завтра: 5 конкретных действий по приоритету. У каждого номер SKU, что сделать и почему.
+
+Формат ответа:
+- Сначала резюме в 5 строк простым языком, как будто объясняешь владельцу, у которого 2 минуты.
+- Потом таблицы по пунктам выше.
+- Потом интерактивный HTML-дашборд одним файлом: карточки с главными цифрами (выручка, маржа, ДРР, остатки в днях), график выручки по дням, таблица SKU с сортировкой и поиском, отдельный блок «Что делать завтра». Тёмная тема, крупные цифры, удобно смотреть с телефона.
+
+Правила:
+- Считай только по данным из файлов. Если чего-то не хватает, напиши, какого отчёта или столбца нет, и не придумывай цифры.
+- Все формулы покажи, чтобы я мог перепроверить.
+- Деньги в рублях, проценты с одним знаком после запятой.</pre>
+    </div>
+    <a class="src" href="https://t.me/aivwb/1361" target="_blank" rel="noopener">Исходный пост с PDF в канале →</a>
+  </section>
+
+  <section class="card" id="unit">
+    <span class="num">02</span>
+    <h2>Калькулятор юнит-экономики</h2>
+    <p class="lead" style="margin-top:12px">Чтобы понять, зарабатывает товар или вы просто гоняете деньги по кругу. Нейросеть раскладывает цену на кусочки и показывает, какой из них съедает прибыль.</p>
+    <h3>Как пользоваться</h3>
+    <ol class="steps">
+      <li>Скопируйте промпт и впишите свои цифры вместо пустых полей.</li>
+      <li>Если какой-то цифры нет, оставьте поле пустым. Нейросеть спросит, подставлять наугад не будет.</li>
+      <li>В конце попросите собрать калькулятор в HTML, чтобы крутить цену и рекламу самим.</li>
+    </ol>
+    <div class="prompt-box">
+      <div class="prompt-head"><span>Промпт</span><button class="btn-copy" type="button" data-copy="p-unit">Копировать</button></div>
+<pre class="prompt" id="p-unit">Ты финансовый аналитик для селлеров маркетплейсов. Посчитай юнит-экономику моего товара.
+
+Мои данные (если поле пустое, спроси меня, не подставляй средние значения молча):
+- Товар и площадка (WB, Ozon или Яндекс Маркет):
+- Цена продажи, которую платит покупатель, ₽:
+- Себестоимость за единицу (закупка, доставка до склада, упаковка, маркировка), ₽:
+- Комиссия площадки, %:
+- Логистика до покупателя за единицу, ₽:
+- Процент выкупа и стоимость обратной логистики, ₽:
+- Хранение за единицу в месяц, ₽, и сколько дней в среднем товар лежит до продажи:
+- Реклама: расход в месяц и продажи в штуках, или ДРР, %:
+- Налог: система налогообложения и ставка:
+- Прочее (эквайринг, фулфилмент, платная приёмка, подписки), ₽:
+- Постоянные расходы бизнеса в месяц, ₽:
+
+Что посчитать:
+1. Разложи цену продажи на составляющие: сколько рублей с одной продажи уходит на каждую статью и сколько остаётся мне. Покажи таблицей.
+2. Маржа на единицу в рублях и маржинальность в процентах.
+3. Точка безубыточности: сколько штук в месяц нужно продавать, чтобы покрыть постоянные расходы, и минимальная цена, ниже которой товар уходит в минус.
+4. Где утекают деньги: три статьи, которые съедают больше всего. Если знаешь типичные значения для этой категории, сравни. Если точно не знаешь, так и скажи.
+5. Что поправить: 5 конкретных действий, у каждого расчёт, как изменится маржа на единицу.
+6. Сценарии таблицей: как сейчас, цена плюс 10%, ДРР минус 3 п.п., выкуп плюс 10 п.п., габариты меньше на одну ступень тарифа.
+
+Формат: сначала вывод в трёх строках, потом таблица расчёта со всеми формулами, потом действия. В конце предложи собрать калькулятор одним HTML-файлом, где я могу менять цифры и сразу видеть маржу.</pre>
+    </div>
+    <a class="src" href="https://t.me/aivwb/1370" target="_blank" rel="noopener">Исходный пост в канале →</a>
+  </section>
+
+  <section class="card" id="audit">
+    <span class="num">03</span>
+    <h2>Аудит карточки</h2>
+    <p class="lead" style="margin-top:12px">Покупатели уже написали в отзывах, что им мешает купить. Этот промпт вытаскивает это из отзывов и превращает в 10 правок, начиная с самых важных.</p>
+    <h3>Как пользоваться</h3>
+    <ol class="steps">
+      <li>Соберите текст карточки (заголовок, описание, характеристики) или дайте ссылку. Если нейросеть ссылку не открывает, вставьте текст.</li>
+      <li>Выпишите 5-15 ключевых запросов, по которым вас должны находить.</li>
+      <li>Скопируйте 10-30 отзывов, обязательно вместе с плохими. Скрины фото и инфографики тоже можно приложить.</li>
+    </ol>
+    <div class="prompt-box">
+      <div class="prompt-head"><span>Промпт</span><button class="btn-copy" type="button" data-copy="p-audit">Копировать</button></div>
+<pre class="prompt" id="p-audit">Ты эксперт по карточкам товаров на Wildberries, Ozon и Яндекс Маркете. Сделай аудит моей карточки.
+
+Что я даю:
+1. Ссылка на карточку или её текст (заголовок, описание, характеристики):
+2. Ключевые запросы, по которым меня должны находить:
+3. Отзывы покупателей, 10-30 штук, вместе с негативными:
+4. Если есть: скрины фото и инфографики, цена, ссылки на 2-3 конкурентов.
+
+Что сделать:
+1. Из отзывов вытащи: за что хвалят, на что жалуются, какие вопросы задают и чего не нашли в карточке. Это главный источник правок.
+2. Проверь, есть ли ключевые запросы в заголовке, описании и характеристиках. Покажи, какие пропущены и куда их вписать естественно.
+3. Пройдись по заголовку, описанию, фото, инфографике и ответам на отзывы.
+4. Выдай ровно 10 правок, отсортированных по влиянию на конверсию: сверху то, что сильнее всего мешает купить.
+
+Формат каждой правки:
+- Где: заголовок, описание, фото, инфографика или ответы на отзывы
+- Что сейчас: одна строка
+- Что сделать: конкретно. Для текста дай готовый текст, для фото и инфографики дай ТЗ дизайнеру в 2-3 строках
+- Почему это поможет: со ссылкой на конкретный отзыв или запрос
+- Влияние на конверсию: высокое, среднее или низкое
+
+В конце:
+- Новый заголовок в двух вариантах с учётом ограничений площадки по длине.
+- Готовые ответы на три самых неудобных отзыва: спокойно, по делу, без шаблонных извинений.
+
+Правила: не выдумывай свойства товара, которых нет в данных. Если информации не хватает, сначала задай вопросы.</pre>
+    </div>
+  </section>
+
+  <section class="card" id="leaks">
+    <span class="num">04</span>
+    <h2>15 точек утечки маржи на маркетплейсе</h2>
+    <p class="lead" style="margin-top:12px">Пройдитесь по списку с открытым кабинетом. Отмечайте то, что проверили. Галочки сохранятся в этом браузере, можно вернуться завтра.</p>
+    <div class="progress" aria-live="polite"><div class="bar"><i id="bar"></i></div><b id="count">0 / 15</b></div>
+    <ul class="checklist" id="checklist"></ul>
+    <div class="row-end">
+      <button class="btn-copy sm" type="button" id="copy-list">Копировать список</button>
+      <button class="btn-ghost" type="button" id="reset">Сбросить галочки</button>
+    </div>
+  </section>
+
+  <footer>Чёрная ИИшница · Ольга Пузанова</footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  var LEAKS = [
+    ["Себестоимость посчитана не полностью", "Сложите закупку, доставку до склада, упаковку, маркировку и фулфилмент. Часто в расчёте живёт только цена закупки."],
+    ["Комиссия категории поменялась", "Сверьте текущий тариф в кабинете с тем, что заложен в вашей таблице."],
+    ["Габариты в карточке больше реальных", "Перемерьте упакованный товар. Лишний сантиметр может перевести в дорогой тариф логистики."],
+    ["Платное хранение залежавшихся остатков", "Найдите SKU, которые лежат больше 60 дней, и решите: распродать, вывезти или перестать возить."],
+    ["Низкий процент выкупа", "Посмотрите выкуп по каждому SKU. Невыкуп оплачиваете вы, логистикой туда и обратно."],
+    ["ДРР выше маржинальности", "Сравните ДРР и маржинальность по каждому SKU. Если реклама съедает больше, чем приносит товар, вы платите за продажи из своего кармана."],
+    ["Реклама крутится на товар, которого почти нет", "Проверьте остатки у товаров с включённой рекламой. Трафик на пустую карточку сгорает."],
+    ["Ставки на нецелевые запросы", "Откройте отчёт по поисковым фразам и уберите запросы, по которым смотрят, но не покупают."],
+    ["Автоучастие в акциях", "Проверьте, в каких акциях стоит товар и какая цена получается после скидки. Иногда товар участвует там, куда вы его не добавляли."],
+    ["Маржа считается от цены до скидок", "Считайте от цены, которую реально платит покупатель после ваших скидок, промокодов и акций."],
+    ["Штрафы и удержания", "Откройте раздел удержаний в финансовом отчёте: маркировка, габариты, нарушения поставки, подмены."],
+    ["Поставки на дорогие склады", "Перед отгрузкой проверяйте коэффициенты приёмки и логистики по складам."],
+    ["Налог не заложен в цену", "Добавьте налог в юнит-экономику каждого SKU. Особенно если вы перешли на систему с НДС."],
+    ["Мелкие платные услуги", "Эквайринг, подписки, платная приёмка, продвижение. По отдельности копейки, вместе заметная сумма."],
+    ["Потерянный товар без компенсации", "Сверьте отгрузки с фактической приёмкой и остатками. Если товар пропал на складе, подавайте претензию на компенсацию."]
+  ];
+  var KEY = "bf-seller-leaks-v1";
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+
+  var list = document.getElementById("checklist");
+  LEAKS.forEach(function (item, i) {
+    var li = document.createElement("li");
+    var id = "leak-" + i;
+    li.innerHTML =
+      '<label class="check" for="' + id + '">' +
+        '<input type="checkbox" id="' + id + '"' + (state[i] ? " checked" : "") + '>' +
+        '<span class="box" aria-hidden="true"></span>' +
+        '<span class="t"><strong>' + (i + 1) + ". " + item[0] + '</strong><span>' + item[1] + '</span></span>' +
+      '</label>';
+    list.appendChild(li);
+  });
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  function render() {
+    var n = 0;
+    for (var i = 0; i < LEAKS.length; i++) if (state[i]) n++;
+    document.getElementById("count").textContent = n + " / " + LEAKS.length;
+    document.getElementById("bar").style.width = (n / LEAKS.length * 100) + "%";
+  }
+  list.addEventListener("change", function (e) {
+    var t = e.target;
+    if (!t || t.type !== "checkbox") return;
+    var i = +t.id.split("-")[1];
+    if (t.checked) state[i] = true; else delete state[i];
+    save(); render();
+  });
+  document.getElementById("reset").addEventListener("click", function () {
+    state = {}; save();
+    Array.prototype.forEach.call(list.querySelectorAll("input"), function (c) { c.checked = false; });
+    render();
+  });
+  render();
+
+  var toastEl = document.getElementById("toast"), toastT;
+  function toast(msg) {
+    toastEl.textContent = msg; toastEl.classList.add("on");
+    clearTimeout(toastT); toastT = setTimeout(function () { toastEl.classList.remove("on"); }, 2200);
+  }
+  function selectNode(node) {
+    try { var r = document.createRange(); r.selectNodeContents(node); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
+  }
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "0"; ta.style.left = "0"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  function copy(text, btn, node) {
+    var label = btn.textContent;
+    function done() { btn.textContent = "Скопировано"; btn.classList.add("done"); setTimeout(function () { btn.textContent = label; btn.classList.remove("done"); }, 1600); }
+    function fallback() {
+      if (legacyCopy(text)) { done(); return; }
+      if (node) selectNode(node);
+      toast("Текст выделен, нажмите Ctrl+C или «Копировать» в меню");
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var node = document.getElementById(btn.getAttribute("data-copy"));
+      copy(node.textContent, btn, node);
+    });
+  });
+  document.getElementById("copy-list").addEventListener("click", function () {
+    var text = "15 точек утечки маржи на маркетплейсе\n\n" + LEAKS.map(function (l, i) {
+      return (state[i] ? "[x] " : "[ ] ") + (i + 1) + ". " + l[0] + ". " + l[1];
+    }).join("\n");
+    copy(text, this, list);
+  });
+})();
+</script>
+</body>
+</html>
