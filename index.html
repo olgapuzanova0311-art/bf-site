@@ -340,17 +340,21 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 /* mobile bar, modal, toast */
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--topBg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);display:none;transform:translateY(110%);transition:transform .35s var(--ease)}
 .mbar.show{transform:none}
-.tgw{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:49;display:flex;align-items:center;gap:12px;width:390px;max-width:calc(100% - 32px);padding:14px 14px 14px 14px;border-radius:22px;background:var(--card);border:1px solid var(--line);box-shadow:0 20px 50px -18px rgba(0,0,0,.45);color:inherit;text-decoration:none;transform:translateY(20px) scale(.96);opacity:0;pointer-events:none;transition:transform .45s var(--ease),opacity .45s var(--ease),bottom .35s var(--ease)}
+.ck{position:fixed;left:max(20px,env(safe-area-inset-left,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:14px;max-width:440px;padding:12px 12px 12px 18px;border-radius:18px;background:var(--card);border:1px solid var(--line);box-shadow:0 14px 34px -16px rgba(0,0,0,.45);font-size:13px;line-height:1.4;color:var(--muted)}
+.ck a{color:inherit;text-decoration:underline}
+.ck button{flex:none;min-height:38px;padding:0 16px;border-radius:999px;border:0;background:var(--ink);color:var(--card);font:inherit;font-weight:700;cursor:pointer}
+@media (max-width:760px){.ck{left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));max-width:none;bottom:calc(84px + env(safe-area-inset-bottom,0px));padding:10px 10px 10px 14px;font-size:12px}}
+.tgw{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:49;display:flex;align-items:center;width:auto;max-width:calc(100% - 32px);padding:6px 16px 6px 6px;border-radius:999px;background:var(--card);border:1px solid var(--line);box-shadow:0 14px 34px -16px rgba(0,0,0,.45);color:inherit;text-decoration:none;transform:translateY(16px) scale(.96);opacity:0;pointer-events:none;transition:transform .45s var(--ease),opacity .45s var(--ease),bottom .35s var(--ease)}
 .tgw.show{transform:none;opacity:1;pointer-events:auto}
-.tgw-a{display:flex;align-items:center;gap:12px;flex:1;min-width:0;color:inherit;text-decoration:none}
-.tgw-ic{position:relative;flex:none;width:48px;height:48px;border-radius:50%;background:#2AABEE;display:grid;place-items:center;box-shadow:0 8px 20px -8px #2AABEE}
-.tgw-ic svg{width:26px;height:26px}
-.tgw-t{flex:1;min-width:0}
-.tgw-t b{display:block;font-size:16px;line-height:1.2;letter-spacing:-.01em}
-.tgw-t span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--muted)}
-.tgw-go{flex:none;display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:#2AABEE;color:#fff;font-weight:800;font-size:14px;white-space:nowrap}
-.tgw-x{position:absolute;top:-10px;right:-10px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:16px;line-height:1;cursor:pointer;display:grid;place-items:center}
-.tgw-dot{position:absolute;top:-1px;right:-1px;width:12px;height:12px;border-radius:50%;background:#E5253F;border:2px solid var(--card)}
+.tgw-a{display:flex;align-items:center;gap:10px;min-width:0;color:inherit;text-decoration:none}
+.tgw-ic{position:relative;flex:none;width:36px;height:36px;border-radius:50%;background:#2AABEE;display:grid;place-items:center}
+.tgw-ic svg{width:19px;height:19px}
+.tgw-t{min-width:0;white-space:nowrap}
+.tgw-t b{display:block;font-size:14px;line-height:1.2;letter-spacing:-.01em}
+.tgw-t span{display:block;margin-top:1px;font-size:12px;line-height:1.3;color:var(--muted)}
+.tgw-go{display:none}
+.tgw-x{position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:13px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.tgw-dot{position:absolute;top:-1px;right:-1px;width:10px;height:10px;border-radius:50%;background:#E5253F;border:2px solid var(--card)}
 .mbar .btn{width:100%}
 .modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px)}
 .mbox{position:relative;width:min(520px,100%);max-height:88vh;overflow:auto;padding:28px;border-radius:26px;background:var(--bg);color:var(--ink);border:1px solid var(--line)}
@@ -401,9 +405,9 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   .egg.surprise{display:flex}.egg.surprise .vis{height:150px}.egg.surprise .act{min-width:0;padding-top:16px}
   .done .two{grid-template-columns:1fr}
   .mbar{display:block}
-  .tgw{left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));width:auto;max-width:none;bottom:calc(16px + env(safe-area-inset-bottom,0px));padding:12px}
+  .tgw{right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px))}
   .tgw.up{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
-  .tgw-ic{width:42px;height:42px}.tgw-t b{font-size:15px}.tgw-t span{font-size:13px}
+  .tgw-ic{width:34px;height:34px}.tgw-t b{font-size:13px}.tgw-t span{font-size:12px}
   .pi{grid-template-columns:1fr;gap:8px}
   .tour{aspect-ratio:4/5;max-height:none}
   .tcap b{font-size:18px}
@@ -605,7 +609,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>10 серий Чёрной ИИшницы навсегда</li>
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Ключи от ИИ-офиса: все 10 агентов</li>
             <li class="no"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>Год с кураторами</li>
-            <li class="no"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>Готовые агенты и розыгрыш</li>
+            <li class="no"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>Подарки царь лота</li>
           </ul>
           <div class="price"><div><small>Цена</small><b class="js-p1">на эфире</b></div><a class="btn btn-g js-buy" data-lot="ЗАПИСИ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать «ЗАПИСИ» <span class="arr">→</span></a></div>
         </div>
@@ -614,8 +618,9 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
           <ul>
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Все потоки 2027 года с кураторами</li>
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Всё из лота 1</li>
-            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>2 готовых агента из 3 на выбор</li>
-            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Розыгрыш ИИ-офиса под ключ</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>3 ИИ-агента под ключ на выбор: для маркетплейсов или для контента</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>3 месяца клуба SYNAPSE AI</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Эфир: свой VPN и верификация в Claude</li>
             <li class="js-b24"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Бонусы первых 24 часов объявлю на эфире</li>
           </ul>
           <div class="price"><div><small>Цена</small><b class="js-p2">на эфире</b></div><a class="btn btn-p js-buy" data-lot="ЦАРЬ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать «ЦАРЬ» <span class="arr">→</span></a></div>
@@ -688,9 +693,10 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   <div class="cols"><a href="https://olgapuzanovva.ru/politic" target="_blank" rel="noopener">Политика конфиденциальности</a><a href="https://olgapuzanovva.ru/personinfo" target="_blank" rel="noopener">Согласие на обработку ПДн</a><a href="https://olgapuzanovva.ru/soglasie" target="_blank" rel="noopener">Согласие на рассылки</a><a href="https://t.me/puzanovateam" target="_blank" rel="noopener">Связь: @puzanovateam</a><span>olgapuzanova003@yandex.ru</span></div>
 </div></footer>
 
+<div class="ck js-ck" hidden role="region" aria-label="Cookies"><span>Мы используем cookies и Яндекс Метрику, чтобы считать посещения. Оставаясь на сайте, вы соглашаетесь с <a href="privacy.html" target="_blank" rel="noopener">политикой</a></span><button type="button" class="js-cka">Хорошо</button></div>
 <div class="tgw js-tgw"><a class="tgw-a js-chan js-tgwa" href="#" target="_blank" rel="noopener" aria-label="Подписаться на Telegram-канал Чёрной ИИшницы">
   <span class="tgw-ic"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.6 4.2 2.9 11.4c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.1c.3-1.3-.5-1.9-1.5-1.6zM8.9 14.2l9.4-5.9c.5-.3.9-.1.5.2l-8 7.2-.3 3.3-1.6-4.8z"/></svg><span class="tgw-dot" aria-hidden="true"></span></span>
-  <span class="tgw-t"><b>Канал Чёрной ИИшницы</b><span>Серии живут 24 часа. Подпишитесь, чтобы не пропустить</span></span>
+  <span class="tgw-t"><b>ТГ-канал Чёрной ИИшницы</b><span>серии живут 24 часа →</span></span>
   <span class="tgw-go">Подписаться</span></a>
   <button class="tgw-x js-tgwx" type="button" aria-label="Скрыть">×</button>
 </div>
@@ -708,8 +714,8 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   var RECORD_EMBED = "";   // embed записи
   var EFIR_WORD = "";      // кодовое слово эфира
   var GOLD = { t: "Главный подарок эфира", d: "Откроется после эфира", link: "" };
-  var PRICE1 = "";         // цена лота 1
-  var PRICE2 = "73 000 ₽";
+  var PRICE1 = "33 333 ₽";         // цена лота 1
+  var PRICE2 = "73 333 ₽";
   var MANAGER = "https://t.me/puzanovateam", CHANNEL = "https://t.me/+zhRmQVVPQIg1OTBi";
   var BASE = "https://olgapuzanova0311-art.github.io/ai-assistant-guide/";
   var EARLY = Date.parse("2026-11-26T15:00:00Z"), START = Date.parse("2026-11-26T16:00:00Z"), LIVE_END = Date.parse("2026-11-26T19:00:00Z"), END = Date.parse("2026-11-30T20:59:59Z");
@@ -942,8 +948,9 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   (function(){
     var w=$(".js-tgw");if(!w)return;
     var off=false;try{off=Date.now()-(+localStorage.getItem("bf_tgw_x")||0)<2*864e5}catch(x){}
-    if(off)return;
-    var shown=false;function show(){if(shown)return;shown=true;w.classList.add("show")}
+    var ck=$(".js-ck"),ckOn=false;try{ckOn=!localStorage.getItem("bf_ck")}catch(x){ckOn=true}
+    var shown=false;function show(){if(shown||ckOn||off)return;shown=true;w.classList.add("show")}
+    if(ck){ck.hidden=!ckOn;$(".js-cka").addEventListener("click",function(){ck.hidden=true;ckOn=false;try{localStorage.setItem("bf_ck","1")}catch(x){}setTimeout(show,1500)})}
     setTimeout(show,8000);
     window.addEventListener("scroll",function(){if(window.scrollY>700)show()},{passive:true});
     $(".js-tgwx").addEventListener("click",function(){w.classList.remove("show");try{localStorage.setItem("bf_tgw_x",Date.now())}catch(x){}});
