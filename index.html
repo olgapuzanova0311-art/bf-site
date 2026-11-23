@@ -698,7 +698,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   <div class="cols"><a href="https://olgapuzanovva.ru/politic" target="_blank" rel="noopener">Политика конфиденциальности</a><a href="https://olgapuzanovva.ru/personinfo" target="_blank" rel="noopener">Согласие на обработку ПДн</a><a href="https://olgapuzanovva.ru/soglasie" target="_blank" rel="noopener">Согласие на рассылки</a><a href="https://t.me/puzanovateam" target="_blank" rel="noopener">Связь: @puzanovateam</a><span>olgapuzanova003@yandex.ru</span></div>
 </div></footer>
 
-<div class="ck js-ck" hidden role="region" aria-label="Cookies"><span>Мы используем cookies и Яндекс Метрику, чтобы считать посещения. Оставаясь на сайте, вы соглашаетесь с <a href="privacy.html" target="_blank" rel="noopener">политикой</a></span><button type="button" class="js-cka">Хорошо</button></div>
+<div class="ck js-ck" hidden role="region" aria-label="Cookies"><span>Мы используем cookies. Оставаясь на сайте, вы соглашаетесь с <a href="https://bf.olgapuzanovva.ru/privacy.html" target="_blank" rel="noopener">политикой</a></span><button type="button" class="js-cka">Хорошо</button></div>
 <div class="tgw js-tgw"><a class="tgw-a js-chan js-tgwa" title="ТГ-канал Чёрной ИИшницы" href="#" target="_blank" rel="noopener" aria-label="Подписаться на Telegram-канал Чёрной ИИшницы">
   <span class="tgw-ic"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.6 4.2 2.9 11.4c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.1c.3-1.3-.5-1.9-1.5-1.6zM8.9 14.2l9.4-5.9c.5-.3.9-.1.5.2l-8 7.2-.3 3.3-1.6-4.8z"/></svg><span class="tgw-dot" aria-hidden="true"></span></span>
   <span class="tgw-t"><b>ТГ-канал Чёрной ИИшницы</b><span>серии живут 24 часа →</span></span>
@@ -760,7 +760,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   function toast(m){var t=$(".js-toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove("show")},2600)}
   function msk(iso){var d=new Date(Date.parse(iso)+3*3600e3);return pad(d.getUTCDate())+"."+pad(d.getUTCMonth()+1)+" в "+pad(d.getUTCHours())+":"+pad(d.getUTCMinutes())}
   $$(".js-chan").forEach(function(a){a.href=CHANNEL});
-  var mq="<span>ИИ-офис из 10 агентов<i></i></span><span>26.11 · 19:00<i></i></span><span>Эфир прямо здесь<i></i></span><span>Яйцо = подарок<i></i></span><span>Золотое яйцо = бонус<i></i></span>";
+  var mq="<span>Создаём офис 10 ИИ-агентов на 600к<i></i></span><span>Бесплатно<i></i></span><span>Анализ<i></i></span><span>Собери свои яйца<i></i></span><span>Эфир прямо тут<i></i></span>";
   $(".js-mq").innerHTML=mq+mq+mq+mq;
 
   /* ===== модалка ===== */
@@ -954,9 +954,9 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     var w=$(".js-tgw");if(!w)return;
     var off=false;try{off=Date.now()-(+localStorage.getItem("bf_tgw_x")||0)<2*864e5}catch(x){}
     var ck=$(".js-ck"),ckOn=false;try{ckOn=!localStorage.getItem("bf_ck")}catch(x){ckOn=true}
-    var shown=false;function show(){if(shown||ckOn||off)return;shown=true;w.classList.add("show")}
+    var mob=window.matchMedia("(max-width:760px)").matches;var shown=false;function show(){if(shown||(ckOn&&mob))return;shown=true;w.classList.add("show")}
     if(ck){ck.hidden=!ckOn;$(".js-cka").addEventListener("click",function(){ck.hidden=true;ckOn=false;try{localStorage.setItem("bf_ck","1")}catch(x){}setTimeout(show,1500)})}
-    setTimeout(show,8000);
+    if(mob)setTimeout(show,8000);else show();
     window.addEventListener("scroll",function(){if(window.scrollY>700)show()},{passive:true});
     $(".js-tgwx").addEventListener("click",function(){w.classList.remove("show");try{localStorage.setItem("bf_tgw_x",Date.now())}catch(x){}});
     $(".js-tgwa").addEventListener("click",function(){if(window.goal)goal("tg_channel")});
