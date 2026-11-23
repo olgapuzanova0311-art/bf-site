@@ -340,6 +340,17 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 /* mobile bar, modal, toast */
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--topBg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);display:none;transform:translateY(110%);transition:transform .35s var(--ease)}
 .mbar.show{transform:none}
+.tgw{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:49;display:flex;align-items:center;gap:12px;width:390px;max-width:calc(100% - 32px);padding:14px 14px 14px 14px;border-radius:22px;background:var(--card);border:1px solid var(--line);box-shadow:0 20px 50px -18px rgba(0,0,0,.45);color:inherit;text-decoration:none;transform:translateY(20px) scale(.96);opacity:0;pointer-events:none;transition:transform .45s var(--ease),opacity .45s var(--ease),bottom .35s var(--ease)}
+.tgw.show{transform:none;opacity:1;pointer-events:auto}
+.tgw-a{display:flex;align-items:center;gap:12px;flex:1;min-width:0;color:inherit;text-decoration:none}
+.tgw-ic{position:relative;flex:none;width:48px;height:48px;border-radius:50%;background:#2AABEE;display:grid;place-items:center;box-shadow:0 8px 20px -8px #2AABEE}
+.tgw-ic svg{width:26px;height:26px}
+.tgw-t{flex:1;min-width:0}
+.tgw-t b{display:block;font-size:16px;line-height:1.2;letter-spacing:-.01em}
+.tgw-t span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--muted)}
+.tgw-go{flex:none;display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:#2AABEE;color:#fff;font-weight:800;font-size:14px;white-space:nowrap}
+.tgw-x{position:absolute;top:-10px;right:-10px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:16px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.tgw-dot{position:absolute;top:-1px;right:-1px;width:12px;height:12px;border-radius:50%;background:#E5253F;border:2px solid var(--card)}
 .mbar .btn{width:100%}
 .modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px)}
 .mbox{position:relative;width:min(520px,100%);max-height:88vh;overflow:auto;padding:28px;border-radius:26px;background:var(--bg);color:var(--ink);border:1px solid var(--line)}
@@ -390,6 +401,9 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   .egg.surprise{display:flex}.egg.surprise .vis{height:150px}.egg.surprise .act{min-width:0;padding-top:16px}
   .done .two{grid-template-columns:1fr}
   .mbar{display:block}
+  .tgw{left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));width:auto;max-width:none;bottom:calc(16px + env(safe-area-inset-bottom,0px));padding:12px}
+  .tgw.up{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  .tgw-ic{width:42px;height:42px}.tgw-t b{font-size:15px}.tgw-t span{font-size:13px}
   .pi{grid-template-columns:1fr;gap:8px}
   .tour{aspect-ratio:4/5;max-height:none}
   .tcap b{font-size:18px}
@@ -674,6 +688,12 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   <div class="cols"><a href="https://olgapuzanovva.ru/politic" target="_blank" rel="noopener">Политика конфиденциальности</a><a href="https://olgapuzanovva.ru/personinfo" target="_blank" rel="noopener">Согласие на обработку ПДн</a><a href="https://olgapuzanovva.ru/soglasie" target="_blank" rel="noopener">Согласие на рассылки</a><a href="https://t.me/puzanovateam" target="_blank" rel="noopener">Связь: @puzanovateam</a><span>olgapuzanova003@yandex.ru</span></div>
 </div></footer>
 
+<div class="tgw js-tgw"><a class="tgw-a js-chan js-tgwa" href="#" target="_blank" rel="noopener" aria-label="Подписаться на Telegram-канал Чёрной ИИшницы">
+  <span class="tgw-ic"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.6 4.2 2.9 11.4c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.1c.3-1.3-.5-1.9-1.5-1.6zM8.9 14.2l9.4-5.9c.5-.3.9-.1.5.2l-8 7.2-.3 3.3-1.6-4.8z"/></svg><span class="tgw-dot" aria-hidden="true"></span></span>
+  <span class="tgw-t"><b>Канал Чёрной ИИшницы</b><span>Серии живут 24 часа. Подпишитесь, чтобы не пропустить</span></span>
+  <span class="tgw-go">Подписаться</span></a>
+  <button class="tgw-x js-tgwx" type="button" aria-label="Скрыть">×</button>
+</div>
 <div class="mbar js-mbar"><a class="btn btn-p js-mbtn" href="#regform">Занять место на эфире</a></div>
 <div class="modal js-modal" hidden><div class="mbox" role="dialog" aria-modal="true" aria-labelledby="mt"><button class="mx js-mx" type="button" aria-label="Закрыть">✕</button><h3 id="mt" class="js-mt"></h3><div class="js-mb"></div></div></div>
 <div class="toast js-toast" role="status" aria-live="polite"></div>
@@ -918,6 +938,18 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   }
   if(REG_URL){try{fetch(REG_URL+"?stats=1").then(function(r){return r.json()}).then(function(d){if(d&&d.count>=150)$$(".fbox .sub").forEach(function(n){n.textContent="Уже "+d.count.toLocaleString("ru-RU")+" человек заняли место. Бесплатно"})}).catch(function(){})}catch(x){}}
   if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{rootMargin:"0px 0px -8% 0px"});$$(".rv").forEach(function(el){io.observe(el)})}else $$(".rv").forEach(function(el){el.classList.add("in")});
+  /* Telegram-виджет: появляется после прокрутки или через 8 секунд, скрывается на 2 дня */
+  (function(){
+    var w=$(".js-tgw");if(!w)return;
+    var off=false;try{off=Date.now()-(+localStorage.getItem("bf_tgw_x")||0)<2*864e5}catch(x){}
+    if(off)return;
+    var shown=false;function show(){if(shown)return;shown=true;w.classList.add("show")}
+    setTimeout(show,8000);
+    window.addEventListener("scroll",function(){if(window.scrollY>700)show()},{passive:true});
+    $(".js-tgwx").addEventListener("click",function(){w.classList.remove("show");try{localStorage.setItem("bf_tgw_x",Date.now())}catch(x){}});
+    $(".js-tgwa").addEventListener("click",function(){if(window.goal)goal("tg_channel")});
+    var mb=$(".js-mbar");if(mb&&"MutationObserver" in window){var sync=function(){w.classList.toggle("up",mb.classList.contains("show"))};new MutationObserver(sync).observe(mb,{attributes:true,attributeFilter:["class"]});sync()}
+  })();
   var mbar=$(".js-mbar"),vis={};
   if("IntersectionObserver" in window){var mo=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.className]=e.isIntersecting});mbar.classList.toggle("show",!Object.keys(vis).some(function(k){return vis[k]}))});mo.observe($(".js-fcard .js-submit"));mo.observe($(".js-done .btn"));mo.observe($(".fin-card"))}
   render(true);tick();setInterval(tick,1000);
