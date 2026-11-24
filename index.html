@@ -847,7 +847,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     var sur=activeSurprise(),t=now();
     var sig=[isReg(),sur&&sur.id,JSON.stringify(mem.eggs)].concat(GIFTS.map(function(g){return !g.at||t>=Date.parse(g.at)})).join("|");
     if(sig===lastSig&&!force)return;lastSig=sig;
-    var html=(sur?eggHtml(sur,sur):"")+GIFTS.map(function(g){return eggHtml(g)}).join("");
+    var kept=sur||SURPRISE.filter(function(x){return mem.eggs[x.id]})[0];var html=(kept?eggHtml(kept,kept):"")+GIFTS.map(function(g){return eggHtml(g)}).join("");
     $(".js-eggs").innerHTML=html;
     var n=GIFTS.filter(function(g){return mem.eggs[g.id]}).length;
     $(".js-pn").textContent=n+" из 6";$(".js-pb").style.width=(n/6*100)+"%";
