@@ -299,7 +299,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* lots */
 .lots-wrap{position:relative}
-.lots{display:grid;grid-template-columns:1fr 1.15fr;gap:16px}
+.lots{display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:16px}
+.lot.ofc{border:2px solid var(--gold);background:var(--goldBg)}
+.lot .note{text-align:left;margin:16px 0 0;font-size:14px;line-height:1.45;opacity:.75}
+.lots-hint{margin-top:16px;padding:18px 22px;border-radius:22px;background:var(--card);border:1px solid var(--line);font-size:16px;line-height:1.5}
+.lots-hint b{display:block;margin-bottom:6px}
+@media (max-width:1100px){.lots{grid-template-columns:1fr}}
 .lot{display:flex;flex-direction:column;padding:clamp(24px,3vw,36px);border-radius:28px;background:var(--card);border:1px solid var(--line);min-height:440px}
 .lot.king{background:var(--kingBg);color:var(--kingInk);border-color:transparent}
 .lot .lbl{font:700 13px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
@@ -613,6 +618,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Все курсы ИИшницы в записи</li>
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>10 серий Чёрной ИИшницы навсегда</li>
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Ключи от ИИ-офиса: все 10 агентов</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>3 живых эфира со мной: в декабре, январе и феврале</li>
             <li class="no"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>Год с кураторами</li>
             <li class="no"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>Подарки царь лота</li>
           </ul>
@@ -626,13 +632,26 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>3 ИИ-агента под ключ на выбор: для маркетплейсов или для контента</li>
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>3 месяца клуба SYNAPSE AI</li>
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Эфир: свой VPN и верификация в Claude</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>1+1: вдвоём за 87 999 ₽. Второе место 14 666 ₽, это около 1 200 ₽ в месяц, и второму участнику ИИ-агент под ключ</li>
             <li class="js-b24"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Бонусы первых 24 часов объявлю на эфире</li>
           </ul>
           <div class="price"><div><small>Цена</small><b class="js-p2">на эфире</b></div><a class="btn btn-p js-buy" data-lot="ЦАРЬ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать «ЦАРЬ» <span class="arr">→</span></a></div>
         </div>
+        <div class="lot ofc rv">
+          <span class="lbl">Лот 3 · под ключ</span><h3>ИИ-офис под ключ</h3>
+          <ul>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Моя команда делает для вашего бизнеса одно на выбор: контент-завод, 5 ИИ-агентов под ваши задачи или пульт управления бизнесом</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Пульт: деньги, продажи, команда и риски на одном экране, ИИ каждое утро предлагает решения</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Всё из царь лота: 2027 год с кураторами для вас или сотрудника и все подарки</li>
+            <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Старт в декабре, сдаём за 3-4 недели</li>
+          </ul>
+          <p class="note">Пульт под ключ обычно стоит от 500 000 ₽, контент-завод от 150 000 ₽ в месяц. Берём всего несколько проектов, мест ограничено</p>
+          <div class="price"><div><small>Цена</small><b class="js-p3">на эфире</b></div><a class="btn btn-p js-buy" data-lot="ОФИС" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать «ОФИС» <span class="arr">→</span></a></div>
+        </div>
       </div>
-      <div class="veil js-lotsveil"><div class="vcard"><svg width="56" height="64" viewBox="0 0 58 66" aria-hidden="true"><defs><linearGradient id="lbL3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45A"/><stop offset=".55" stop-color="#FFB800"/><stop offset="1" stop-color="#D98A00"/></linearGradient></defs><path d="M14 28V19a15 15 0 0 1 30 0v9" fill="none" stroke="#2A2622" stroke-width="7"/><path d="M16 26V19a13 13 0 0 1 6-11" fill="none" stroke="#5a524a" stroke-width="2" opacity=".7"/><rect x="4" y="27" width="50" height="37" rx="8" fill="url(#lbL3)"/><circle cx="29" cy="44" r="4.5" fill="#141210"/><rect x="27" y="45" width="4" height="9" rx="2" fill="#141210"/></svg><b class="js-lvb">Лоты откроются 26.11 в 18:00</b><p class="js-lvp">Для зарегистрированных. Остальным в 19:00</p></div></div>
+      <div class="veil js-lotsveil"><div class="vcard"><svg width="56" height="64" viewBox="0 0 58 66" aria-hidden="true"><defs><linearGradient id="lbL5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45A"/><stop offset=".55" stop-color="#FFB800"/><stop offset="1" stop-color="#D98A00"/></linearGradient></defs><path d="M14 28V19a15 15 0 0 1 30 0v9" fill="none" stroke="#2A2622" stroke-width="7"/><path d="M16 26V19a13 13 0 0 1 6-11" fill="none" stroke="#5a524a" stroke-width="2" opacity=".7"/><rect x="4" y="27" width="50" height="37" rx="8" fill="url(#lbL5)"/><circle cx="29" cy="44" r="4.5" fill="#141210"/><rect x="27" y="45" width="4" height="9" rx="2" fill="#141210"/></svg><b class="js-lvb">Лоты откроются 26.11 в 18:00</b><p class="js-lvp">Для зарегистрированных. Остальным в 19:00</p></div></div>
     </div>
+    <div class="lots-hint rv"><b>Какой лот выбрать?</b>Хотите сами и в своём темпе: лот 1. Хотите, чтобы вас довели до результата с кураторами: царь лот. Нет времени собирать, нужен готовый офис для бизнеса: лот 3. Сомневаетесь: менеджер подскажет за пару сообщений в <a href="https://t.me/puzanovateam" target="_blank" rel="noopener">@puzanovateam</a></div>
     <div class="dl js-dl" hidden><b>Продажи закрываются 30.11 в 23:59</b><div class="cd js-cd2"><div><b>00</b><span>дн</span></div><div><b>00</b><span>ч</span></div><div><b>00</b><span>мин</span></div><div><b>00</b><span>сек</span></div></div></div>
   </div>
 </section>
@@ -721,6 +740,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   var GOLD = { t: "Главный подарок эфира", d: "Откроется после эфира", link: "" };
   var PRICE1 = "33 333 ₽";         // цена лота 1
   var PRICE2 = "73 333 ₽";
+  var PRICE3 = "250 000 ₽";
   var MANAGER = "https://t.me/puzanovateam", CHANNEL = "https://t.me/+zhRmQVVPQIg1OTBi";
   var BASE = "https://olgapuzanova0311-art.github.io/ai-assistant-guide/";
   var EARLY = Date.parse("2026-11-26T15:00:00Z"), START = Date.parse("2026-11-26T16:00:00Z"), LIVE_END = Date.parse("2026-11-26T19:00:00Z"), END = Date.parse("2026-11-30T20:59:59Z");
@@ -928,7 +948,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     $(".js-b24").hidden=!pre;
     $$(".lot .price").forEach(function(x){x.hidden=ph==="closed"});
     ["#gifts","#efir","#watch","#office","#why"].forEach(function(id){$(id).hidden=ph==="closed"});$(".mq").hidden=ph==="closed";
-    var p1=$(".js-p1");p1.textContent=open?(PRICE1||"Цену скажет менеджер"):"на эфире";p1.classList.toggle("sm",open&&!PRICE1);$(".js-p2").textContent=open?PRICE2:"на эфире";
+    var p1=$(".js-p1");p1.textContent=open?(PRICE1||"Цену скажет менеджер"):"на эфире";p1.classList.toggle("sm",open&&!PRICE1);$(".js-p2").textContent=open?PRICE2:"на эфире";$(".js-p3").textContent=open?PRICE3:"на эфире";
     renderEggs(force);renderPlayer(ph);
   }
   $$(".js-buy").forEach(function(b){b.addEventListener("click",function(){toast("Отправьте менеджеру слово «"+b.getAttribute("data-lot")+"»")})});
