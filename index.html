@@ -993,7 +993,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     var mb=$(".js-mbar");if(mb&&"MutationObserver" in window){var sync=function(){w.classList.toggle("up",mb.classList.contains("show"))};new MutationObserver(sync).observe(mb,{attributes:true,attributeFilter:["class"]});sync()}
   })();
   var mbar=$(".js-mbar"),vis={};
-  if("IntersectionObserver" in window){var mo=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.className]=e.isIntersecting});mbar.classList.toggle("show",!Object.keys(vis).some(function(k){return vis[k]}))});mo.observe($(".js-fcard .js-submit"));mo.observe($(".js-done .btn"));mo.observe($(".fin-card"))}
+  if("IntersectionObserver" in window){var mo=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.className]=e.isIntersecting});mbar.classList.toggle("show",!Object.keys(vis).some(function(k){return vis[k]}))});mo.observe($(".js-fcard"));mo.observe($(".js-done .btn"));mo.observe($(".fin-card"))}
   render(true);tick();setInterval(tick,1000);
 })();
 </script>
