@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ИИ-продавец для Авито</title>
+<meta name="description" content="Подарок Чёрной ИИшницы: конструктор ИИ-продавца для Авито и мессенджеров">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+<style>
+:root {
+  --bg: #050507;
+  --card: #10121B;
+  --card-2: #0A0B12;
+  --line: rgba(255,255,255,.08);
+  --line-2: rgba(255,255,255,.16);
+  --fg: #F5F6FA;
+  --muted: #8E93A6;
+  --blue: #5B7CFF;
+  --blue-soft: rgba(91,124,255,.14);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { overflow-x: clip; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: var(--blue); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 20px max(16px, env(safe-area-inset-left, 0px)) 40px max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 640px) { .wrap { padding-left: 28px; padding-right: 28px; } }
+.back { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; font-weight: 600; font-size: 15px; padding: 10px 0; }
+.back:hover { color: var(--fg); }
+h1, h2 { text-transform: uppercase; font-weight: 800; letter-spacing: -0.05em; margin: 0; overflow-wrap: break-word; hyphens: auto; }
+h1 { font-size: clamp(36px, 9vw, 72px); line-height: .95; margin-top: 28px; }
+h2 { font-size: clamp(24px, 5.4vw, 36px); line-height: 1.02; }
+h3 { font-size: 18px; font-weight: 800; margin: 0; line-height: 1.3; }
+p { margin: 0 0 10px; }
+.lead { color: var(--muted); font-size: 18px; margin-top: 18px; max-width: 680px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; min-width: 0; }
+@media (min-width: 640px) { .card { padding: 30px; } }
+.how { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+@media (min-width: 820px) { .how { grid-template-columns: 1.2fr 1fr; } }
+.how h2 { margin-bottom: 14px; }
+ol.steps { padding-left: 22px; margin: 0; }
+ol.steps li { margin-bottom: 8px; }
+ol.steps b { font-weight: 800; }
+.path { display: inline-block; background: var(--blue-soft); border: 1px solid rgba(91,124,255,.35); border-radius: 8px; padding: 1px 7px; font-weight: 600; white-space: normal; }
+.note { color: var(--muted); font-size: 15px; margin-top: 12px; }
+code { font: 14px ui-monospace, "SF Mono", Menlo, Consolas, monospace; background: rgba(255,255,255,.06); padding: 1px 5px; border-radius: 6px; overflow-wrap: anywhere; }
+.list-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 44px; }
+.list-head p { color: var(--muted); margin: 0; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 18px; }
+@media (min-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+.skill { display: flex; flex-direction: column; gap: 10px; }
+.skill .idx { color: var(--blue); font-weight: 800; font-size: 13px; letter-spacing: .08em; }
+.skill dl { margin: 0; display: grid; gap: 8px; }
+.skill dt { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.skill dd { margin: 0; }
+.md { margin-top: 6px; border: 1px solid var(--line); border-radius: 16px; background: var(--card-2); overflow: hidden; }
+.md-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 10px 8px 14px; border-bottom: 1px solid var(--line); }
+.md-head span { color: var(--muted); font: 600 13px ui-monospace, Menlo, monospace; overflow-wrap: anywhere; min-width: 0; }
+pre { margin: 0; padding: 14px; white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: #DCE0EE; max-height: 300px; overflow-y: auto; }
+.btn-copy { flex: none; appearance: none; background: var(--blue); color: #fff; border: 0; font: 600 13px/1 "Manrope", sans-serif; padding: 9px 14px; border-radius: 999px; cursor: pointer; min-height: 36px; }
+.btn-copy:hover { filter: brightness(1.1); }
+.btn-copy:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.btn-copy.done { background: #2E9E6B; }
+.warn { font-size: 14px; color: #FFC876; }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: #1B1E2B; border: 1px solid var(--line-2); padding: 10px 16px; border-radius: 12px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s; max-width: calc(100% - 32px); }
+.toast.on { opacity: 1; }
+footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+.form{display:grid;gap:14px;margin-top:28px}
+.q label{display:block;font-weight:800;margin-bottom:6px}
+.q small{display:block;color:var(--muted);font-size:14px;margin:-2px 0 8px}
+.q input[type=text],.q textarea{width:100%;background:var(--card-2);color:var(--fg);border:1px solid var(--line-2);border-radius:14px;padding:12px 14px;font:inherit;font-size:16px}
+.q textarea{min-height:92px;resize:vertical}
+.q input:focus,.q textarea:focus{outline:2px solid var(--blue);outline-offset:1px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{display:inline-flex;align-items:center;gap:8px;font-weight:600;background:var(--card-2);border:1px solid var(--line-2);border-radius:999px;padding:8px 14px;cursor:pointer;margin:0}
+.chips input{accent-color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;border-radius:999px;border:0;font:800 16px/1 "Manrope",system-ui,sans-serif;cursor:pointer;text-decoration:none}
+.btn-p{background:var(--blue);color:#fff}
+.btn-g{background:transparent;color:var(--fg);border:1px solid var(--line-2)}
+.out{margin-top:22px}
+.out pre{margin:0;padding:16px;white-space:pre-wrap;word-break:break-word;font:14px/1.55 ui-monospace,Menlo,Consolas,monospace;max-height:520px;overflow:auto}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.ok{color:#7CE3A1;font-weight:700;min-height:22px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html#gifts">← На страницу эфира</a>
+<h1>ИИ-продавец<br>для Авито</h1>
+<p class="lead">Покупатель пишет «актуально?» в 23:40, а вы спите. Ответьте на 6 вопросов ниже, и конструктор соберёт готовую инструкцию продавца. Вставляете её в Claude или ChatGPT, и он отвечает покупателям вашим тоном, по вашим ценам, а сложное отдаёт вам.</p>
+
+<div class="card form">
+  <div class="q"><label for="f1">1. Что вы продаёте?</label><small>Товар или услуга, коротко</small><input id="f1" type="text" placeholder="Например: детские пуховики, ремонт стиральных машин, курс по нейросетям"></div>
+  <div class="q"><label>2. Где отвечает продавец?</label><div class="chips"><label><input type="checkbox" value="Авито" checked> Авито</label><label><input type="checkbox" value="Telegram" checked> Telegram</label><label><input type="checkbox" value="WhatsApp"> WhatsApp</label><label><input type="checkbox" value="Max"> Max</label><label><input type="checkbox" value="ВКонтакте"> ВКонтакте</label></div></div>
+  <div class="q"><label for="f3">3. Цены и что входит</label><small>Можно вставить прайс целиком</small><textarea id="f3" placeholder="Например: пуховик 4 900 ₽, размеры 98-140, цвета чёрный и бежевый"></textarea></div>
+  <div class="q"><label for="f4">4. Доставка, оплата, запись</label><textarea id="f4" placeholder="Например: Авито Доставка или самовывоз у м. Звёздная, оплата при получении, отправка на следующий день"></textarea></div>
+  <div class="q"><label for="f5">5. Частые вопросы и ваши ответы</label><small>Чем больше, тем лучше продавец</small><textarea id="f5" placeholder="Например: «Торг уместен?» Небольшой, при покупке двух вещей скидка 300 ₽"></textarea></div>
+  <div class="q"><label>6. Тон общения</label><div class="chips"><label><input type="radio" name="tone" value="на «вы», дружелюбно и просто" checked> На «вы», дружелюбно</label><label><input type="radio" name="tone" value="на «ты», легко и с юмором"> На «ты», с юмором</label><label><input type="radio" name="tone" value="на «вы», коротко и по делу"> Коротко и по делу</label></div></div>
+  <div class="q"><label for="f7">Когда звать вас</label><small>Что продавец не решает сам</small><input id="f7" type="text" value="скидки больше обычной, опт, жалобы и возвраты, вопросы, ответа на которые нет в инструкции"></div>
+  <div class="row"><button class="btn btn-p" id="go" type="button">Собрать продавца →</button></div>
+</div>
+
+<div class="out" id="out" hidden>
+  <div class="md"><div class="md-head"><span>Инструкция продавца</span></div><pre id="res"></pre></div>
+  <div class="row"><button class="btn btn-p" id="copy" type="button">Скопировать инструкцию</button></div>
+  <div class="ok" id="ok"></div>
+  <div class="how">
+    <div class="card"><h2>Как запустить</h2><ol class="steps">
+      <li><b>Claude:</b> создайте проект «Продавец», откройте <span class="path">Инструкции проекта</span> и вставьте текст.</li>
+      <li><b>ChatGPT:</b> создайте проект, откройте его инструкции и вставьте текст.</li>
+      <li>Пишет покупатель: копируете его сообщение в чат проекта и получаете ответ. Проверьте первые 10 ответов и допишите в инструкцию, что поправили.</li>
+    </ol></div>
+    <div class="card"><h2>Дальше</h2><p>Как подключить продавца к Авито и мессенджерам, чтобы он отвечал сам, показываю в серии 8 в канале Чёрной ИИшницы. А 26.11 в 19:00 на эфире соберу его в общий ИИ-офис вместе с остальными агентами.</p><p><a href="https://t.me/+zhRmQVVPQIg1OTBi" target="_blank" rel="noopener">Канал Чёрной ИИшницы →</a></p></div>
+  </div>
+</div>
+<p class="note" style="margin-top:40px">Чёрная ИИшница · Ольга Пузанова</p>
+</div>
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  function v(id,d){var x=$(id).value.trim();return x||d}
+  $("#go").addEventListener("click",function(){
+    var where=[].slice.call(document.querySelectorAll(".chips input[type=checkbox]:checked")).map(function(i){return i.value}).join(", ")||"мессенджерах";
+    var tone=(document.querySelector("input[name=tone]:checked")||{}).value||"на «вы», дружелюбно";
+    var t="Ты продавец в моём бизнесе. Отвечаешь покупателям в: "+where+".\n\n"+
+"ЧТО МЫ ПРОДАЁМ\n"+v("#f1","[опишите товар или услугу]")+"\n\n"+
+"ЦЕНЫ И ЧТО ВХОДИТ\n"+v("#f3","[вставьте прайс]")+"\n\n"+
+"ДОСТАВКА, ОПЛАТА, ЗАПИСЬ\n"+v("#f4","[условия доставки и оплаты]")+"\n\n"+
+"ЧАСТЫЕ ВОПРОСЫ И ОТВЕТЫ\n"+v("#f5","[вопрос и ответ]")+"\n\n"+
+"КАК ОТВЕЧАТЬ\n- Тон: "+tone+". Пиши как живой человек, без канцелярита и без длинных простыней: 1-4 предложения.\n- Сначала прямо отвечай на вопрос, потом мягко веди к следующему шагу: уточнить размер или детали, оформить заказ, записаться.\n- На «актуально?» отвечай, что актуально, и сразу задавай один уточняющий вопрос, чтобы разговор продолжился.\n- Называй только цены и условия из этой инструкции. Ничего не придумывай: если ответа здесь нет, скажи, что уточнишь, и передай вопрос мне.\n- Не обещай того, чего нет в условиях: скидок, сроков, подарков.\n\n"+
+"КОГДА ЗВАТЬ МЕНЯ\n"+v("#f7","сложные вопросы")+". В этих случаях ответь покупателю «Сейчас уточню и вернусь к вам» и отдельной строкой для меня напиши: НУЖЕН ЧЕЛОВЕК: <суть вопроса>.\n\n"+
+"ФОРМАТ\nНа каждое сообщение покупателя дай один готовый ответ, который можно сразу отправить.";
+    $("#res").textContent=t;$("#out").hidden=false;$("#ok").textContent="";$("#out").scrollIntoView({behavior:"smooth"});
+  });
+  $("#copy").addEventListener("click",function(){var t=$("#res").textContent;
+    try{navigator.clipboard.writeText(t).then(function(){$("#ok").textContent="Скопировано. Вставьте в инструкции проекта"},function(){sel()})}catch(e){sel()}
+    function sel(){var r=document.createRange();r.selectNodeContents($("#res"));var s=getSelection();s.removeAllRanges();s.addRange(r);$("#ok").textContent="Текст выделен, нажмите «Копировать»"}
+  });
+})();
+</script>
+</body>
+</html>

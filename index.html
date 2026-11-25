@@ -366,6 +366,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 .tgw-dot{width:14px;height:14px;top:1px;right:1px}
 @media (max-width:760px){.tgw-ic{width:50px;height:50px}.tgw-ic svg{width:25px;height:25px}}
 .mbar .btn{width:100%}
+.gm-btn{display:flex;width:100%;justify-content:center;margin-top:12px;white-space:normal;text-align:center}
 .modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px)}
 .mbox{position:relative;width:min(520px,100%);max-height:88vh;overflow:auto;padding:28px;border-radius:26px;background:var(--bg);color:var(--ink);border:1px solid var(--line)}
 .mbox h3{margin-bottom:14px;padding-right:40px}
@@ -752,7 +753,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     { id:"ideas", at:"2026-11-25T09:00:00Z", t:"Чек-лист 30 идей для ИИ-агентов", d:"Не знаете, что поручить ИИ первым? 30 готовых идей по задачам бизнеса", go:["Открыть чек-лист","https://ai-agent-ideas-checklist-2026.rosypine512.chatgpt.site/"] },
     { id:"early", at:"2026-11-26T15:00:00Z", t:"Цены на час раньше всех", d:"В 18:00 лоты Чёрной пятницы откроются вам, остальным в 19:00", go:["Смотреть лоты","#lots"] }
   ];
-  var SURPRISE = [ { id:"s1", from:"2026-11-24T16:00:00Z", to:"2026-11-24T19:00:00Z", t:"Топ-20 скиллов для нейросетей", d:"Готовые скиллы для Claude и ChatGPT, ставятся за минуту. Только 3 часа, в 22:00 яйцо исчезнет", go:["Забрать скиллы","skills.html"] } ];
+  var SURPRISE = [ { id:"s1", from:"2026-11-24T16:00:00Z", to:"2026-11-24T19:00:00Z", t:"Топ-20 скиллов для нейросетей", d:"Готовые скиллы для Claude и ChatGPT, ставятся за минуту. Только 3 часа, в 22:00 яйцо исчезнет", go:["Забрать скиллы","skills.html"] }, { id:"s2", from:"2026-11-25T14:00:00Z", to:"2026-11-25T17:00:00Z", t:"ИИ-продавец для Авито и мессенджеров", d:"Конструктор инструкции: ответьте на 6 вопросов, и получите готового продавца для Claude или ChatGPT. Только 3 часа, в 20:00 яйцо исчезнет", go:["Собрать продавца","seller-bot.html"] } ];
   var TOUR = [
     { x:50, y:50, s:1, k:"Общий план", t:"10 ИИ-сотрудников, 6 отделов", d:"Так выглядит офис, который работает без меня" },
     { x:46, y:13, s:1.75, k:"Этаж 6 · кабинет директора", t:"Оркестратор получил задачу «запуск на неделю»", d:"Он раздаёт её отделам и собирает результат" },
@@ -804,8 +805,8 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     var code="BF27-"+hash(contact.toLowerCase());
     if(REG_URL){try{fetch(REG_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:name,contact:contact,ads:!!form.ads.checked,cert:code,src:location.search.slice(0,120)})}).catch(function(){})}catch(x){}}
     mem.reg={name:name,code:code,at:Date.now()};ls("bf_reg_v2",mem.reg);goal("registration");
-    render(true);toast("Место ваше. 3 яйца открыты");
-    setTimeout(function(){$("#gifts").scrollIntoView({behavior:"smooth"})},900);
+    render(true);
+    openModal("Место ваше ✅",'<p style="color:inherit;font-size:18px;font-weight:800;margin:0 0 8px">Последний шаг: вступите в канал Чёрной ИИшницы</p><p>Там выходят серии марафона, анонсы золотых яиц и ссылка на эфир 26.11 в 19:00. Без канала легко всё пропустить.</p><a class="btn btn-p gm-btn" href="'+CHANNEL+'" target="_blank" rel="noopener">Вступить в канал <span class="arr">→</span></a><button class="btn btn-g gm-btn js-togifts" type="button">Забрать 3 подарка</button>');
   }
   $$(".js-regf").forEach(function(f){$(".js-pd",f).addEventListener("change",function(){if(this.checked)$(".js-perr",f).hidden=true});f.addEventListener("submit",function(e){e.preventDefault();doReg(f)})});
   $(".js-gcal").href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Финальный эфир Чёрной ИИшницы")+"&dates=20261126T160000Z/20261126T180000Z&details="+encodeURIComponent("Эфир на странице: "+PAGE);
@@ -862,9 +863,18 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
       chips(r.left+r.width/2,r.top+r.height*.3);
       try{navigator.vibrate&&navigator.vibrate([40,50,80])}catch(x){}
       card.classList.add("hit1","boom");mem.eggs[card.getAttribute("data-id")]=Date.now();ls("bf_eggs_v2",mem.eggs);goal("egg_break");
-      setTimeout(function(){renderEggs(true);var n=GIFTS.filter(function(g){return mem.eggs[g.id]}).length;toast(card.getAttribute("data-sur")?"Сюрприз ваш!":n>=6?"Все 6 яиц разбиты. Ждём вас на эфире":"Подарок ваш. Разбито "+n+" из 6")},800);
+      setTimeout(function(){renderEggs(true);giftModal(card.getAttribute("data-id"))},800);
     },200);
   }
+  function giftModal(id){
+    var g=GIFTS.concat(SURPRISE).filter(function(x){return x.id===id})[0];if(!g)return;
+    var n=GIFTS.filter(function(x){return mem.eggs[x.id]}).length;
+    var main=g.tool?'<button class="btn btn-p js-tool gm-btn" type="button" data-tool="'+g.tool+'">Открыть сертификат <span class="arr">→</span></button>'
+      :'<a class="btn btn-p gm-btn" href="'+esc(g.go[1])+'"'+(/^https?:/.test(g.go[1])?' target="_blank" rel="noopener"':'')+'>Забрать подарок <span class="arr">→</span></a>';
+    openModal("Подарок ваш 🎁",'<p style="color:inherit;font-size:20px;font-weight:800;margin:0 0 6px">'+esc(g.t)+'</p><p>'+esc(g.d)+'</p>'+main+
+      '<p style="margin-top:18px">'+(g.from?'':'Разбито '+n+' из 6. ')+'Новые подарки, золотые яйца и серии марафона появляются в нашем Telegram-канале, там о них пишу первой.</p><a class="btn btn-g gm-btn" href="'+CHANNEL+'" target="_blank" rel="noopener">Вступить в канал <span class="arr">→</span></a>');
+  }
+  document.addEventListener("click",function(e){if(e.target.closest(".js-togifts")){modal.hidden=true;$("#gifts").scrollIntoView({behavior:"smooth"})}});
   $(".js-eggs").addEventListener("click",function(e){var c=e.target.closest(".egg");if(c&&!e.target.closest("a,button"))hit(c)});
   $(".js-eggs").addEventListener("keydown",function(e){if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("egg")){e.preventDefault();hit(e.target)}});
   document.addEventListener("click",function(e){var tb=e.target.closest(".js-tool");if(!tb)return;var r=mem.reg||{};
