@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Набор скиллов</title>
+<meta name="description" content="Подарок с эфира Чёрной ИИшницы: как устроен скилл, шаблон SKILL.md, промпты и где брать готовые скиллы">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{--bg:#0E0D0B;--panel:#17150F;--panel2:#0A0907;--line:#3A3322;--ink:#F3EEDF;--muted:#A9A08A;--gold:#F2B630;--gold2:#FFD873;--soft:#3A2E10;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:48px}
+.wrap>*{min-width:0}
+a{color:var(--gold)}
+h1,h2,h3{margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(32px,7vw,60px);font-weight:800;letter-spacing:-.03em}
+h1 em{font-style:normal;color:var(--gold)}
+h2{font-size:clamp(22px,4vw,32px);font-weight:800;letter-spacing:-.02em}
+h3{font-size:18px;font-weight:800}
+p{margin:0}
+.eyebrow{font:700 12px/1 "JetBrains Mono",ui-monospace,Menlo,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.lead{color:var(--muted);font-size:18px;max-width:62ch}
+.sec{display:grid;gap:18px}
+.sec>header{display:grid;gap:10px;max-width:68ch}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:var(--panel);border:1.5px solid var(--line);border-radius:18px;padding:18px 20px;display:grid;gap:6px;min-width:0}
+.card .n{font:700 13px "JetBrains Mono",monospace;color:var(--gold)}
+.card p{color:var(--muted);font-size:15px}
+.box{background:var(--panel2);border:1.5px solid var(--gold);border-radius:16px;overflow:hidden;min-width:0}
+.box-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 12px 10px 16px;border-bottom:1px solid var(--line)}
+.box-h b{font-size:15px}
+.copy{background:var(--gold);color:#16130B;border:0;border-radius:999px;padding:8px 14px;font:800 13.5px "Manrope",sans-serif;cursor:pointer;white-space:nowrap}
+pre{margin:0;padding:14px 16px;white-space:pre-wrap;overflow-wrap:anywhere;font:13.5px/1.6 "JetBrains Mono",ui-monospace,Menlo,monospace;color:var(--ink)}
+.callout{background:var(--soft);border:1.5px solid var(--gold);border-radius:16px;padding:14px 18px;font-size:15.5px}
+ol{margin:0;padding-left:22px;display:grid;gap:6px}
+li::marker{color:var(--gold)}
+.mk{display:grid;gap:10px}
+.mk a.card{text-decoration:none;color:var(--ink)}
+.mk a.card:hover{border-color:var(--gold)}
+.mk .url{font:600 14px "JetBrains Mono",monospace;color:var(--gold);overflow-wrap:anywhere}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px;border-top:1.5px solid var(--line);padding-top:18px}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--gold);color:#16130B;padding:10px 18px;border-radius:999px;font-weight:800;font-size:14px;z-index:20}
+@media (max-width:700px){.grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="sec">
+    <span class="eyebrow">Чёрная ИИшница · яйцо с эфира</span>
+    <h1>Набор <em>скиллов</em>: как устроены, где брать и как собрать свой</h1>
+    <p class="lead">Промпт вы пишете каждый раз заново. Скилл пишется один раз, и дальше Claude сам применяет его, когда видит подходящую задачу. Чем лучше скиллы, тем лучше результат, даже если сам запрос в чате короткий.</p>
+  </section>
+
+  <section class="sec">
+    <header><span class="eyebrow">Приём, который заменяет «идеальный промпт»</span><h2>Попросите ИИ задать вам вопросы</h2>
+    <p class="lead">Нейросеть уже сама умеет выяснять, что вам нужно. Пишите задачу как есть и добавляйте эту строку.</p></header>
+    <div class="box"><div class="box-h"><b>Добавьте к любой задаче</b><button class="copy" type="button" data-copy="q10">Скопировать</button></div><pre id="q10">Прежде чем делать, задай мне 10 вопросов, ответы на которые помогут сделать эту задачу на отлично. Задавай по одному, жди мой ответ. Когда соберёшь всё, сначала коротко перескажи, как понял задачу, и только потом делай.</pre></div>
+  </section>
+
+  <section class="sec">
+    <header><span class="eyebrow">Анатомия</span><h2>Из чего состоит скилл</h2>
+    <p class="lead">Скилл это папка. Внутри главный файл SKILL.md и, если нужно, дополнительные файлы: шаблоны, примеры, таблицы.</p></header>
+    <div class="grid">
+      <div class="card"><span class="n">01 · name</span><h3>Название</h3><p>Коротко, латиницей через дефис: post-editor, review-answers</p></div>
+      <div class="card"><span class="n">02 · description</span><h3>Когда включаться</h3><p>Самая важная строка. По ней Claude решает, брать скилл или нет. Пишите, на какие задачи и слова он срабатывает</p></div>
+      <div class="card"><span class="n">03 · шаги</span><h3>Метод</h3><p>Как делать работу по шагам, в каком порядке думать</p></div>
+      <div class="card"><span class="n">04 · формат</span><h3>Каким должен быть результат</h3><p>Объём, структура, тон, что обязательно и что запрещено</p></div>
+      <div class="card"><span class="n">05 · примеры</span><h3>Образцы</h3><p>Пара хороших примеров и один плохой с пояснением, чем он плох</p></div>
+      <div class="card"><span class="n">06 · проверка</span><h3>Чек-лист перед сдачей</h3><p>Что ИИ проверяет сам, прежде чем отдать вам ответ</p></div>
+    </div>
+    <div class="box"><div class="box-h"><b>Шаблон SKILL.md</b><button class="copy" type="button" data-copy="tpl">Скопировать</button></div><pre id="tpl">---
+name: post-editor
+description: Редактирует посты для моего Telegram-канала. Используй, когда я прошу написать, переписать или проверить пост, анонс или рассылку.
+---
+
+# Редактор постов
+
+## Кто я и для кого пишу
+[ниша, аудитория, чем полезна, на «ты» или на «вы»]
+
+## Как делать
+1. Найди одну главную мысль поста.
+2. Первая строка цепляет: ситуация, цифра или вопрос.
+3. История или пример из моей практики.
+4. Вывод и один призыв к действию.
+
+## Формат
+- до 1200 знаков, короткие абзацы
+- без канцелярита и пафоса
+- в конце одна кнопка или кодовое слово
+
+## Нельзя
+- [что не обещаем, какие слова не используем]
+
+## Пример хорошего поста
+[вставьте свой лучший пост]
+
+## Проверка перед сдачей
+- одна мысль, понятный призыв
+- нет выдуманных цифр, непроверенное помечено «проверить»</pre></div>
+  </section>
+
+  <section class="sec">
+    <header><span class="eyebrow">Собрать свой</span><h2>Пусть Claude соберёт скилл за вас</h2>
+    <p class="lead">Не нужно писать SKILL.md руками. Отправьте этот промпт, ответьте на вопросы, и Claude предложит сохранить готовый скилл.</p></header>
+    <div class="box"><div class="box-h"><b>Промпт: собери мне скилл</b><button class="copy" type="button" data-copy="mk">Скопировать</button></div><pre id="mk">Хочу сделать скилл для задачи: [опишите задачу, например «ответы на отзывы покупателей»].
+Задай мне 10 вопросов по одному: как я делаю эту задачу сейчас, что считаю хорошим результатом, примеры удачных и неудачных ответов, что нельзя делать.
+Потом собери скилл: name, description с точными словами, на которые он должен срабатывать, метод по шагам, формат результата, примеры и чек-лист проверки. Предложи сохранить его как скилл.</pre></div>
+    <ol>
+      <li>Если Claude не предлагает сохранить, проверьте, что в настройках включено выполнение кода.</li>
+      <li>Ручной способ: папка с названием скилла, внутри SKILL.md, запаковать в zip, загрузить в «Настройки → Возможности → Скиллы» и включить.</li>
+      <li>В ChatGPT скиллов в таком виде нет: вставьте текст без верхнего блока между линиями --- в инструкции проекта.</li>
+    </ol>
+  </section>
+
+  <section class="sec">
+    <header><span class="eyebrow">Где брать готовые</span><h2>Маркетплейсы скиллов</h2>
+    <p class="lead">Тысячи открытых скиллов. Берите похожий на вашу задачу и дописывайте под свой бизнес: голос, продукты, примеры.</p></header>
+    <div class="mk">
+      <a class="card" href="https://github.com/anthropics/skills" target="_blank" rel="noopener"><span class="url">github.com/anthropics/skills</span><h3>Официальные скиллы Anthropic</h3><p>Документы, таблицы, презентации, дизайн. Хороший образец того, как писать свои</p></a>
+      <a class="card" href="https://skills.sh" target="_blank" rel="noopener"><span class="url">skills.sh</span><h3>Каталог и рейтинг скиллов</h3><p>Видно, что ставят чаще всего. Работает с Claude и другими ИИ-агентами</p></a>
+      <a class="card" href="https://skillsmp.com" target="_blank" rel="noopener"><span class="url">skillsmp.com</span><h3>Поиск по открытым скиллам</h3><p>Ищет по всем публичным SKILL.md, есть подборки по профессиям: маркетинг, дизайн, контент</p></a>
+    </div>
+    <p class="callout">Чужой скилл перед установкой прочитайте целиком. Ставьте только то, что понимаете, и не давайте скиллам доступ к паролям и ключам.</p>
+  </section>
+
+  <section class="sec">
+    <header><span class="eyebrow">Домашка на 10 минут</span><h2>Найдите своих 10 агентов</h2>
+    <p class="lead">Выпишите задачи, которые повторяются каждую неделю, и отправьте этот промпт. Получите список агентов под ваш бизнес и с какого начать.</p></header>
+    <div class="box"><div class="box-h"><b>Промпт: аудит моей рутины</b><button class="copy" type="button" data-copy="audit">Скопировать</button></div><pre id="audit">Ты эксперт по внедрению ИИ-агентов в малый бизнес. Мой бизнес: [ниша, что продаю, кто клиенты, сколько человек в команде].
+Вот задачи, которые повторяются у меня каждую неделю, и сколько часов они примерно занимают:
+[задача 1, часы]
+[задача 2, часы]
+...
+Сначала задай мне 5 уточняющих вопросов по одному. Потом выдай:
+1. Таблицу из 10 ИИ-агентов: название, что делает, какие задачи забирает, сколько часов в неделю освобождает.
+2. Разложи агентов по отделам: продажи, контент, маркетинг, аналитика, операционка.
+3. С какого агента начать и почему, и что ему нужно знать о моём бизнесе.
+4. Какие задачи агенту отдавать нельзя и почему.</pre></div>
+  </section>
+
+  <footer><span>Ольга Пузанова · предприниматель и спикер по нейросетям</span><span><a href="https://bf.olgapuzanovva.ru/">← на страницу эфира</a> · <a href="https://t.me/aivwb" target="_blank" rel="noopener">канал @aivwb</a></span></footer>
+</div>
+<div class="toast" id="toast" hidden></div>
+<script>
+(function(){
+  var t=document.getElementById('toast');
+  function toast(s){t.textContent=s;t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(function(){t.hidden=true},1600)}
+  function sel(el){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);toast('Выделено, скопируйте вручную')}
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){var el=document.getElementById(b.getAttribute('data-copy'));try{navigator.clipboard.writeText(el.textContent).then(function(){toast('Скопировано')},function(){sel(el)})}catch(e){sel(el)}})});
+})();
+</script>
+</body>
+</html>

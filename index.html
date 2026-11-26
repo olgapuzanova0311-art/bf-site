@@ -754,7 +754,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   var STREAM_URL = "https://start.bizon365.ru/room/olgapuzanova/7fc56ae89e9d";     // обычная ссылка на трансляцию
   var RECORD_EMBED = "";   // embed записи
   var EFIR_WORD = "ПЯТНИЦА";      // кодовое слово эфира
-  var GOLD = { t: "Золотое яйцо разбито! 🥚", d: "Внутри два бонуса: закрытый эфир о том, как обходить блокировки Claude и поднять свой VPN, и закрытая встреча со мной, где смотрим ваши стратегии. Оставьте почту, имя и телефон, и менеджер пришлёт ссылки", w: "1691404" };
+  var GOLD = { t: "Золотое яйцо разбито! 🥚", d: "Внутри три бонуса: подробная инструкция, как собрать ИИ-офис как у меня (откройте по кнопке ниже), закрытый эфир о том, как обходить блокировки Claude и поднять свой VPN, и закрытая встреча со мной, где смотрим ваши стратегии. Чтобы получить ссылки на эфир и встречу, оставьте почту, имя и телефон", w: "1691404" };
   var PRICE1 = "33 333 ₽";         // цена лота 1
   var PRICE2 = "73 333 ₽";
   var PRICE3 = "250 000 ₽";
@@ -900,7 +900,8 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   $(".js-codeform").addEventListener("submit",function(e){e.preventDefault();var m=$(".js-codemsg"),v=$(".js-code").value.trim().toLowerCase().replace(/ё/g,"е");m.hidden=false;
     if(!isReg()){m.textContent="Сначала займите место на эфире";$("#regform").scrollIntoView({behavior:"smooth"});return}
     if(now()<START){m.textContent="Слово прозвучит на эфире 26.11. Приходите в 19:00";return}
-    if(EFIR_WORD&&v===EFIR_WORD.toLowerCase().replace(/ё/g,"е")){m.textContent="Золотое яйцо разбито!";document.body.style.overflow="hidden";openModal(GOLD.t,"<p style='margin:0 0 10px'>"+esc(GOLD.d)+"</p><div class='gcw js-gcw'></div>");$(".mbox").classList.add("wide");loadGCW(GOLD.w,$(".js-gcw"),"слово ПЯТНИЦА")}
+    if(v==="скилл"||v==="скил"||v==="скиллы"){m.textContent="Яйцо со скиллами разбито!";openModal("Яйцо со скиллами 🥚","<p>Внутри: как устроен скилл, шаблон SKILL.md, промпт, который собирает скилл за вас, маркетплейсы готовых скиллов и промпт для поиска ваших 10 агентов.</p><a class='btn btn-p' target='_blank' rel='noopener' href='skill-kit.html'>Открыть набор скиллов</a>");return}
+    if(EFIR_WORD&&v===EFIR_WORD.toLowerCase().replace(/ё/g,"е")){m.textContent="Золотое яйцо разбито!";document.body.style.overflow="hidden";openModal(GOLD.t,"<p style='margin:0 0 10px'>"+esc(GOLD.d)+"</p><p style='margin:0 0 12px'><a class='btn btn-p' target='_blank' rel='noopener' href='office-guide.html'>Инструкция: как собрать ИИ-офис</a></p><div class='gcw js-gcw'></div>");$(".mbox").classList.add("wide");loadGCW(GOLD.w,$(".js-gcw"),"слово ПЯТНИЦА")}
     else m.textContent="Не то слово. Оно звучит в конце эфира"});
 
   /* ===== тур по офису ===== */
