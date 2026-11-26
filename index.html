@@ -933,7 +933,7 @@ body.ph-doors .player{height:calc(100vh - 560px)}
   var REG_URL = "https://script.google.com/macros/s/AKfycbx6J3dQWF3Jm6bQF1byjldlHpkww4nEGZGGfvJaTNGc2155iOfIkTrS2U_wC_Pff4ut/exec";
   var STREAM_EMBED = "https://start.bizon365.ru/room/olgapuzanova/7fc56ae89e9d";   // embed-ссылка плеера на эфир
   var STREAM_URL = "https://start.bizon365.ru/room/olgapuzanova/7fc56ae89e9d";     // обычная ссылка на трансляцию
-  var RECORD_EMBED = "";   // embed записи
+  var RECORD_EMBED = "https://www.youtube.com/embed/ij4i7ddEFZE?rel=0", RECORD_URL = "https://youtu.be/ij4i7ddEFZE";   // embed записи
   var EFIR_WORD = "ПЯТНИЦА";      // кодовое слово эфира
   var GOLD = { t: "Золотое яйцо разбито! 🥚", d: "Внутри три бонуса: подробная инструкция, как собрать ИИ-офис как у меня (откройте по кнопке ниже), закрытый эфир 27.11 в 18:00 о том, как обходить блокировки Claude и поднять свой VPN, и закрытая встреча со мной 28.11 в 18:00, где смотрим ваши стратегии. Чтобы получить ссылки на эфир и встречу, оставьте почту, имя и телефон", w: "1691404" };
   var PRICE1 = "33 333 ₽";         // цена лота 1
@@ -1120,7 +1120,7 @@ body.ph-doors .player{height:calc(100vh - 560px)}
     $(".js-plockb").textContent=ph==="sale"?"Запись откроется после регистрации":"Откроется после регистрации";
     $(".js-plockbtn").textContent=ph==="sale"?"Смотреть запись":"Занять место на эфире";
     var want=embed?embed:"";
-    if(want!==lastEmbed){lastEmbed=want;var old=pl.querySelector("iframe");if(old)old.remove();if(want){var f=document.createElement("iframe");f.src=want;f.allow="autoplay; fullscreen; picture-in-picture";f.allowFullscreen=true;f.title="Эфир";pl.appendChild(f);var ol=document.createElement("a");ol.className="pl-out";ol.href=STREAM_URL||want;ol.target="_blank";ol.rel="noopener";ol.textContent="Не грузится? Открыть эфир в окне ↗";pl.appendChild(ol)}else{var oo=pl.querySelector(".pl-out");if(oo)oo.remove()}c.hidden=!!want}
+    if(want!==lastEmbed){lastEmbed=want;var old=pl.querySelector("iframe");if(old)old.remove();if(want){var f=document.createElement("iframe");f.src=want;f.allow="autoplay; fullscreen; picture-in-picture";f.allowFullscreen=true;f.title="Эфир";pl.appendChild(f);var ol=document.createElement("a");ol.className="pl-out";var isRec=RECORD_EMBED&&want===RECORD_EMBED;ol.href=isRec?RECORD_URL:(STREAM_URL||want);ol.target="_blank";ol.rel="noopener";ol.textContent=isRec?"Не грузится? Открыть запись на YouTube ↗":"Не грузится? Открыть эфир в окне ↗";pl.appendChild(ol)}else{var oo=pl.querySelector(".pl-out");if(oo)oo.remove()}c.hidden=!!want}
   }
 
   /* ===== фазы ===== */
@@ -1159,7 +1159,7 @@ body.ph-doors .player{height:calc(100vh - 560px)}
     if(ph==="closed"){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">закрыта</span>';$(".js-lotsp").textContent="Спасибо всем, кто был с нами. Вопросы: @puzanovateam"}
     $(".js-b24").hidden=!pre;["#lotinfo","#value","#how","#calc","#lfaq","#mgr"].forEach(function(id){$(id).hidden=!open||ph==="closed"});$(".js-wcta").hidden=!(doors(ph)||ph==="sale");
     $$(".lot .price").forEach(function(x){x.hidden=ph==="closed"});$$(".lot").forEach(function(x){x.classList.toggle("lockd",!open||ph==="closed")});
-    ["#gifts","#efir","#watch","#office","#why"].forEach(function(id){$(id).hidden=ph==="closed"});if(ph==="sale"&&!RECORD_EMBED)$("#watch").hidden=true;$$(".js-toplive").forEach(function(x){x.hidden=(ph==="sale"&&!RECORD_EMBED)||ph==="closed"});$(".mq").hidden=ph==="closed";
+    ["#gifts","#efir","#watch","#office","#why"].forEach(function(id){$(id).hidden=ph==="closed"});if(ph==="sale"&&!RECORD_EMBED)$("#watch").hidden=true;$$(".js-toplive").forEach(function(x){x.hidden=(ph==="sale"&&!RECORD_EMBED)||ph==="closed"});if(ph==="sale"&&RECORD_EMBED){$$(".js-toplive").forEach(function(x){x.innerHTML="<i></i>Смотреть запись"});var wb=$(".js-wbiz");if(wb){wb.href=RECORD_URL;wb.innerHTML='▶ Смотреть запись на YouTube <span class="arr">↗</span>'}}$(".mq").hidden=ph==="closed";
     var p1=$(".js-p1");p1.textContent=open?(PRICE1||"Цену скажет менеджер"):"на эфире";p1.classList.toggle("sm",open&&!PRICE1);$(".js-p2").textContent=open?PRICE2:"на эфире";$(".js-p3").textContent=open?PRICE3:"на эфире";
     renderEggs(force);renderPlayer(ph);
   }
