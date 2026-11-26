@@ -929,7 +929,7 @@ body.ph-live #watch .sec-head .lead{display:none}
   var PRICE3 = "250 000 ₽";
   var MANAGER = "https://t.me/puzanovateam", CHANNEL = "https://t.me/+zhRmQVVPQIg1OTBi";
   var BASE = "https://olgapuzanova0311-art.github.io/ai-assistant-guide/";
-  var EARLY = Date.parse("2026-11-26T15:00:00Z"), START = Date.parse("2026-11-26T16:00:00Z"), LIVE_END = Date.parse("2026-11-26T19:00:00Z"), END = Date.parse("2026-11-30T20:59:59Z");
+  var EARLY = Date.parse("2026-11-26T15:00:00Z"), DOORS = Date.parse("2026-11-26T15:30:00Z"), START = Date.parse("2026-11-26T16:00:00Z"), LIVE_END = Date.parse("2026-11-26T19:00:00Z"), END = Date.parse("2026-11-30T20:59:59Z");
   var GIFTS = [
     { id:"seller", t:"Набор селлера", d:"Дашборд продаж, юнит-экономика и аудит карточки: 3 промпта и чек-лист утечек маржи", go:["Открыть набор","seller.html"] },
     { id:"reels", t:"50 форматов рилс", d:"Форматы, которые сейчас залетают, с готовым хуком к каждому", go:["Смотреть форматы","trends.html"] },
@@ -963,6 +963,7 @@ body.ph-live #watch .sec-head .lead{display:none}
   function hms(ms){var p=parts(ms);return pad(p[0]*24+p[1])+":"+pad(p[2])+":"+pad(p[3])}
   function dhm(ms){var p=parts(ms);return (p[0]?p[0]+" д ":"")+pad(p[1])+":"+pad(p[2])+":"+pad(p[3])}
   function phase(){var t=now();return t<EARLY?"pre":t<START?"early":t<LIVE_END?"live":t<=END?"sale":"closed"}
+  function doors(ph){return ph==="live"||(ph==="early"&&now()>=DOORS)}
   function toast(m){var t=$(".js-toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove("show")},2600)}
   function msk(iso){var d=new Date(Date.parse(iso)+3*3600e3);return pad(d.getUTCDate())+"."+pad(d.getUTCMonth()+1)+" в "+pad(d.getUTCHours())+":"+pad(d.getUTCMinutes())}
   $$(".js-chan").forEach(function(a){a.href=CHANNEL});
@@ -1099,9 +1100,9 @@ body.ph-live #watch .sec-head .lead{display:none}
   var lastEmbed=null;
   function renderPlayer(ph){
     var reg=isReg(),pl=$(".js-player"),c=$(".js-plc"),btn=$(".js-plbtn"),embed="";
-    $(".js-pllock").hidden=reg||ph==="closed"||ph==="live"||ph==="sale";
-    if(ph==="pre"||ph==="early"){$(".js-plbadge").innerHTML="<i></i>26.11 · 19:00";$(".js-plh").textContent="Эфир начнётся через";$(".js-cd",c).hidden=false;btn.hidden=true}
-    else if(ph==="live"){$(".js-plbadge").innerHTML="<i></i>В эфире";$(".js-plh").textContent="";$(".js-cd",c).hidden=true;embed=STREAM_EMBED;btn.hidden=!!embed||!reg;btn.href=STREAM_URL||CHANNEL;btn.innerHTML='Смотреть эфир <span class="arr">→</span>'}
+    $(".js-pllock").hidden=reg||ph==="closed"||doors(ph)||ph==="sale";
+    if((ph==="pre"||ph==="early")&&!doors(ph)){$(".js-plbadge").innerHTML="<i></i>26.11 · 19:00";$(".js-plh").textContent="Эфир начнётся через";$(".js-cd",c).hidden=false;btn.hidden=true}
+    else if(doors(ph)){$(".js-plbadge").innerHTML=ph==="live"?"<i></i>В эфире":"<i></i>Начинаем в 19:00";$(".js-plh").textContent="";$(".js-cd",c).hidden=true;embed=STREAM_EMBED;btn.hidden=!!embed||!reg;btn.href=STREAM_URL||CHANNEL;btn.innerHTML='Смотреть эфир <span class="arr">→</span>'}
     else{$(".js-plbadge").innerHTML=ph==="closed"?"Эфир прошёл":"Запись";$(".js-plh").textContent=ph==="closed"?"Эфир прошёл. Спасибо, что были с нами":"Запись эфира";$(".js-cd",c).hidden=true;embed=ph==="closed"?"":RECORD_EMBED;btn.hidden=!!embed||!reg||ph==="closed"||!STREAM_URL;btn.href=STREAM_URL;btn.innerHTML='Смотреть запись <span class="arr">→</span>'}
     $(".js-plockb").textContent=ph==="sale"?"Запись откроется после регистрации":"Откроется после регистрации";
     $(".js-plockbtn").textContent=ph==="sale"?"Смотреть запись":"Занять место на эфире";
@@ -1113,14 +1114,14 @@ body.ph-live #watch .sec-head .lead{display:none}
   var main=$(".js-main"),lastPh="";
   function order(ph){
     var S={};["reg","why","gifts","efir","watch","office","lots","faq","final","lotinfo","value","how","calc","lfaq","mgr"].forEach(function(id){S[id]=$("#"+id)});var mq=$(".mq");var SALE=[S.lotinfo,S.value,S.how,S.calc,S.lfaq,S.mgr];
-    var seq=ph==="live"?[S.watch,S.lots].concat(SALE,[S.efir,S.reg,mq,S.why,S.gifts,S.office,S.faq,S.final]):(ph==="sale"||ph==="closed")?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):(ph==="early"&&isReg())?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):[S.reg,mq,S.why,S.gifts,S.efir,S.watch,S.office,S.lots].concat(SALE,[S.faq,S.final]);
+    var seq=(doors(ph)&&!isReg()&&ph==="early")?[S.watch,S.reg,mq,S.why,S.gifts,S.efir,S.office,S.lots].concat(SALE,[S.faq,S.final]):ph==="live"?[S.watch,S.lots].concat(SALE,[S.efir,S.reg,mq,S.why,S.gifts,S.office,S.faq,S.final]):(ph==="sale"||ph==="closed")?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):(ph==="early"&&isReg())?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):[S.reg,mq,S.why,S.gifts,S.efir,S.watch,S.office,S.lots].concat(SALE,[S.faq,S.final]);
     seq.forEach(function(n){main.appendChild(n)});if(!location.hash||location.hash==="#")window.scrollTo(0,0);
-    S.watch.style.paddingTop=(ph==="live"||ph==="sale"||ph==="closed")?"":"0";
-    S.lots.style.paddingTop="";document.body.classList.toggle("ph-live",ph==="live"||ph==="sale");
+    S.watch.style.paddingTop=(doors(ph)||ph==="sale"||ph==="closed")?"":"0";
+    S.lots.style.paddingTop="";document.body.classList.toggle("ph-live",doors(ph)||ph==="sale");
   }
   function render(force){
     var ph=phase(),reg=isReg(),pre=ph==="pre"||ph==="early";
-    var phk=ph+(isReg()?"r":"");if(phk!==lastPh){order(ph);lastPh=phk}
+    var phk=ph+(isReg()?"r":"")+(doors(ph)?"d":"");if(phk!==lastPh){order(ph);lastPh=phk}
     $("#reg").hidden=ph==="closed"||(!pre&&reg);
     $$("#reg .js-cd").forEach(function(x){x.hidden=!pre});
     if(!pre){$(".js-lead").textContent=ph==="live"?"Эфир уже идёт. Зарегистрируйтесь за 30 секунд, и окно эфира откроется":"Зарегистрируйтесь за 30 секунд, чтобы смотреть запись и забрать подарки";$(".js-pill").innerHTML=ph==="live"?"<i></i>Мы в эфире прямо сейчас":"<i></i>Чёрная пятница до 30.11"}
@@ -1128,6 +1129,7 @@ body.ph-live #watch .sec-head .lead{display:none}
     if(reg){$(".js-uname").textContent=mem.reg.name;$(".js-uname2").textContent=mem.reg.name}
     $(".js-finform").hidden=reg;$(".js-findone").hidden=!reg;$(".fin-card").hidden=ph==="closed";
     if(ph==="live"){$(".js-wh").innerHTML='Мы <span class="hl">в эфире</span>';$(".js-wp").textContent="Смотрите прямо в этом окне. Кодовое слово прозвучит в конце"}
+    else if(doors(ph)){$(".js-wh").innerHTML='Начинаем <span class="hl">в 19:00</span>';$(".js-wp").textContent="Окно эфира уже открыто, заходите заранее и пишите в чат, откуда вы"}
     if(ph==="sale"||ph==="closed"){$(".js-wh").innerHTML='Запись <span class="hl">эфира</span>';$(".js-wp").textContent=ph==="sale"?"Доступна до 30 ноября":"Эфир прошёл"}
     var cta=ph==="early"&&reg?["Смотреть лоты","#lots"]:ph==="live"?["Смотреть эфир","#watch"]:ph==="sale"?["Выбрать лот","#lots"]:ph==="closed"?["Написать нам",MANAGER]:reg?["Мои подарки","#gifts"]:["Занять место","#regform"];
     var wb=$(".js-whybtn");wb.href=reg?"#gifts":"#regform";wb.innerHTML=(reg?"К моим подаркам":"Занять место бесплатно")+' <span class="arr">→</span>';
@@ -1141,7 +1143,7 @@ body.ph-live #watch .sec-head .lead{display:none}
     if(open){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">открыта</span>';$(".js-lotsp").textContent=ph==="early"?"Вы видите цены на час раньше всех. Остальные увидят их в 19:00":"До 30 ноября 23:59. Нажмите «Зафиксировать подарки», оставьте имя, телефон и почту, и подарки останутся за вами"}
     if(ph==="early"&&!reg){$(".js-lvb").textContent="Цены уже открыты";$(".js-lvp").textContent="Только для зарегистрированных. Остальные увидят их в 19:00"}
     if(ph==="closed"){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">закрыта</span>';$(".js-lotsp").textContent="Спасибо всем, кто был с нами. Вопросы: @puzanovateam"}
-    $(".js-b24").hidden=!pre;["#lotinfo","#value","#how","#calc","#lfaq","#mgr"].forEach(function(id){$(id).hidden=!open||ph==="closed"});$(".js-wcta").hidden=!(ph==="live"||ph==="sale");
+    $(".js-b24").hidden=!pre;["#lotinfo","#value","#how","#calc","#lfaq","#mgr"].forEach(function(id){$(id).hidden=!open||ph==="closed"});$(".js-wcta").hidden=!(doors(ph)||ph==="sale");
     $$(".lot .price").forEach(function(x){x.hidden=ph==="closed"});$$(".lot").forEach(function(x){x.classList.toggle("lockd",!open||ph==="closed")});
     ["#gifts","#efir","#watch","#office","#why"].forEach(function(id){$(id).hidden=ph==="closed"});$(".mq").hidden=ph==="closed";
     var p1=$(".js-p1");p1.textContent=open?(PRICE1||"Цену скажет менеджер"):"на эфире";p1.classList.toggle("sm",open&&!PRICE1);$(".js-p2").textContent=open?PRICE2:"на эфире";$(".js-p3").textContent=open?PRICE3:"на эфире";
@@ -1172,7 +1174,7 @@ body.ph-live #watch .sec-head .lead{display:none}
     $(".js-topcd").innerHTML=ph==="pre"||ph==="early"?"Эфир через <b>"+dhm(START-t)+"</b>":ph==="live"?"<b>Эфир идёт</b>":ph==="sale"?"До закрытия <b>"+dhm(END-t)+"</b>":"";
     $$(".js-lockcd").forEach(function(el){var at=+el.getAttribute("data-at");if(at-t<=0)renderEggs(true);else el.innerHTML="<small>Откроется через</small>"+dhm(at-t)});
     var s=activeSurprise();$$(".js-surcd").forEach(function(el){if(s)el.textContent=hms(Date.parse(s.to)-t)});
-    if(ph!==lastPh)render(true);else renderEggs();
+    if(ph+(isReg()?"r":"")+(doors(ph)?"d":"")!==lastPh)render(true);else renderEggs();
   }
   if(REG_URL){try{fetch(REG_URL+"?stats=1").then(function(r){return r.json()}).then(function(d){if(d&&d.count>=150)$$(".fbox .sub").forEach(function(n){n.textContent="Уже "+d.count.toLocaleString("ru-RU")+" человек заняли место. Бесплатно"})}).catch(function(){})}catch(x){}}
   if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{rootMargin:"0px 0px -8% 0px"});$$(".rv").forEach(function(el){io.observe(el)})}else $$(".rv").forEach(function(el){el.classList.add("in")});
