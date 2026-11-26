@@ -444,15 +444,21 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.giant .ln>span{transform:none;opacity:1}.strike::after{transform:scaleX(1) rotate(-3deg)}}
 /* === блоки продаж === */
-.wcta{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.wcta{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;justify-content:center}
 .wcta .btn{min-height:60px}
 .wbig{font-size:clamp(17px,1.6vw,20px);min-height:68px!important;padding:0 34px}
+.js-wbiz.wbig{flex:1 1 100%;justify-content:center;text-align:center;background:#E5253F!important;color:#fff!important;border-color:#E5253F!important;font-size:clamp(22px,2.6vw,32px);font-weight:800;min-height:92px!important;border-radius:999px;box-shadow:0 0 0 0 rgba(229,37,63,.7);animation:bizPulse 1.4s ease-in-out infinite}
+.js-wbiz.wbig .arr{color:#fff}
+.js-wbiz.wbig:hover{background:#c81d34!important}
+@keyframes bizPulseM{0%{box-shadow:0 0 0 0 rgba(229,37,63,.75)}50%{box-shadow:0 0 0 12px rgba(229,37,63,0);filter:brightness(1.15)}100%{box-shadow:0 0 0 0 rgba(229,37,63,0)}}
+@media (max-width:900px){.js-wbiz.wbig{animation-name:bizPulseM;font-size:20px;min-height:76px!important}}
+@keyframes bizPulse{0%{box-shadow:0 0 0 0 rgba(229,37,63,.75);transform:scale(1)}50%{box-shadow:0 0 0 18px rgba(229,37,63,0);transform:scale(1.03);filter:brightness(1.12)}100%{box-shadow:0 0 0 0 rgba(229,37,63,0);transform:scale(1)}}
 body.ph-live #watch .sec-head{margin-bottom:14px}
 body.ph-live #watch .sec-head h2{font-size:clamp(28px,3.4vw,44px)}
 body.ph-live #watch{padding-top:clamp(84px,9vh,110px)!important}
-body.ph-live .player{aspect-ratio:auto;height:calc(100vh - 430px);min-height:340px;max-height:none}
+body.ph-live .player{aspect-ratio:auto;height:calc(100vh - 470px);min-height:230px;max-height:none}
 body.ph-live:not(.ph-doors) #watch .sec-head .lead{display:none}
-body.ph-doors .player{height:calc(100vh - 520px)}
+body.ph-doors .player{height:calc(100vh - 560px)}
 .js-main{overflow-anchor:none}
 .li-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .li{padding:clamp(22px,2.6vw,32px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -689,7 +695,7 @@ body.ph-doors .player{height:calc(100vh - 520px)}
 
 <section class="sec gut" id="lots" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head rv"><span class="kick">Чёрная пятница</span><h2 class="js-lotsh">Лоты откроются <span class="hl">26.11 в 18:00</span></h2><p class="lead js-lotsp">Зарегистрированные увидят цены на час раньше всех</p></div>
+    <div class="sec-head rv"><span class="kick">Чёрная пятница</span><h2 class="js-lotsh">Лоты откроются <span class="hl">на эфире</span></h2><p class="lead js-lotsp">Цены и подарки покажу на эфире 26 ноября. Приходите в 19:00</p></div>
     <div class="lots-wrap">
       <div class="lots">
         <div class="lot rv">
@@ -729,7 +735,7 @@ body.ph-doors .player{height:calc(100vh - 520px)}
           <div class="price"><div><small>Цена</small><b class="js-p3">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 28.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир 27.11 в 18:00: как обходить блокировки Claude и поднять свой VPN</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691320" data-of="oferta-ofis.html" data-word="ОФИС" data-lot="ИИ-офис под ключ · 250 000 ₽">Зафиксировать подарки <span class="arr">→</span></button><a class="btn btn-g js-mgr" data-lot="ОФИС" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a><button class="btn btn-g js-pre" type="button" data-w="1691507" data-lot="ИИ-офис под ключ">Внести 5 000 ₽ и закрепить бонусы</button></div><p class="ofr">Оставляя заявку, вы принимаете <a href="oferta-ofis.html" target="_blank" rel="noopener">оферту</a></p>
         </div>
       </div>
-      <div class="veil js-lotsveil"><div class="vcard"><svg width="56" height="64" viewBox="0 0 58 66" aria-hidden="true"><defs><linearGradient id="lbL5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45A"/><stop offset=".55" stop-color="#FFB800"/><stop offset="1" stop-color="#D98A00"/></linearGradient></defs><path d="M14 28V19a15 15 0 0 1 30 0v9" fill="none" stroke="#2A2622" stroke-width="7"/><path d="M16 26V19a13 13 0 0 1 6-11" fill="none" stroke="#5a524a" stroke-width="2" opacity=".7"/><rect x="4" y="27" width="50" height="37" rx="8" fill="url(#lbL5)"/><circle cx="29" cy="44" r="4.5" fill="#141210"/><rect x="27" y="45" width="4" height="9" rx="2" fill="#141210"/></svg><b class="js-lvb">Лоты откроются 26.11 в 18:00</b><p class="js-lvp">Для зарегистрированных. Остальным в 19:00</p></div></div>
+      <div class="veil js-lotsveil"><div class="vcard"><svg width="56" height="64" viewBox="0 0 58 66" aria-hidden="true"><defs><linearGradient id="lbL5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45A"/><stop offset=".55" stop-color="#FFB800"/><stop offset="1" stop-color="#D98A00"/></linearGradient></defs><path d="M14 28V19a15 15 0 0 1 30 0v9" fill="none" stroke="#2A2622" stroke-width="7"/><path d="M16 26V19a13 13 0 0 1 6-11" fill="none" stroke="#5a524a" stroke-width="2" opacity=".7"/><rect x="4" y="27" width="50" height="37" rx="8" fill="url(#lbL5)"/><circle cx="29" cy="44" r="4.5" fill="#141210"/><rect x="27" y="45" width="4" height="9" rx="2" fill="#141210"/></svg><b class="js-lvb">Лоты откроются на эфире</b><p class="js-lvp">Цены и подарки покажу 26.11 на эфире, начало в 19:00</p></div></div>
     </div>
     <div class="lots-hint rv"><b>Какой лот выбрать?</b>Хотите сами и в своём темпе: лот 1. Хотите, чтобы вас довели до результата с кураторами: царь лот. Нет времени собирать, нужен готовый офис для бизнеса: лот 3. Сомневаетесь: менеджер подскажет за пару сообщений в <a href="https://t.me/puzanovateam" target="_blank" rel="noopener">@puzanovateam</a></div>
     <div class="dl js-dl" hidden><b>Продажи закрываются 30.11 в 23:59</b><div class="cd js-cd2"><div><b>00</b><span>дн</span></div><div><b>00</b><span>ч</span></div><div><b>00</b><span>мин</span></div><div><b>00</b><span>сек</span></div></div></div>
@@ -790,7 +796,7 @@ body.ph-doors .player{height:calc(100vh - 520px)}
         <p class="how-k">Что даёт</p><ul><li>все бонусы лота за вами до 5 декабря</li><li>место в лоте за вами</li><li>время спокойно собрать сумму</li></ul></div>
       <div class="how-c king rv"><span class="how-t">Полная оплата</span><h3>Покупка</h3>
         <ol><li>Под лотом «Зафиксировать подарки»</li><li>Заполните форму и нажмите «Оплатить сейчас»</li><li>Картой, в рассрочку или долями</li></ol>
-        <p class="how-k">Что даёт</p><ul><li>все бонусы и подарки лота</li><li>доступ к записям сразу после оплаты</li><li>учитесь у меня сейчас? промокод УЧЕБА: минус 5 000 ₽</li></ul></div>
+        <p class="how-k">Что даёт</p><ul><li>все бонусы и подарки лота</li><li>доступ к записям сразу после оплаты</li><li>учитесь у меня сейчас? промокод на минус 5 000 ₽ выдаст менеджер</li></ul></div>
     </div>
   </div>
 </section>
@@ -804,7 +810,7 @@ body.ph-doors .player{height:calc(100vh - 520px)}
         <div class="seg js-clot"><button type="button" data-p="33333">Записи<br><small>33 333 ₽</small></button><button type="button" data-p="73333" class="on">👑 Царь<br><small>73 333 ₽</small></button><button type="button" data-p="87999">Царь 1+1<br><small>87 999 ₽</small></button><button type="button" data-p="250000">Офис<br><small>250 000 ₽</small></button></div>
         <p class="calc-l">Срок</p>
         <div class="seg js-cmon"><button type="button" data-m="3">3 мес</button><button type="button" data-m="6">6 мес</button><button type="button" data-m="12" class="on">12 мес</button></div>
-        <label class="calc-chk"><input type="checkbox" class="js-cstud"> Я учусь у Ольги сейчас: промокод УЧЕБА, минус 5 000 ₽</label>
+        <label class="calc-chk"><input type="checkbox" class="js-cstud"> Я учусь у Ольги сейчас: минус 5 000 ₽ по промокоду, который выдаст менеджер</label>
       </div>
       <div class="calc-out">
         <p class="calc-l">Платёж в месяц</p>
@@ -865,7 +871,7 @@ body.ph-doors .player{height:calc(100vh - 520px)}
       <details class="rv"><summary>Не успеваю к 19:00. Будет запись?<i>+</i></summary><p>Запись будет на этой странице до 30 ноября. Но шаблон оркестратора, кодовое слово для золотого яйца и бонусы первых 24 часов получат только те, кто смотрит вживую.</p></details>
       <details class="rv"><summary>Как забрать подарки из яиц и не сгорят ли они?<i>+</i></summary><p>После регистрации сразу открываются 3 яйца, потом по одному каждый день в 12:00. Нажмите на яйцо, и подарок ваш. Открытые подарки ждут до 30 ноября, сгорает только золотое яйцо-сюрприз через 3 часа.</p></details>
       <details class="rv"><summary>Эфир продающий?<i>+</i></summary><p>В конце эфира я открою Чёрную пятницу: три лота, от курсов в записи до ИИ-офиса под ключ. Но офис, шаблон оркестратора и ответы на вопросы получат все зрители, покупать ничего не обязательно.</p></details>
-      <details class="rv"><summary>Когда откроются цены и сколько действует Чёрная пятница?<i>+</i></summary><p>Зарегистрированные увидят лоты 26 ноября в 18:00, остальные в 19:00. Продажи идут до 30 ноября 23:59.</p></details>
+      <details class="rv"><summary>Когда откроются цены и сколько действует Чёрная пятница?<i>+</i></summary><p>Лоты и цены я покажу на эфире 26 ноября, начало в 19:00. Продажи идут до 30 ноября 23:59.</p></details>
       <details class="rv"><summary>Куда писать, если остались вопросы?<i>+</i></summary><p>Моей команде в Telegram: @puzanovateam. Ответим и поможем с регистрацией.</p></details>
     </div>
   </div>
@@ -937,7 +943,6 @@ body.ph-doors .player{height:calc(100vh - 520px)}
     { id:"cert", t:"Сертификат на 3 000 ₽", d:"Именной, на любой новый продукт 2027 года", tool:"cert" },
     { id:"assist", at:"2026-11-24T09:00:00Z", t:"ИИ-ассистент по задачам", d:"Собирает задачи из чатов и календаря и каждое утро присылает план в Telegram", go:["Забрать ассистента",BASE] },
     { id:"ideas", at:"2026-11-25T09:00:00Z", t:"Чек-лист 30 идей для ИИ-агентов", d:"Не знаете, что поручить ИИ первым? 30 готовых идей по задачам бизнеса", go:["Открыть чек-лист","https://ai-agent-ideas-checklist-2026.rosypine512.chatgpt.site/"] },
-    { id:"early", at:"2026-11-26T15:00:00Z", t:"Цены на час раньше всех", d:"В 18:00 лоты Чёрной пятницы откроются вам, остальным в 19:00", go:["Смотреть лоты","#lots"] }
   ];
   var SURPRISE = [ { id:"s1", from:"2026-11-24T16:00:00Z", to:"2026-11-24T19:00:00Z", t:"Топ-20 скиллов для нейросетей", d:"Готовые скиллы для Claude и ChatGPT, ставятся за минуту. Только 3 часа, в 22:00 яйцо исчезнет", go:["Забрать скиллы","skills.html"] }, { id:"s2", from:"2026-11-25T14:00:00Z", to:"2026-11-25T17:00:00Z", t:"ИИ-продавец для Авито и мессенджеров", d:"Конструктор инструкции: ответьте на 6 вопросов, и получите готового продавца для Claude или ChatGPT", go:["Собрать продавца","seller-bot.html"] } ];
   var TOUR = [
@@ -964,6 +969,8 @@ body.ph-doors .player{height:calc(100vh - 520px)}
   function hms(ms){var p=parts(ms);return pad(p[0]*24+p[1])+":"+pad(p[2])+":"+pad(p[3])}
   function dhm(ms){var p=parts(ms);return (p[0]?p[0]+" д ":"")+pad(p[1])+":"+pad(p[2])+":"+pad(p[3])}
   function phase(){var t=now();return t<EARLY?"pre":t<START?"early":t<LIVE_END?"live":t<=END?"sale":"closed"}
+  var LOTS = Date.parse("2026-11-26T16:15:00Z");
+  function lotsOpen(ph){return ph==="sale"||(ph==="live"&&now()>=LOTS)}
   function doors(ph){return ph==="live"||(ph==="early"&&now()>=DOORS)}
   function toast(m){var t=$(".js-toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove("show")},2600)}
   function msk(iso){var d=new Date(Date.parse(iso)+3*3600e3);return pad(d.getUTCDate())+"."+pad(d.getUTCMonth()+1)+" в "+pad(d.getUTCHours())+":"+pad(d.getUTCMinutes())}
@@ -1115,14 +1122,14 @@ body.ph-doors .player{height:calc(100vh - 520px)}
   var main=$(".js-main"),lastPh="";
   function order(ph){
     var S={};["reg","why","gifts","efir","watch","office","lots","faq","final","lotinfo","value","how","calc","lfaq","mgr"].forEach(function(id){S[id]=$("#"+id)});var mq=$(".mq");var SALE=[S.lotinfo,S.value,S.how,S.calc,S.lfaq,S.mgr];
-    var seq=(doors(ph)&&!isReg()&&ph==="early")?[S.watch,S.reg,mq,S.why,S.gifts,S.efir,S.office,S.lots].concat(SALE,[S.faq,S.final]):ph==="live"?[S.watch,S.lots].concat(SALE,[S.efir,S.reg,mq,S.why,S.gifts,S.office,S.faq,S.final]):(ph==="sale"||ph==="closed")?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):(ph==="early"&&isReg())?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):[S.reg,mq,S.why,S.gifts,S.efir,S.watch,S.office,S.lots].concat(SALE,[S.faq,S.final]);
+    var seq=(doors(ph)&&!lotsOpen(ph))?[S.watch,S.reg,mq,S.efir,S.why,S.gifts,S.office,S.lots].concat(SALE,[S.faq,S.final]):ph==="live"?[S.watch,S.lots].concat(SALE,[S.efir,S.reg,mq,S.why,S.gifts,S.office,S.faq,S.final]):(ph==="sale"||ph==="closed")?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):(false)?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):[S.reg,mq,S.why,S.gifts,S.efir,S.watch,S.office,S.lots].concat(SALE,[S.faq,S.final]);
     seq.forEach(function(n){main.appendChild(n)});if(!location.hash||location.hash==="#")window.scrollTo(0,0);
     S.watch.style.paddingTop=(doors(ph)||ph==="sale"||ph==="closed")?"":"0";
     S.lots.style.paddingTop="";document.body.classList.toggle("ph-live",doors(ph)||ph==="sale");document.body.classList.toggle("ph-doors",ph==="early"&&doors(ph));
   }
   function render(force){
     var ph=phase(),reg=isReg(),pre=ph==="pre"||ph==="early";
-    var phk=ph+(isReg()?"r":"")+(doors(ph)?"d":"");if(phk!==lastPh){order(ph);lastPh=phk}
+    var phk=ph+(isReg()?"r":"")+(doors(ph)?"d":"")+(lotsOpen(ph)?"l":"");if(phk!==lastPh){order(ph);lastPh=phk}
     $("#reg").hidden=ph==="closed"||(!pre&&reg);
     $$("#reg .js-cd").forEach(function(x){x.hidden=!pre});
     if(!pre){$(".js-lead").textContent=ph==="live"?"Эфир уже идёт. Зарегистрируйтесь за 30 секунд, и окно эфира откроется":"Зарегистрируйтесь за 30 секунд, чтобы смотреть запись и забрать подарки";$(".js-pill").innerHTML=ph==="live"?"<i></i>Мы в эфире прямо сейчас":"<i></i>Чёрная пятница до 30.11"}
@@ -1132,17 +1139,18 @@ body.ph-doors .player{height:calc(100vh - 520px)}
     if(ph==="live"){$(".js-wh").innerHTML='Мы <span class="hl">в эфире</span>';$(".js-wp").textContent="Смотрите прямо в этом окне. Кодовое слово прозвучит в конце"}
     else if(doors(ph)){$(".js-wh").innerHTML='Начинаем <span class="hl">в 19:00</span>';$(".js-wp").textContent="Окно эфира уже открыто, заходите заранее и пишите в чат, откуда вы"}
     if(ph==="sale"||ph==="closed"){$(".js-wh").innerHTML='Запись <span class="hl">эфира</span>';$(".js-wp").textContent=ph==="sale"?"Доступна до 30 ноября":"Эфир прошёл"}
-    var cta=ph==="early"&&reg?["Смотреть лоты","#lots"]:ph==="live"?["Смотреть эфир","#watch"]:ph==="sale"?["Выбрать лот","#lots"]:ph==="closed"?["Написать нам",MANAGER]:reg?["Мои подарки","#gifts"]:["Занять место","#regform"];
+    var cta=ph==="live"?["Смотреть эфир","#watch"]:ph==="sale"?["Выбрать лот","#lots"]:ph==="closed"?["Написать нам",MANAGER]:reg?["Мои подарки","#gifts"]:["Занять место","#regform"];
     var wb=$(".js-whybtn");wb.href=reg?"#gifts":"#regform";wb.innerHTML=(reg?"К моим подаркам":"Занять место бесплатно")+' <span class="arr">→</span>';
     [$(".js-topbtn"),$(".js-mbtn")].forEach(function(b){b.href=cta[1];b.textContent=cta[0]});
     if(ph==="sale")$(".js-finh").innerHTML='До 30.11<br><span class="hl">23:59</span>';
     if(ph==="live")$(".js-finh").innerHTML='Мы<br><span class="hl">в эфире</span>';
     if(ph==="closed")$(".js-finh").innerHTML='До встречи<br><span class="hl">в 2027</span>';
-    var open=ph==="sale"||ph==="live"||(ph==="early"&&reg);
+    var open=lotsOpen(ph);
     $(".js-lotsveil").hidden=open||ph==="closed";
-    $(".js-dl").hidden=!(ph==="sale"||ph==="live"||(ph==="early"&&reg));
+    $(".js-dl").hidden=!open;
     if(open){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">открыта</span>';$(".js-lotsp").textContent=ph==="early"?"Вы видите цены на час раньше всех. Остальные увидят их в 19:00":"До 30 ноября 23:59. Нажмите «Зафиксировать подарки», оставьте имя, телефон и почту, и подарки останутся за вами"}
-    if(ph==="early"&&!reg){$(".js-lvb").textContent="Цены уже открыты";$(".js-lvp").textContent="Только для зарегистрированных. Остальные увидят их в 19:00"}
+    if(ph==="live"&&!open){$(".js-lotsh").innerHTML='Лоты откроются <span class="hl">в 19:15</span>';$(".js-lotsp").textContent="Смотрите эфир, сейчас я всё покажу"}
+    if(ph==="live"&&!open){$(".js-lvb").textContent="Лоты откроются в 19:15";$(".js-lvp").textContent="Смотрите эфир: я покажу их прямо сейчас"}
     if(ph==="closed"){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">закрыта</span>';$(".js-lotsp").textContent="Спасибо всем, кто был с нами. Вопросы: @puzanovateam"}
     $(".js-b24").hidden=!pre;["#lotinfo","#value","#how","#calc","#lfaq","#mgr"].forEach(function(id){$(id).hidden=!open||ph==="closed"});$(".js-wcta").hidden=!(doors(ph)||ph==="sale");
     $$(".lot .price").forEach(function(x){x.hidden=ph==="closed"});$$(".lot").forEach(function(x){x.classList.toggle("lockd",!open||ph==="closed")});
@@ -1175,7 +1183,7 @@ body.ph-doors .player{height:calc(100vh - 520px)}
     $(".js-topcd").innerHTML=ph==="pre"||ph==="early"?"Эфир через <b>"+dhm(START-t)+"</b>":ph==="live"?"<b>Эфир идёт</b>":ph==="sale"?"До закрытия <b>"+dhm(END-t)+"</b>":"";
     $$(".js-lockcd").forEach(function(el){var at=+el.getAttribute("data-at");if(at-t<=0)renderEggs(true);else el.innerHTML="<small>Откроется через</small>"+dhm(at-t)});
     var s=activeSurprise();$$(".js-surcd").forEach(function(el){if(s)el.textContent=hms(Date.parse(s.to)-t)});
-    if(ph+(isReg()?"r":"")+(doors(ph)?"d":"")!==lastPh)render(true);else renderEggs();
+    if(ph+(isReg()?"r":"")+(doors(ph)?"d":"")+(lotsOpen(ph)?"l":"")!==lastPh)render(true);else renderEggs();
   }
   if(REG_URL){try{fetch(REG_URL+"?stats=1").then(function(r){return r.json()}).then(function(d){if(d&&d.count>=150)$$(".fbox .sub").forEach(function(n){n.textContent="Уже "+d.count.toLocaleString("ru-RU")+" человек заняли место. Бесплатно"})}).catch(function(){})}catch(x){}}
   if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{rootMargin:"0px 0px -8% 0px"});$$(".rv").forEach(function(el){io.observe(el)})}else $$(".rv").forEach(function(el){el.classList.add("in")});
