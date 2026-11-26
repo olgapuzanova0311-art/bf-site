@@ -316,7 +316,18 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lot .price{margin-top:auto;padding-top:26px;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between}
 .lot .price b{font-size:clamp(34px,4vw,52px);font-weight:800;letter-spacing:-.05em;line-height:1}
 .lot .price b.sm{font-size:22px;letter-spacing:-.02em}
+.fixbox{color:#141210;margin-top:18px;padding:16px 18px;border-radius:18px;background:var(--chip);font-size:14px;line-height:1.45}
+.fixbox b{display:block;font-size:15px;margin-bottom:6px}
+.fixbox ul{display:block!important;gap:0!important}
+.fixbox li{display:list-item!important;font-weight:600;font-size:14px!important;margin-left:18px;list-style:disc}
+.lot-btns{display:grid;gap:10px;margin-top:16px}
+.lot-btns .btn{width:100%;justify-content:center}
+.lot.lockd .lot-btns,.lot.lockd .fixbox{display:none}
+.gcw{min-height:420px}
+.gcw iframe{width:100%!important;border:0}
+.mbox.wide{max-width:560px;width:100%}
 .lot .price small{display:block;font-size:14px;opacity:.7}
+.lot.king .btn-g{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.35)}
 .lot.king .btn-p{background:var(--kingBtn);color:var(--kingBtnInk)}
 .dl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:16px;padding:18px 22px;border-radius:22px;background:var(--card);border:1px solid var(--line)}
 .dl b{font-size:19px}
@@ -623,7 +634,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
             <li class="no"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>Год с кураторами</li>
             <li class="no"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>Подарки царь лота</li>
           </ul>
-          <div class="price"><div><small>Цена</small><b class="js-p1">на эфире</b></div><a class="btn btn-g js-buy" data-lot="ЗАПИСИ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать «ЗАПИСИ» <span class="arr">→</span></a></div>
+          <div class="price"><div><small>Цена</small><b class="js-p1">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 27.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир о том, как обходить блокировки Claude</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691313" data-lot="Лот 1 · Все курсы в записи">Зафиксировать подарки <span class="arr">→</span></button><a class="btn btn-g js-mgr" data-lot="ЗАПИСИ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a></div>
         </div>
         <div class="lot king rv">
           <span class="lbl">Царь лот · год курсов</span><h3>Весь 2027 с кураторами</h3>
@@ -636,7 +647,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>1+1: вдвоём за 87 999 ₽. Второе место 14 666 ₽, это около 1 200 ₽ в месяц, и второму участнику ИИ-агент под ключ</li>
             <li class="js-b24"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Бонусы первых 24 часов объявлю на эфире</li>
           </ul>
-          <div class="price"><div><small>Цена</small><b class="js-p2">на эфире</b></div><a class="btn btn-p js-buy" data-lot="ЦАРЬ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать «ЦАРЬ» <span class="arr">→</span></a></div>
+          <div class="price"><div><small>Цена</small><b class="js-p2">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 27.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир о том, как обходить блокировки Claude</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691317" data-lot="Царь лот · 2027 с кураторами">Зафиксировать подарки <span class="arr">→</span></button><button class="btn btn-g js-fix" type="button" data-w="1691318" data-lot="Царь лот 1+1 · вдвоём за 87 999 ₽">Вдвоём 1+1 за 87 999 ₽</button><a class="btn btn-g js-mgr" data-lot="ЦАРЬ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a></div>
         </div>
         <div class="lot ofc rv">
           <span class="lbl">Лот 3 · под ключ</span><h3>ИИ-офис под ключ</h3>
@@ -647,7 +658,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Старт в декабре, сдаём за 3-4 недели</li>
           </ul>
           <p class="note">Пульт под ключ обычно стоит от 500 000 ₽, контент-завод от 150 000 ₽ в месяц. Берём всего несколько проектов, мест ограничено</p>
-          <div class="price"><div><small>Цена</small><b class="js-p3">на эфире</b></div><a class="btn btn-p js-buy" data-lot="ОФИС" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать «ОФИС» <span class="arr">→</span></a></div>
+          <div class="price"><div><small>Цена</small><b class="js-p3">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 27.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир о том, как обходить блокировки Claude</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691320" data-lot="Лот 3 · ИИ-офис под ключ">Зафиксировать подарки <span class="arr">→</span></button><a class="btn btn-g js-mgr" data-lot="ОФИС" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a></div>
         </div>
       </div>
       <div class="veil js-lotsveil"><div class="vcard"><svg width="56" height="64" viewBox="0 0 58 66" aria-hidden="true"><defs><linearGradient id="lbL5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45A"/><stop offset=".55" stop-color="#FFB800"/><stop offset="1" stop-color="#D98A00"/></linearGradient></defs><path d="M14 28V19a15 15 0 0 1 30 0v9" fill="none" stroke="#2A2622" stroke-width="7"/><path d="M16 26V19a13 13 0 0 1 6-11" fill="none" stroke="#5a524a" stroke-width="2" opacity=".7"/><rect x="4" y="27" width="50" height="37" rx="8" fill="url(#lbL5)"/><circle cx="29" cy="44" r="4.5" fill="#141210"/><rect x="27" y="45" width="4" height="9" rx="2" fill="#141210"/></svg><b class="js-lvb">Лоты откроются 26.11 в 18:00</b><p class="js-lvp">Для зарегистрированных. Остальным в 19:00</p></div></div>
@@ -786,7 +797,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 
   /* ===== модалка ===== */
   var modal=$(".js-modal");
-  function openModal(t,h){$(".js-mt").textContent=t;$(".js-mb").innerHTML=h;modal.hidden=false;$(".js-mx").focus()}
+  function openModal(t,h){$(".mbox").classList.remove("wide");$(".js-mt").textContent=t;$(".js-mb").innerHTML=h;modal.hidden=false;$(".js-mx").focus()}
   $(".js-mx").addEventListener("click",function(){modal.hidden=true});
   modal.addEventListener("click",function(e){if(e.target===modal)modal.hidden=true});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")modal.hidden=true});
@@ -952,16 +963,18 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     var open=ph==="sale"||ph==="live"||(ph==="early"&&reg);
     $(".js-lotsveil").hidden=open||ph==="closed";
     $(".js-dl").hidden=!(ph==="sale"||ph==="live"||(ph==="early"&&reg));
-    if(open){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">открыта</span>';$(".js-lotsp").textContent=ph==="early"?"Вы видите цены на час раньше всех. Остальные увидят их в 19:00":"До 30 ноября 23:59. Нажмите кнопку лота и отправьте менеджеру слово, которое на ней написано"}
+    if(open){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">открыта</span>';$(".js-lotsp").textContent=ph==="early"?"Вы видите цены на час раньше всех. Остальные увидят их в 19:00":"До 30 ноября 23:59. Нажмите «Зафиксировать подарки», оставьте имя, телефон и почту, и подарки останутся за вами"}
     if(ph==="early"&&!reg){$(".js-lvb").textContent="Цены уже открыты";$(".js-lvp").textContent="Только для зарегистрированных. Остальные увидят их в 19:00"}
     if(ph==="closed"){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">закрыта</span>';$(".js-lotsp").textContent="Спасибо всем, кто был с нами. Вопросы: @puzanovateam"}
     $(".js-b24").hidden=!pre;
-    $$(".lot .price").forEach(function(x){x.hidden=ph==="closed"});
+    $$(".lot .price").forEach(function(x){x.hidden=ph==="closed"});$$(".lot").forEach(function(x){x.classList.toggle("lockd",!open||ph==="closed")});
     ["#gifts","#efir","#watch","#office","#why"].forEach(function(id){$(id).hidden=ph==="closed"});$(".mq").hidden=ph==="closed";
     var p1=$(".js-p1");p1.textContent=open?(PRICE1||"Цену скажет менеджер"):"на эфире";p1.classList.toggle("sm",open&&!PRICE1);$(".js-p2").textContent=open?PRICE2:"на эфире";$(".js-p3").textContent=open?PRICE3:"на эфире";
     renderEggs(force);renderPlayer(ph);
   }
-  $$(".js-buy").forEach(function(b){b.addEventListener("click",function(){toast("Отправьте менеджеру слово «"+b.getAttribute("data-lot")+"»")})});
+  var GCW={"1691313":"7f084d39efc51990466c0e9583000f7d28181dd7","1691317":"a98da54ffd6d935fbb19f82d2afa13802125792d","1691318":"30c88af6f742b075eaf23ce29e528edc104999e7","1691320":"a68a75c337fe20a744fd7ecebed539ee2e8e4f20"};
+  $$(".js-fix").forEach(function(b){b.addEventListener("click",function(){var w=b.getAttribute("data-w");openModal(b.getAttribute("data-lot"),'<p style="margin:0 0 10px">Оставьте имя, телефон и почту: подарки, закрытая встреча 27.11 в 18:00 и эфир по блокировкам Claude закрепятся за вами. Дальше можно сразу оплатить или дождаться менеджера.</p><div class="gcw js-gcw"></div><p style="font-size:14px;margin:10px 0 0">Есть вопрос? <a href="'+MANAGER+'" target="_blank" rel="noopener">Написать менеджеру @puzanovateam</a></p>');$(".mbox").classList.add("wide");var c=$(".js-gcw"),sc=document.createElement("script");sc.id=GCW[w];sc.src="https://puzanovva.tech/pl/lite/widget/script?id="+w;c.appendChild(sc);})});
+  $$(".js-mgr").forEach(function(b){b.addEventListener("click",function(){toast("Напишите менеджеру слово «"+b.getAttribute("data-lot")+"»")})});
 
   /* ===== тик ===== */
   function setCd(el,ms){var p=parts(ms),b=el.querySelectorAll("b");for(var i=0;i<4;i++)if(b[i]&&b[i].textContent!==pad(p[i]))b[i].textContent=pad(p[i])}
