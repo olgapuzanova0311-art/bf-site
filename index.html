@@ -381,6 +381,10 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 .tgw-t,.tgw-x{display:none}
 .tgw-dot{width:14px;height:14px;top:1px;right:1px}
 @media (max-width:760px){.tgw-ic{width:50px;height:50px}.tgw-ic svg{width:25px;height:25px}}
+.tgw.mgrw{padding:6px 18px 6px 6px;background:var(--card);border:1px solid var(--line);border-radius:999px;box-shadow:0 12px 30px -10px rgba(0,0,0,.35)}
+.tgw.mgrw .tgw-t{display:block;color:var(--ink,#141210)}
+.tgw.mgrw .tgw-ic{width:44px;height:44px;box-shadow:none}.tgw.mgrw .tgw-ic svg{width:22px;height:22px}
+.tgw.mgrw .tgw-x{display:grid}
 .mbar .btn{width:100%}
 .gm-btn{display:flex;width:100%;justify-content:center;margin-top:12px;white-space:normal;text-align:center}
 .modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px)}
@@ -446,6 +450,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 /* === блоки продаж === */
 .wcta{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;justify-content:center}
 .wcta .btn{min-height:60px}
+.wcta .btn-g{color:#F4F1EA;border-color:rgba(244,241,234,.4)}.wcta .btn-g:hover{background:rgba(244,241,234,.08)}
 .wbig{font-size:clamp(17px,1.6vw,20px);min-height:68px!important;padding:0 34px}
 .js-wbiz.wbig{flex:1 1 100%;justify-content:center;text-align:center;background:#E5253F!important;color:#fff!important;border-color:#E5253F!important;font-size:clamp(22px,2.6vw,32px);font-weight:800;min-height:92px!important;border-radius:999px;box-shadow:0 0 0 0 rgba(229,37,63,.7);animation:bizPulse 1.4s ease-in-out infinite}
 .js-wbiz.wbig .arr{color:#fff}
@@ -911,10 +916,10 @@ body.ph-doors .player{height:calc(100vh - 560px)}
 </div></footer>
 
 <div class="ck js-ck" hidden role="region" aria-label="Cookies"><span>Мы используем cookies. Оставаясь на сайте, вы соглашаетесь с <a href="https://bf.olgapuzanovva.ru/privacy.html" target="_blank" rel="noopener">политикой</a></span><button type="button" class="js-cka">Хорошо</button></div>
-<div class="tgw js-tgw"><a class="tgw-a js-chan js-tgwa" title="ТГ-канал Чёрной ИИшницы" href="#" target="_blank" rel="noopener" aria-label="Подписаться на Telegram-канал Чёрной ИИшницы">
+<div class="tgw mgrw js-tgw"><a class="tgw-a js-tgwa" title="Связаться с менеджером" href="https://t.me/puzanovateam" target="_blank" rel="noopener" aria-label="Связаться с менеджером в Telegram">
   <span class="tgw-ic"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.6 4.2 2.9 11.4c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.1c.3-1.3-.5-1.9-1.5-1.6zM8.9 14.2l9.4-5.9c.5-.3.9-.1.5.2l-8 7.2-.3 3.3-1.6-4.8z"/></svg><span class="tgw-dot" aria-hidden="true"></span></span>
-  <span class="tgw-t"><b>ТГ-канал Чёрной ИИшницы</b><span>серии живут 24 часа →</span></span>
-  <span class="tgw-go">Подписаться</span></a>
+  <span class="tgw-t"><b>Связаться с менеджером</b><span>ответим в Telegram →</span></span>
+  <span class="tgw-go">Написать</span></a>
   <button class="tgw-x js-tgwx" type="button" aria-label="Скрыть">×</button>
 </div>
 <div class="mbar js-mbar"><a class="btn btn-p js-mbtn" href="#regform">Занять место на эфире</a></div>
@@ -1190,14 +1195,14 @@ body.ph-doors .player{height:calc(100vh - 560px)}
   /* Telegram-виджет: появляется после прокрутки или через 8 секунд, скрывается на 2 дня */
   (function(){
     var w=$(".js-tgw");if(!w)return;
-    var off=false;try{off=Date.now()-(+localStorage.getItem("bf_tgw_x")||0)<2*864e5}catch(x){}
+    var off=false;try{off=Date.now()-(+localStorage.getItem("bf_mgrw_x")||0)<2*864e5}catch(x){}
     var ck=$(".js-ck"),ckOn=false;try{ckOn=!localStorage.getItem("bf_ck")}catch(x){ckOn=true}
     var mob=window.matchMedia("(max-width:760px)").matches;var shown=false;function show(){if(shown||(ckOn&&mob))return;shown=true;w.classList.add("show")}
     if(ck){ck.hidden=!ckOn;$(".js-cka").addEventListener("click",function(){ck.hidden=true;ckOn=false;try{localStorage.setItem("bf_ck","1")}catch(x){}setTimeout(show,1500)})}
     if(mob)setTimeout(show,8000);else show();
     window.addEventListener("scroll",function(){if(window.scrollY>700)show()},{passive:true});
-    $(".js-tgwx").addEventListener("click",function(){w.classList.remove("show");try{localStorage.setItem("bf_tgw_x",Date.now())}catch(x){}});
-    $(".js-tgwa").addEventListener("click",function(){if(window.goal)goal("tg_channel")});
+    $(".js-tgwx").addEventListener("click",function(){w.classList.remove("show");try{localStorage.setItem("bf_mgrw_x",Date.now())}catch(x){}});
+    $(".js-tgwa").addEventListener("click",function(){if(window.goal)goal("mgr_widget")});
     var mb=$(".js-mbar");if(mb&&"MutationObserver" in window){var sync=function(){w.classList.toggle("up",mb.classList.contains("show"))};new MutationObserver(sync).observe(mb,{attributes:true,attributeFilter:["class"]});sync()}
   })();
   var mbar=$(".js-mbar"),vis={};
