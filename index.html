@@ -539,7 +539,7 @@ body.ph-doors .player{height:calc(100vh - 560px)}
 <header class="top gut">
   <div class="wrap">
     <a class="logo" href="#top"><span class="le"></span>Чёрная ИИшница</a>
-    <div class="top-r"><span class="top-cd js-topcd"></span><a class="btn btn-live" href="#watch"><i></i>Смотреть эфир</a><a class="btn btn-p js-topbtn" href="#reg">Занять место</a></div>
+    <div class="top-r"><span class="top-cd js-topcd"></span><a class="btn btn-live js-toplive" href="#watch"><i></i>Смотреть эфир</a><a class="btn btn-p js-topbtn" href="#reg">Занять место</a></div>
   </div>
 </header>
 
@@ -1159,7 +1159,7 @@ body.ph-doors .player{height:calc(100vh - 560px)}
     if(ph==="closed"){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">закрыта</span>';$(".js-lotsp").textContent="Спасибо всем, кто был с нами. Вопросы: @puzanovateam"}
     $(".js-b24").hidden=!pre;["#lotinfo","#value","#how","#calc","#lfaq","#mgr"].forEach(function(id){$(id).hidden=!open||ph==="closed"});$(".js-wcta").hidden=!(doors(ph)||ph==="sale");
     $$(".lot .price").forEach(function(x){x.hidden=ph==="closed"});$$(".lot").forEach(function(x){x.classList.toggle("lockd",!open||ph==="closed")});
-    ["#gifts","#efir","#watch","#office","#why"].forEach(function(id){$(id).hidden=ph==="closed"});$(".mq").hidden=ph==="closed";
+    ["#gifts","#efir","#watch","#office","#why"].forEach(function(id){$(id).hidden=ph==="closed"});if(ph==="sale"&&!RECORD_EMBED)$("#watch").hidden=true;$$(".js-toplive").forEach(function(x){x.hidden=(ph==="sale"&&!RECORD_EMBED)||ph==="closed"});$(".mq").hidden=ph==="closed";
     var p1=$(".js-p1");p1.textContent=open?(PRICE1||"Цену скажет менеджер"):"на эфире";p1.classList.toggle("sm",open&&!PRICE1);$(".js-p2").textContent=open?PRICE2:"на эфире";$(".js-p3").textContent=open?PRICE3:"на эфире";
     renderEggs(force);renderPlayer(ph);
   }
