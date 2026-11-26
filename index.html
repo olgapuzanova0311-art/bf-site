@@ -753,8 +753,8 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   var STREAM_EMBED = "https://start.bizon365.ru/room/olgapuzanova/7fc56ae89e9d";   // embed-ссылка плеера на эфир
   var STREAM_URL = "https://start.bizon365.ru/room/olgapuzanova/7fc56ae89e9d";     // обычная ссылка на трансляцию
   var RECORD_EMBED = "";   // embed записи
-  var EFIR_WORD = "";      // кодовое слово эфира
-  var GOLD = { t: "Главный подарок эфира", d: "Откроется после эфира", link: "" };
+  var EFIR_WORD = "ПЯТНИЦА";      // кодовое слово эфира
+  var GOLD = { t: "Золотое яйцо разбито! 🥚", d: "Внутри два бонуса: закрытый эфир о том, как обходить блокировки Claude и поднять свой VPN, и закрытая встреча со мной, где смотрим ваши стратегии. Оставьте почту, имя и телефон, и менеджер пришлёт ссылки", w: "1691404" };
   var PRICE1 = "33 333 ₽";         // цена лота 1
   var PRICE2 = "73 333 ₽";
   var PRICE3 = "250 000 ₽";
@@ -900,7 +900,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   $(".js-codeform").addEventListener("submit",function(e){e.preventDefault();var m=$(".js-codemsg"),v=$(".js-code").value.trim().toLowerCase().replace(/ё/g,"е");m.hidden=false;
     if(!isReg()){m.textContent="Сначала займите место на эфире";$("#regform").scrollIntoView({behavior:"smooth"});return}
     if(now()<START){m.textContent="Слово прозвучит на эфире 26.11. Приходите в 19:00";return}
-    if(EFIR_WORD&&v===EFIR_WORD.toLowerCase().replace(/ё/g,"е")){m.textContent="Золотое яйцо разбито!";openModal(GOLD.t,"<p>"+esc(GOLD.d)+"</p>"+(GOLD.link?"<a class='btn btn-p' target='_blank' rel='noopener' href='"+esc(GOLD.link)+"'>Забрать</a>":""))}
+    if(EFIR_WORD&&v===EFIR_WORD.toLowerCase().replace(/ё/g,"е")){m.textContent="Золотое яйцо разбито!";document.body.style.overflow="hidden";openModal(GOLD.t,"<p style='margin:0 0 10px'>"+esc(GOLD.d)+"</p><div class='gcw js-gcw'></div>");$(".mbox").classList.add("wide");loadGCW(GOLD.w,$(".js-gcw"),"слово ПЯТНИЦА")}
     else m.textContent="Не то слово. Оно звучит в конце эфира"});
 
   /* ===== тур по офису ===== */
@@ -977,8 +977,9 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     var p1=$(".js-p1");p1.textContent=open?(PRICE1||"Цену скажет менеджер"):"на эфире";p1.classList.toggle("sm",open&&!PRICE1);$(".js-p2").textContent=open?PRICE2:"на эфире";$(".js-p3").textContent=open?PRICE3:"на эфире";
     renderEggs(force);renderPlayer(ph);
   }
-  var GCW={"1691313":"7f084d39efc51990466c0e9583000f7d28181dd7","1691317":"a98da54ffd6d935fbb19f82d2afa13802125792d","1691318":"30c88af6f742b075eaf23ce29e528edc104999e7","1691320":"a68a75c337fe20a744fd7ecebed539ee2e8e4f20"};
-  $$(".js-fix").forEach(function(b){b.addEventListener("click",function(){var w=b.getAttribute("data-w"),wd=b.getAttribute("data-word"),of=b.getAttribute("data-of");document.body.style.overflow="hidden";openModal(b.getAttribute("data-lot"),'<p style="margin:0 0 10px">Оставьте имя, телефон и почту: подарки, закрытая встреча 27.11 в 18:00 и эфир по блокировкам Claude закрепятся за вами. Дальше можно сразу оплатить или дождаться менеджера.</p><div class="gcw js-gcw"></div><p style="font-size:14px;margin:10px 0 0">Есть вопрос? <a href="'+MANAGER+'" target="_blank" rel="noopener">Написать менеджеру @puzanovateam</a> · <a href="'+of+'" target="_blank" rel="noopener">Оферта</a></p>');$(".mbox").classList.add("wide");var c=$(".js-gcw"),sc=document.createElement("script");sc.id=GCW[w];sc.src="https://olgapuzanova.getcourse.ru/pl/lite/widget/script?id="+w;sc.onload=function(){try{var f=window["startWidget"+GCW[w]];if(typeof f==="function")f();else document.dispatchEvent(new Event("StartWidget"+GCW[w]))}catch(x){}};sc.onerror=function(){c.innerHTML='<p>Форма не загрузилась. Напишите менеджеру <a href="'+MANAGER+'" target="_blank" rel="noopener">@puzanovateam</a> слово лота, и он всё зафиксирует.</p>'};c.appendChild(sc);})});
+  function loadGCW(w,c,what){var sc=document.createElement("script");sc.id=GCW[w];sc.src="https://olgapuzanova.getcourse.ru/pl/lite/widget/script?id="+w;sc.onload=function(){try{var f=window["startWidget"+GCW[w]];if(typeof f==="function")f();else document.dispatchEvent(new Event("StartWidget"+GCW[w]))}catch(x){}};sc.onerror=function(){c.innerHTML='<p>Форма не загрузилась. Напишите менеджеру <a href="'+MANAGER+'" target="_blank" rel="noopener">@puzanovateam</a> '+what+', и он всё зафиксирует.</p>'};c.appendChild(sc)}
+  var GCW={"1691404":"5446513e6189af0a6d0fabd445468fa8e0da1bea","1691313":"7f084d39efc51990466c0e9583000f7d28181dd7","1691317":"a98da54ffd6d935fbb19f82d2afa13802125792d","1691318":"30c88af6f742b075eaf23ce29e528edc104999e7","1691320":"a68a75c337fe20a744fd7ecebed539ee2e8e4f20"};
+  $$(".js-fix").forEach(function(b){b.addEventListener("click",function(){var w=b.getAttribute("data-w"),wd=b.getAttribute("data-word"),of=b.getAttribute("data-of");document.body.style.overflow="hidden";openModal(b.getAttribute("data-lot"),'<p style="margin:0 0 10px">Оставьте имя, телефон и почту: подарки, закрытая встреча 27.11 в 18:00 и эфир по блокировкам Claude закрепятся за вами. Дальше можно сразу оплатить или дождаться менеджера.</p><div class="gcw js-gcw"></div><p style="font-size:14px;margin:10px 0 0">Есть вопрос? <a href="'+MANAGER+'" target="_blank" rel="noopener">Написать менеджеру @puzanovateam</a> · <a href="'+of+'" target="_blank" rel="noopener">Оферта</a></p>');$(".mbox").classList.add("wide");loadGCW(w,$(".js-gcw"),"слово лота");})});
   $$(".js-mgr").forEach(function(b){b.addEventListener("click",function(){toast("Напишите менеджеру слово «"+b.getAttribute("data-lot")+"»")})});
 
   /* ===== тик ===== */
