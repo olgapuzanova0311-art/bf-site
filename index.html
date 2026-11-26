@@ -876,7 +876,7 @@ body.ph-doors .player{height:calc(100vh - 560px)}
       <details class="rv"><summary>Не успеваю к 19:00. Будет запись?<i>+</i></summary><p>Запись будет на этой странице до 30 ноября. Но шаблон оркестратора, кодовое слово для золотого яйца и бонусы первых 24 часов получат только те, кто смотрит вживую.</p></details>
       <details class="rv"><summary>Как забрать подарки из яиц и не сгорят ли они?<i>+</i></summary><p>После регистрации сразу открываются 3 яйца, потом по одному каждый день в 12:00. Нажмите на яйцо, и подарок ваш. Открытые подарки ждут до 30 ноября, сгорает только золотое яйцо-сюрприз через 3 часа.</p></details>
       <details class="rv"><summary>Эфир продающий?<i>+</i></summary><p>В конце эфира я открою Чёрную пятницу: три лота, от курсов в записи до ИИ-офиса под ключ. Но офис, шаблон оркестратора и ответы на вопросы получат все зрители, покупать ничего не обязательно.</p></details>
-      <details class="rv"><summary>Когда откроются цены и сколько действует Чёрная пятница?<i>+</i></summary><p>Лоты и цены я покажу на эфире 26 ноября, начало в 19:00. Продажи идут до 30 ноября 23:59.</p></details>
+      <details class="rv"><summary>Когда откроются цены и сколько действует Чёрная пятница?<i>+</i></summary><p>Эфир 26 ноября в 19:00, лоты откроются на сайте в 19:15. Продажи идут до 30 ноября 23:59.</p></details>
       <details class="rv"><summary>Куда писать, если остались вопросы?<i>+</i></summary><p>Моей команде в Telegram: @puzanovateam. Ответим и поможем с регистрацией.</p></details>
     </div>
   </div>
@@ -1128,7 +1128,7 @@ body.ph-doors .player{height:calc(100vh - 560px)}
   function order(ph){
     var S={};["reg","why","gifts","efir","watch","office","lots","faq","final","lotinfo","value","how","calc","lfaq","mgr"].forEach(function(id){S[id]=$("#"+id)});var mq=$(".mq");var SALE=[S.lotinfo,S.value,S.how,S.calc,S.lfaq,S.mgr];
     var seq=(doors(ph)&&!lotsOpen(ph))?[S.watch,S.reg,mq,S.efir,S.why,S.gifts,S.office,S.lots].concat(SALE,[S.faq,S.final]):ph==="live"?[S.watch,S.lots].concat(SALE,[S.efir,S.reg,mq,S.why,S.gifts,S.office,S.faq,S.final]):(ph==="sale"||ph==="closed")?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):(false)?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):[S.reg,mq,S.why,S.gifts,S.efir,S.watch,S.office,S.lots].concat(SALE,[S.faq,S.final]);
-    seq.forEach(function(n){main.appendChild(n)});if(!location.hash||location.hash==="#")window.scrollTo(0,0);
+    var first=lastPh==="";(main.firstElementChild===seq[0]?seq.slice(1):seq).forEach(function(n){main.appendChild(n)});if(first&&(!location.hash||location.hash==="#"))window.scrollTo(0,0);
     S.watch.style.paddingTop=(doors(ph)||ph==="sale"||ph==="closed")?"":"0";
     S.lots.style.paddingTop="";document.body.classList.toggle("ph-live",doors(ph)||ph==="sale");document.body.classList.toggle("ph-doors",ph==="early"&&doors(ph));
   }
