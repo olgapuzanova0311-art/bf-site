@@ -450,8 +450,8 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 body.ph-live #watch .sec-head{margin-bottom:14px}
 body.ph-live #watch .sec-head h2{font-size:clamp(28px,3.4vw,44px)}
 body.ph-live #watch{padding-top:clamp(84px,9vh,110px)!important}
-body.ph-live .player{aspect-ratio:auto;height:calc(100vh - 330px);min-height:340px;max-height:none}
-body.ph-live #watch .sec-head .lead{display:none}
+body.ph-live .player{aspect-ratio:auto;height:calc(100vh - 430px);min-height:340px;max-height:none}
+body.ph-live:not(.ph-doors) #watch .sec-head .lead{display:none}
 .js-main{overflow-anchor:none}
 .li-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .li{padding:clamp(22px,2.6vw,32px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -1117,7 +1117,7 @@ body.ph-live #watch .sec-head .lead{display:none}
     var seq=(doors(ph)&&!isReg()&&ph==="early")?[S.watch,S.reg,mq,S.why,S.gifts,S.efir,S.office,S.lots].concat(SALE,[S.faq,S.final]):ph==="live"?[S.watch,S.lots].concat(SALE,[S.efir,S.reg,mq,S.why,S.gifts,S.office,S.faq,S.final]):(ph==="sale"||ph==="closed")?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):(ph==="early"&&isReg())?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):[S.reg,mq,S.why,S.gifts,S.efir,S.watch,S.office,S.lots].concat(SALE,[S.faq,S.final]);
     seq.forEach(function(n){main.appendChild(n)});if(!location.hash||location.hash==="#")window.scrollTo(0,0);
     S.watch.style.paddingTop=(doors(ph)||ph==="sale"||ph==="closed")?"":"0";
-    S.lots.style.paddingTop="";document.body.classList.toggle("ph-live",doors(ph)||ph==="sale");
+    S.lots.style.paddingTop="";document.body.classList.toggle("ph-live",doors(ph)||ph==="sale");document.body.classList.toggle("ph-doors",ph==="early"&&doors(ph));
   }
   function render(force){
     var ph=phase(),reg=isReg(),pre=ph==="pre"||ph==="early";
