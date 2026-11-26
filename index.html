@@ -589,8 +589,10 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
       <div class="pl-lock js-pllock"><svg width="56" height="64" viewBox="0 0 58 66" aria-hidden="true"><defs><linearGradient id="lbL4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45A"/><stop offset=".55" stop-color="#FFB800"/><stop offset="1" stop-color="#D98A00"/></linearGradient></defs><path d="M14 28V19a15 15 0 0 1 30 0v9" fill="none" stroke="#F1ECE2" stroke-width="7"/><path d="M16 26V19a13 13 0 0 1 6-11" fill="none" stroke="#fff" stroke-width="2" opacity=".7"/><rect x="4" y="27" width="50" height="37" rx="8" fill="url(#lbL4)"/><circle cx="29" cy="44" r="4.5" fill="#141210"/><rect x="27" y="45" width="4" height="9" rx="2" fill="#141210"/></svg><b class="js-plockb">Откроется после регистрации</b><a class="btn js-plockbtn" href="#regform">Занять место на эфире</a></div>
     </div>
     <div class="only">
-      <div class="oc rv"><span class="t">только в эфире</span><h3>Шаблон оркестратора</h3><p>Агент, который получает от вас одну задачу, раздаёт её остальным и приносит готовый результат. В записи его не будет</p></div>
-      <div class="oc rv"><span class="t" style="background:var(--gold);color:#241500">в конце эфира</span><h3>Золотое яйцо: главный бонус эфира</h3><p>Назову кодовое слово. Введите его здесь, яйцо разобьётся, и бонус ваш. Что внутри, узнаете на эфире</p>
+      <div class="oc rv"><span class="t" style="background:var(--gold);color:#241500">в середине эфира</span><h3>Золотое яйцо со скиллами</h3><p>Назову слово, когда будем говорить про скиллы. Внутри шаблон скилла, промпты, маркетплейсы готовых скиллов и аудит вашей рутины</p>
+        <form class="codef js-codeform"><label class="inp" style="flex:1"><span>Кодовое слово</span><input class="js-code" placeholder="Кодовое слово" autocomplete="off"></label><button class="btn" type="submit">Разбить</button></form>
+        <p class="codemsg js-codemsg" hidden></p></div>
+      <div class="oc rv"><span class="t" style="background:var(--gold);color:#241500">в конце эфира</span><h3>Золотое яйцо: главный бонус эфира</h3><p>Назову слово в самом конце. Внутри инструкция, как собрать ИИ-офис с шаблоном оркестратора, и ещё два бонуса, о них расскажу на эфире</p>
         <form class="codef js-codeform"><label class="inp" style="flex:1"><span>Кодовое слово</span><input class="js-code" placeholder="Кодовое слово" autocomplete="off"></label><button class="btn" type="submit">Разбить</button></form>
         <p class="codemsg js-codemsg" hidden></p></div>
     </div>
@@ -897,12 +899,12 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     openModal("Ваш сертификат",'<div class="cert"><small>Сертификат ИИшницы</small><b class="sum">3 000 ₽</b><span class="nm">'+esc(r.name)+'</span><span style="color:#bbb">на любой новый продукт Ольги Пузановой 2027 года</span><br><code>'+esc(r.code)+'</code></div><p>Назовите код менеджеру при покупке. Действует до 31.12.2027, один сертификат на одну покупку. Не суммируется с лотами Чёрной пятницы.</p><button class="btn btn-p js-copy" type="button" data-t="'+esc(r.code)+'">Скопировать код</button>')});
 
   /* ===== кодовое слово ===== */
-  $(".js-codeform").addEventListener("submit",function(e){e.preventDefault();var m=$(".js-codemsg"),v=$(".js-code").value.trim().toLowerCase().replace(/ё/g,"е");m.hidden=false;
+  $$(".js-codeform").forEach(function(fm){fm.addEventListener("submit",function(e){e.preventDefault();var box=fm.parentNode,m=box.querySelector(".js-codemsg"),v=box.querySelector(".js-code").value.trim().toLowerCase().replace(/ё/g,"е");m.hidden=false;
     if(!isReg()){m.textContent="Сначала займите место на эфире";$("#regform").scrollIntoView({behavior:"smooth"});return}
     if(now()<START){m.textContent="Слово прозвучит на эфире 26.11. Приходите в 19:00";return}
     if(v==="скилл"||v==="скил"||v==="скиллы"){m.textContent="Яйцо со скиллами разбито!";openModal("Яйцо со скиллами 🥚","<p>Внутри: как устроен скилл, шаблон SKILL.md, промпт, который собирает скилл за вас, маркетплейсы готовых скиллов и промпт для поиска ваших 10 агентов.</p><a class='btn btn-p' target='_blank' rel='noopener' href='skill-kit.html'>Открыть набор скиллов</a>");return}
     if(EFIR_WORD&&v===EFIR_WORD.toLowerCase().replace(/ё/g,"е")){m.textContent="Золотое яйцо разбито!";document.body.style.overflow="hidden";openModal(GOLD.t,"<p style='margin:0 0 10px'>"+esc(GOLD.d)+"</p><p style='margin:0 0 12px'><a class='btn btn-p' target='_blank' rel='noopener' href='office-guide.html'>Инструкция: как собрать ИИ-офис</a></p><div class='gcw js-gcw'></div>");$(".mbox").classList.add("wide");loadGCW(GOLD.w,$(".js-gcw"),"слово ПЯТНИЦА")}
-    else m.textContent="Не то слово. Оно звучит в конце эфира"});
+    else m.textContent="Не то слово. Слушайте эфир, я назову его вслух"})});
 
   /* ===== тур по офису ===== */
   (function(){
