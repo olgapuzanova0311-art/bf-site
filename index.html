@@ -246,6 +246,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .player{position:relative;aspect-ratio:16/9;width:100%;max-height:78vh;border-radius:28px;overflow:hidden;background:#000;color:#fff}
 .player .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;filter:brightness(.5)}
 .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.player:has(iframe){aspect-ratio:16/10;max-height:none}
+.pl-out{position:absolute;right:12px;bottom:12px;z-index:3;background:rgba(20,18,16,.82);color:#fff;font-size:13px;font-weight:700;padding:8px 12px;border-radius:999px;text-decoration:none}
+@media(max-width:760px){.player:has(iframe){aspect-ratio:auto;height:88vh}}
 .pl-top{position:absolute;left:16px;right:16px;top:16px;z-index:3;display:flex;justify-content:space-between;align-items:center}
 .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;background:rgba(0,0,0,.6);font:700 13px "JetBrains Mono",monospace;letter-spacing:.06em}
 .badge i{width:8px;height:8px;border-radius:50%;background:var(--live)}
@@ -747,8 +750,8 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
 (function(){
   /* ===== НАСТРОЙКИ ===== */
   var REG_URL = "https://script.google.com/macros/s/AKfycbx6J3dQWF3Jm6bQF1byjldlHpkww4nEGZGGfvJaTNGc2155iOfIkTrS2U_wC_Pff4ut/exec";
-  var STREAM_EMBED = "";   // embed-ссылка плеера на эфир
-  var STREAM_URL = "";     // обычная ссылка на трансляцию
+  var STREAM_EMBED = "https://start.bizon365.ru/room/olgapuzanova/7fc56ae89e9d";   // embed-ссылка плеера на эфир
+  var STREAM_URL = "https://start.bizon365.ru/room/olgapuzanova/7fc56ae89e9d";     // обычная ссылка на трансляцию
   var RECORD_EMBED = "";   // embed записи
   var EFIR_WORD = "";      // кодовое слово эфира
   var GOLD = { t: "Главный подарок эфира", d: "Откроется после эфира", link: "" };
@@ -933,7 +936,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     $(".js-plockb").textContent=ph==="sale"?"Запись откроется после регистрации":"Откроется после регистрации";
     $(".js-plockbtn").textContent=ph==="sale"?"Смотреть запись":"Занять место на эфире";
     var want=reg&&embed?embed:"";
-    if(want!==lastEmbed){lastEmbed=want;var old=pl.querySelector("iframe");if(old)old.remove();if(want){var f=document.createElement("iframe");f.src=want;f.allow="autoplay; fullscreen; picture-in-picture";f.allowFullscreen=true;f.title="Эфир";pl.appendChild(f)}c.hidden=!!want}
+    if(want!==lastEmbed){lastEmbed=want;var old=pl.querySelector("iframe");if(old)old.remove();if(want){var f=document.createElement("iframe");f.src=want;f.allow="autoplay; fullscreen; picture-in-picture";f.allowFullscreen=true;f.title="Эфир";pl.appendChild(f);var ol=document.createElement("a");ol.className="pl-out";ol.href=STREAM_URL||want;ol.target="_blank";ol.rel="noopener";ol.textContent="Не грузится? Открыть эфир в окне ↗";pl.appendChild(ol)}else{var oo=pl.querySelector(".pl-out");if(oo)oo.remove()}c.hidden=!!want}
   }
 
   /* ===== фазы ===== */
