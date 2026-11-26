@@ -443,6 +443,61 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.giant .ln>span{transform:none;opacity:1}.strike::after{transform:scaleX(1) rotate(-3deg)}}
+/* === блоки продаж === */
+.wcta{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.wcta .btn{min-height:60px}
+.wbig{font-size:clamp(17px,1.6vw,20px);min-height:68px!important;padding:0 34px}
+body.ph-live #watch .sec-head{margin-bottom:14px}
+body.ph-live #watch .sec-head h2{font-size:clamp(28px,3.4vw,44px)}
+body.ph-live #watch{padding-top:clamp(84px,9vh,110px)!important}
+body.ph-live .player{aspect-ratio:auto;height:calc(100vh - 330px);min-height:340px;max-height:none}
+body.ph-live #watch .sec-head .lead{display:none}
+.js-main{overflow-anchor:none}
+.li-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.li{padding:clamp(22px,2.6vw,32px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
+.li.king{background:var(--kingBg);color:var(--kingInk);border-color:transparent}
+.li.ofc{border:2px solid var(--gold);background:var(--goldBg)}
+.li-n{font:700 13px "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+.li h3{font-size:clamp(24px,2.4vw,32px);letter-spacing:-.04em;margin:4px 0 8px}
+.li-k{font:700 12px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin-top:8px}
+.li p{margin:0;font-size:16px;line-height:1.5}
+.vt-w{overflow-x:auto;border-radius:24px;border:1px solid var(--line);background:var(--card)}
+.vt{width:100%;border-collapse:collapse;min-width:640px;font-size:16px}
+.vt th{font:700 12px "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center;padding:16px 12px;border-bottom:1px solid var(--line)}
+.vt th:first-child,.vt td:first-child{text-align:left;padding-left:22px}
+.vt th:nth-child(2),.vt td:nth-child(2){text-align:left;color:var(--muted)}
+.vt td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:center;font-weight:600;vertical-align:top}
+.vt tr:last-child td{border-bottom:0}
+.vt tr.hot td{background:rgba(255,184,0,.12)}
+.vt th:nth-child(4),.vt td:nth-child(4){background:rgba(20,18,16,.05)}
+.how-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.how-c{padding:clamp(22px,2.6vw,30px);border-radius:28px;background:var(--card);border:1px solid var(--line);min-width:0}
+.how-c.mid{border:2px solid var(--gold);background:var(--goldBg)}
+.how-c.king{background:var(--kingBg);color:var(--kingInk);border-color:transparent}
+.how-t{display:inline-block;font:700 12px "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:99px;background:var(--acc);color:#141210}
+.how-c h3{font-size:clamp(24px,2.4vw,32px);letter-spacing:-.04em;margin:12px 0 10px}
+.how-c ol,.how-c ul{margin:0;padding-left:20px;display:grid;gap:6px;font-size:16px;line-height:1.45}
+.how-k{font:700 12px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin:16px 0 8px}
+.calc{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px}
+.calc-in,.calc-out{padding:clamp(22px,2.6vw,32px);border-radius:28px;background:var(--card);border:1px solid var(--line);min-width:0}
+.calc-out{background:var(--kingBg);color:var(--kingInk);border-color:transparent;display:flex;flex-direction:column;justify-content:center}
+.calc-l{font:700 12px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.6;margin:0 0 10px}
+.seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:20px}
+.seg button{min-height:56px;padding:10px;border-radius:16px;border:1.5px solid var(--line2);background:transparent;color:var(--ink);font:800 15px Manrope,sans-serif;cursor:pointer;line-height:1.25}
+.seg button small{font-weight:600;opacity:.7}
+.seg button.on{background:var(--acc);border-color:var(--acc);color:#141210}
+.calc-chk{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:600;cursor:pointer}
+.calc-chk input{width:20px;height:20px;margin-top:1px;accent-color:#FFB800;flex:none}
+.calc-sum{font-size:clamp(44px,6vw,72px);font-weight:800;letter-spacing:-.05em;line-height:1;margin:0;color:#FFC83D}
+.calc-note{font-size:18px;font-weight:700;margin:12px 0 0}
+.calc-small{font-size:14px;opacity:.7;margin:16px 0 0;line-height:1.45}
+.mgr-c{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding:clamp(24px,3vw,40px);border-radius:28px;background:var(--goldBg);border:2px solid var(--gold)}
+.mgr-c>div{flex:1 1 420px;min-width:0}
+.mgr-c h2{font-size:clamp(26px,3vw,40px)}
+.mgr-c .lead{margin-top:10px}
+.lot-btns .js-pre{font-size:14px}
+@media (max-width:900px){.li-g,.how-g,.calc{grid-template-columns:minmax(0,1fr)}body.ph-live .player{height:auto;aspect-ratio:16/10;min-height:0}.wcta .btn{flex:1 1 100%}}
+
 </style>
 </head>
 <body>
@@ -588,6 +643,11 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
       <div class="pl-c js-plc"><h3 class="js-plh">Эфир начнётся через</h3><div class="cd js-cd"><div><b>00</b><span>дней</span></div><div><b>00</b><span>часов</span></div><div><b>00</b><span>минут</span></div><div><b>00</b><span>секунд</span></div></div><a class="btn btn-p js-plbtn" target="_blank" rel="noopener" href="#" hidden>Смотреть эфир <span class="arr">→</span></a></div>
       <div class="pl-lock js-pllock"><svg width="56" height="64" viewBox="0 0 58 66" aria-hidden="true"><defs><linearGradient id="lbL4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45A"/><stop offset=".55" stop-color="#FFB800"/><stop offset="1" stop-color="#D98A00"/></linearGradient></defs><path d="M14 28V19a15 15 0 0 1 30 0v9" fill="none" stroke="#F1ECE2" stroke-width="7"/><path d="M16 26V19a13 13 0 0 1 6-11" fill="none" stroke="#fff" stroke-width="2" opacity=".7"/><rect x="4" y="27" width="50" height="37" rx="8" fill="url(#lbL4)"/><circle cx="29" cy="44" r="4.5" fill="#141210"/><rect x="27" y="45" width="4" height="9" rx="2" fill="#141210"/></svg><b class="js-plockb">Откроется после регистрации</b><a class="btn js-plockbtn" href="#regform">Занять место на эфире</a></div>
     </div>
+    <div class="wcta js-wcta" hidden>
+      <a class="btn btn-p wbig js-wbiz" href="https://start.bizon365.ru/room/olgapuzanova/7fc56ae89e9d" target="_blank" rel="noopener">▶ Смотреть эфир в Бизоне <span class="arr">↗</span></a>
+      <a class="btn btn-g" href="#lots">Лоты и цены ↓</a>
+      <a class="btn btn-g" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Вопрос менеджеру</a>
+    </div>
     <div class="only">
       <div class="oc rv"><span class="t" style="background:var(--gold);color:#241500">в середине эфира</span><h3>Золотое яйцо со скиллами</h3><p>Назову слово, когда будем говорить про скиллы. Внутри шаблон скилла, промпты, маркетплейсы готовых скиллов и аудит вашей рутины</p>
         <form class="codef js-codeform"><label class="inp" style="flex:1"><span>Кодовое слово</span><input class="js-code" placeholder="Кодовое слово" autocomplete="off"></label><button class="btn" type="submit">Разбить</button></form>
@@ -641,7 +701,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
             <li class="no"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>Год с кураторами</li>
             <li class="no"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>Доп. подарки царь лота: агенты под ключ, SYNAPSE</li>
           </ul>
-          <div class="price"><div><small>Цена</small><b class="js-p1">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 27.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир о том, как обходить блокировки Claude</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691313" data-of="oferta-zapisi.html" data-word="ЗАПИСИ" data-lot="Лот 1 · Все курсы в записи · 33 333 ₽">Зафиксировать подарки <span class="arr">→</span></button><a class="btn btn-g js-mgr" data-lot="ЗАПИСИ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a></div><p class="ofr">Оставляя заявку, вы принимаете <a href="oferta-zapisi.html" target="_blank" rel="noopener">оферту</a></p>
+          <div class="price"><div><small>Цена</small><b class="js-p1">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 27.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир о том, как обходить блокировки Claude</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691313" data-of="oferta-zapisi.html" data-word="ЗАПИСИ" data-lot="Лот 1 · Все курсы в записи · 33 333 ₽">Зафиксировать подарки <span class="arr">→</span></button><a class="btn btn-g js-mgr" data-lot="ЗАПИСИ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a><button class="btn btn-g js-pre" type="button" data-w="1691497" data-lot="Лот 1 · Все курсы в записи">Внести 5 000 ₽ и закрепить бонусы</button></div><p class="ofr">Оставляя заявку, вы принимаете <a href="oferta-zapisi.html" target="_blank" rel="noopener">оферту</a></p>
         </div>
         <div class="lot king rv">
           <span class="lbl">Царь лот · год курсов</span><h3>Весь 2027 с кураторами</h3>
@@ -654,7 +714,7 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>1+1: вдвоём за 87 999 ₽. Второе место 14 666 ₽, это около 1 200 ₽ в месяц, и второму участнику ИИ-агент под ключ</li>
             <li class="js-b24"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Бонусы первых 24 часов объявлю на эфире</li>
           </ul>
-          <div class="price"><div><small>Цена</small><b class="js-p2">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 27.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир о том, как обходить блокировки Claude</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691317" data-of="oferta-car.html" data-word="ЦАРЬ" data-lot="Царь лот · 73 333 ₽">Зафиксировать подарки <span class="arr">→</span></button><button class="btn btn-g js-fix" type="button" data-w="1691318" data-of="oferta-car-duo.html" data-word="ЦАРЬ 1+1" data-lot="Царь лот 1+1 · вдвоём за 87 999 ₽">Вдвоём 1+1 за 87 999 ₽</button><a class="btn btn-g js-mgr" data-lot="ЦАРЬ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a></div><p class="ofr">Оставляя заявку, вы принимаете <a href="oferta-car.html" target="_blank" rel="noopener">оферту</a> и <a href="oferta-car-duo.html" target="_blank" rel="noopener">оферту 1+1</a></p>
+          <div class="price"><div><small>Цена</small><b class="js-p2">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 27.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир о том, как обходить блокировки Claude</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691317" data-of="oferta-car.html" data-word="ЦАРЬ" data-lot="Царь лот · 73 333 ₽">Зафиксировать подарки <span class="arr">→</span></button><button class="btn btn-g js-fix" type="button" data-w="1691318" data-of="oferta-car-duo.html" data-word="ЦАРЬ 1+1" data-lot="Царь лот 1+1 · вдвоём за 87 999 ₽">Вдвоём 1+1 за 87 999 ₽</button><a class="btn btn-g js-mgr" data-lot="ЦАРЬ" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a><button class="btn btn-g js-pre" type="button" data-w="1691506" data-lot="Царь лот">Внести 5 000 ₽ и закрепить бонусы</button></div><p class="ofr">Оставляя заявку, вы принимаете <a href="oferta-car.html" target="_blank" rel="noopener">оферту</a> и <a href="oferta-car-duo.html" target="_blank" rel="noopener">оферту 1+1</a></p>
         </div>
         <div class="lot ofc rv">
           <span class="lbl">Лот 3 · под ключ</span><h3>ИИ-офис под ключ</h3>
@@ -665,13 +725,120 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
             <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Старт в декабре, сдаём за 3-4 недели</li>
           </ul>
           <p class="note">Пульт под ключ обычно стоит от 500 000 ₽, контент-завод от 150 000 ₽ в месяц. Берём всего несколько проектов, мест ограничено</p>
-          <div class="price"><div><small>Цена</small><b class="js-p3">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 27.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир о том, как обходить блокировки Claude</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691320" data-of="oferta-ofis.html" data-word="ОФИС" data-lot="ИИ-офис под ключ · 250 000 ₽">Зафиксировать подарки <span class="arr">→</span></button><a class="btn btn-g js-mgr" data-lot="ОФИС" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a></div><p class="ofr">Оставляя заявку, вы принимаете <a href="oferta-ofis.html" target="_blank" rel="noopener">оферту</a></p>
+          <div class="price"><div><small>Цена</small><b class="js-p3">на эфире</b></div></div><div class="fixbox"><b>🔒 Заявка фиксирует за вами</b><ul><li>подарки, которые сгорают 27.11 в 19:00</li><li>закрытую встречу 27.11 в 18:00: собираем контент-завод вживую и смотрим ваши проекты</li><li>закрытый эфир о том, как обходить блокировки Claude</li></ul></div><div class="lot-btns"><button class="btn btn-p js-fix" type="button" data-w="1691320" data-of="oferta-ofis.html" data-word="ОФИС" data-lot="ИИ-офис под ключ · 250 000 ₽">Зафиксировать подарки <span class="arr">→</span></button><a class="btn btn-g js-mgr" data-lot="ОФИС" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру</a><button class="btn btn-g js-pre" type="button" data-w="1691507" data-lot="ИИ-офис под ключ">Внести 5 000 ₽ и закрепить бонусы</button></div><p class="ofr">Оставляя заявку, вы принимаете <a href="oferta-ofis.html" target="_blank" rel="noopener">оферту</a></p>
         </div>
       </div>
       <div class="veil js-lotsveil"><div class="vcard"><svg width="56" height="64" viewBox="0 0 58 66" aria-hidden="true"><defs><linearGradient id="lbL5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD45A"/><stop offset=".55" stop-color="#FFB800"/><stop offset="1" stop-color="#D98A00"/></linearGradient></defs><path d="M14 28V19a15 15 0 0 1 30 0v9" fill="none" stroke="#2A2622" stroke-width="7"/><path d="M16 26V19a13 13 0 0 1 6-11" fill="none" stroke="#5a524a" stroke-width="2" opacity=".7"/><rect x="4" y="27" width="50" height="37" rx="8" fill="url(#lbL5)"/><circle cx="29" cy="44" r="4.5" fill="#141210"/><rect x="27" y="45" width="4" height="9" rx="2" fill="#141210"/></svg><b class="js-lvb">Лоты откроются 26.11 в 18:00</b><p class="js-lvp">Для зарегистрированных. Остальным в 19:00</p></div></div>
     </div>
     <div class="lots-hint rv"><b>Какой лот выбрать?</b>Хотите сами и в своём темпе: лот 1. Хотите, чтобы вас довели до результата с кураторами: царь лот. Нет времени собирать, нужен готовый офис для бизнеса: лот 3. Сомневаетесь: менеджер подскажет за пару сообщений в <a href="https://t.me/puzanovateam" target="_blank" rel="noopener">@puzanovateam</a></div>
     <div class="dl js-dl" hidden><b>Продажи закрываются 30.11 в 23:59</b><div class="cd js-cd2"><div><b>00</b><span>дн</span></div><div><b>00</b><span>ч</span></div><div><b>00</b><span>мин</span></div><div><b>00</b><span>сек</span></div></div></div>
+  </div>
+</section>
+
+<section class="sec gut" id="lotinfo" hidden>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="kick">Какой лот ваш</span><h2>Три лота <span class="hl">под три ситуации</span></h2><p class="lead">Найдите себя в одной из колонок. Если сомневаетесь, менеджер подскажет за пару сообщений</p></div>
+    <div class="li-g">
+      <div class="li rv"><span class="li-n">Лот 1 · 33 333 ₽</span><h3>Все курсы в записи</h3>
+        <p class="li-k">Для кого</p><p>Любите разбираться сами, в своём темпе: ночью, в дороге, по выходным</p>
+        <p class="li-k">Что внутри</p><p>Архив школы больше 150 часов: курс по нейросетям, вайбкодинг, лагерь по Claude, спринты по фотоконтенту. 10 серий Чёрной ИИшницы навсегда, ключи от всех 10 агентов и 3 живых эфира со мной</p>
+        <p class="li-k">Зачем</p><p>Перестаёте искать уроки по ютубу и собираете первого агента за вечер по готовым инструкциям</p></div>
+      <div class="li king rv"><span class="li-n">👑 Царь лот · 73 333 ₽</span><h3>Весь 2027 с кураторами</h3>
+        <p class="li-k">Для кого</p><p>Нужен результат в бизнесе и человек рядом, который доведёт до него</p>
+        <p class="li-k">Что внутри</p><p>Всё из лота 1, все потоки 2027 года с кураторами, 3 ИИ-агента под ключ, 3 месяца клуба SYNAPSE AI, эфир про свой VPN и Claude. Вдвоём 87 999 ₽</p>
+        <p class="li-k">Зачем</p><p>Агенты работают в вашем бизнесе уже в первые недели, а весь год вас ведут кураторы</p></div>
+      <div class="li ofc rv"><span class="li-n">Лот 3 · 250 000 ₽</span><h3>ИИ-офис под ключ</h3>
+        <p class="li-k">Для кого</p><p>Бизнес горит, рук не хватает, учиться некогда совсем</p>
+        <p class="li-k">Что внутри</p><p>Моя команда собирает для вас одно на выбор: контент-завод, 5 ИИ-агентов под ваши задачи или пульт управления бизнесом. Плюс всё из царь лота для вас или сотрудника</p>
+        <p class="li-k">Зачем</p><p>Через 3-4 недели готовый офис работает в вашем Telegram, вы только ставите задачи</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec gut" id="value" hidden>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="kick">Бонусы и ценность</span><h2>Что входит и <span class="hl">сколько это стоит</span></h2><p class="lead">🔥 Подарки первых суток сгорают 27.11 в 19:00. Заявка или предоплата закрепляет их за вами</p></div>
+    <div class="vt-w rv"><table class="vt">
+      <thead><tr><th>Что входит</th><th>Ценность</th><th>Записи</th><th>👑 Царь</th><th>Офис</th></tr></thead>
+      <tbody>
+        <tr><td>Архив курсов, больше 150 часов</td><td>≈ 500 000 ₽</td><td>✅</td><td>✅</td><td>✅</td></tr>
+        <tr><td>10 серий Чёрной ИИшницы навсегда и ключи от 10 агентов</td><td>в канале живут сутки</td><td>✅</td><td>✅</td><td>✅</td></tr>
+        <tr><td>3 живых эфира со мной: декабрь, январь, февраль</td><td>живые ответы</td><td>✅</td><td>✅</td><td>✅</td></tr>
+        <tr><td>Все потоки 2027 года с кураторами</td><td>весь год</td><td>❌</td><td>✅</td><td>✅</td></tr>
+        <tr><td>3 месяца клуба SYNAPSE AI</td><td>среда и биржа заказов</td><td>❌</td><td>✅</td><td>✅</td></tr>
+        <tr><td>Эфир: свой VPN и верификация в Claude</td><td>чтобы Claude не блокировал</td><td>❌</td><td>✅</td><td>✅</td></tr>
+        <tr class="hot"><td>🔥 3 ИИ-агента под ключ</td><td>150 000 ₽</td><td>❌</td><td>✅</td><td>✅</td></tr>
+        <tr class="hot"><td>🔥 Стратегическая сессия со мной</td><td>личный план на 2027</td><td>❌</td><td>✅</td><td>✅</td></tr>
+        <tr class="hot"><td>🔥 Спринт 5 дней по соцсетям</td><td>рост охватов</td><td>❌</td><td>✅</td><td>✅</td></tr>
+        <tr><td>1+1: второе место за 14 666 ₽ и второму агент под ключ</td><td>вдвоём 87 999 ₽</td><td>❌</td><td>✅</td><td>❌</td></tr>
+        <tr><td>Команда собирает офис под ключ</td><td>пульт от 500 000 ₽, контент-завод от 150 000 ₽/мес</td><td>❌</td><td>❌</td><td>✅</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="sec gut" id="how" hidden>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="kick">Как оформить</span><h2>Заявка, предоплата <span class="hl">или покупка</span></h2><p class="lead">Все три пути начинаются с кнопки под лотом. Выберите свой</p></div>
+    <div class="how-g">
+      <div class="how-c rv"><span class="how-t">Бесплатно</span><h3>Заявка</h3>
+        <ol><li>Под лотом «Зафиксировать подарки»</li><li>Почта, имя, телефон, 30 секунд</li><li>Не оплачиваете, менеджер свяжется</li></ol>
+        <p class="how-k">Что даёт</p><ul><li>подарки первых суток закреплены за вами</li><li>закрытая встреча со мной 27.11 в 18:00</li><li>закрытый эфир про блокировки Claude</li></ul></div>
+      <div class="how-c mid rv"><span class="how-t">5 000 ₽</span><h3>Предоплата</h3>
+        <ol><li>Под лотом «Внести 5 000 ₽ и закрепить бонусы»</li><li>Почта, имя, телефон и оплата 5 000 ₽</li><li>Остаток оплачиваете до 5 декабря</li></ol>
+        <p class="how-k">Что даёт</p><ul><li>все бонусы лота за вами до 5 декабря</li><li>место в лоте за вами</li><li>время спокойно собрать сумму</li></ul></div>
+      <div class="how-c king rv"><span class="how-t">Полная оплата</span><h3>Покупка</h3>
+        <ol><li>Под лотом «Зафиксировать подарки»</li><li>Заполните форму и нажмите «Оплатить сейчас»</li><li>Картой, в рассрочку или долями</li></ol>
+        <p class="how-k">Что даёт</p><ul><li>все бонусы и подарки лота</li><li>доступ к записям сразу после оплаты</li><li>учитесь у меня сейчас? промокод УЧЕБА: минус 5 000 ₽</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec gut" id="calc" hidden>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="kick">Калькулятор</span><h2>Сколько в месяц, <span class="hl">если в рассрочку</span></h2></div>
+    <div class="calc rv">
+      <div class="calc-in">
+        <p class="calc-l">Лот</p>
+        <div class="seg js-clot"><button type="button" data-p="33333">Записи<br><small>33 333 ₽</small></button><button type="button" data-p="73333" class="on">👑 Царь<br><small>73 333 ₽</small></button><button type="button" data-p="87999">Царь 1+1<br><small>87 999 ₽</small></button><button type="button" data-p="250000">Офис<br><small>250 000 ₽</small></button></div>
+        <p class="calc-l">Срок</p>
+        <div class="seg js-cmon"><button type="button" data-m="3">3 мес</button><button type="button" data-m="6">6 мес</button><button type="button" data-m="12" class="on">12 мес</button></div>
+        <label class="calc-chk"><input type="checkbox" class="js-cstud"> Я учусь у Ольги сейчас: промокод УЧЕБА, минус 5 000 ₽</label>
+      </div>
+      <div class="calc-out">
+        <p class="calc-l">Платёж в месяц</p>
+        <p class="calc-sum js-csum">6 111 ₽</p>
+        <p class="calc-note js-cnote">Это меньше 205 ₽ в день</p>
+        <p class="calc-small">Расчёт примерный: точный платёж и одобрение покажет банк на странице оплаты. Можно и без банка, до 3 платежей, договоритесь с менеджером</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec gut" id="lfaq" hidden>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="kick">Вопросы по лотам</span><h2>Сомневаетесь? <span class="hl">Отвечаю честно</span></h2></div>
+    <div class="faq">
+      <details class="rv"><summary>Чем лоты отличаются между собой?<i>+</i></summary><p>Лот 1 это архив: учитесь сами и в своём темпе. Царь лот это архив плюс весь 2027 год с кураторами, агенты под ключ и клуб. Лот 3 это всё из царь лота плюс моя команда собирает офис за вас. Таблица выше показывает, что где есть.</p></details>
+      <details class="rv"><summary>Я не технарь. У меня получится?<i>+</i></summary><p>Да. Агентов собирают обычными словами, код пишет Claude. Чтобы пожарить яичницу, не нужно знать химию белка. А в царь лоте первого агента вы собираете вместе с куратором.</p></details>
+      <details class="rv"><summary>У меня нет времени учиться<i>+</i></summary><p>Агенты как раз возвращают время: первый собирается за вечер и потом каждую неделю забирает рутину. Если некогда совсем, лот 3: офис соберёт моя команда.</p></details>
+      <details class="rv"><summary>Это дорого<i>+</i></summary><p>Царь лот в рассрочку на 12 месяцев выходит около 6 100 ₽ в месяц, это около 200 ₽ в день. Живая команда на те же задачи стоит около 600 000 ₽ в месяц. Посчитайте в калькуляторе выше.</p></details>
+      <details class="rv"><summary>Куплю и не дойду до результата<i>+</i></summary><p>Поэтому в царь лоте кураторы на весь год и 3 агента под ключ, которые работают с первой недели. Вы не останетесь одни с папкой уроков.</p></details>
+      <details class="rv"><summary>У меня не маркетплейсы<i>+</i></summary><p>Агенты для контента, продаж, задач и отчётов нужны любому бизнесу: экспертам, онлайн-школам, услугам, тем, кто запускается с нуля.</p></details>
+      <details class="rv"><summary>А если Claude заблокируют?<i>+</i></summary><p>Решается. В царь лоте есть отдельный эфир про свой VPN и верификацию в Claude, а всем, кто оставил заявку, я провожу закрытый эфир про блокировки.</p></details>
+      <details class="rv"><summary>Не успеваю оплатить до 30 ноября<i>+</i></summary><p>Внесите предоплату 5 000 ₽ кнопкой под лотом: бонусы останутся за вами до 5 декабря, а остаток оплатите до этой даты. Или оставьте бесплатную заявку, менеджер свяжется.</p></details>
+      <details class="rv"><summary>Сколько длится доступ к записям?<i>+</i></summary><p>Доступ оплачивается на 2 года, дальше записи остаются у вас в подарок, пока существует проект. Кураторы в царь лоте ведут весь 2027 год.</p></details>
+      <details class="rv"><summary>Можно вернуть деньги?<i>+</i></summary><p>За лот 1 деньги не возвращаются после открытия доступа к записям. Условия по остальным лотам описаны в оферте под каждым лотом.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec gut" id="mgr" hidden>
+  <div class="wrap">
+    <div class="mgr-c rv">
+      <div><h2>Что-то не получается или есть вопрос?</h2><p class="lead">Напишите менеджеру в Telegram слово лота: ЗАПИСИ, ЦАРЬ, ЦАРЬ 1+1 или ОФИС. Поможем с оплатой, рассрочкой и предоплатой</p></div>
+      <a class="btn btn-p wbig" href="https://t.me/puzanovateam" target="_blank" rel="noopener">Написать менеджеру @puzanovateam <span class="arr">↗</span></a>
+    </div>
   </div>
 </section>
 
@@ -932,28 +1099,28 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
   var lastEmbed=null;
   function renderPlayer(ph){
     var reg=isReg(),pl=$(".js-player"),c=$(".js-plc"),btn=$(".js-plbtn"),embed="";
-    $(".js-pllock").hidden=reg||ph==="closed";
+    $(".js-pllock").hidden=reg||ph==="closed"||ph==="live"||ph==="sale";
     if(ph==="pre"||ph==="early"){$(".js-plbadge").innerHTML="<i></i>26.11 · 19:00";$(".js-plh").textContent="Эфир начнётся через";$(".js-cd",c).hidden=false;btn.hidden=true}
     else if(ph==="live"){$(".js-plbadge").innerHTML="<i></i>В эфире";$(".js-plh").textContent="";$(".js-cd",c).hidden=true;embed=STREAM_EMBED;btn.hidden=!!embed||!reg;btn.href=STREAM_URL||CHANNEL;btn.innerHTML='Смотреть эфир <span class="arr">→</span>'}
     else{$(".js-plbadge").innerHTML=ph==="closed"?"Эфир прошёл":"Запись";$(".js-plh").textContent=ph==="closed"?"Эфир прошёл. Спасибо, что были с нами":"Запись эфира";$(".js-cd",c).hidden=true;embed=ph==="closed"?"":RECORD_EMBED;btn.hidden=!!embed||!reg||ph==="closed"||!STREAM_URL;btn.href=STREAM_URL;btn.innerHTML='Смотреть запись <span class="arr">→</span>'}
     $(".js-plockb").textContent=ph==="sale"?"Запись откроется после регистрации":"Откроется после регистрации";
     $(".js-plockbtn").textContent=ph==="sale"?"Смотреть запись":"Занять место на эфире";
-    var want=reg&&embed?embed:"";
+    var want=embed?embed:"";
     if(want!==lastEmbed){lastEmbed=want;var old=pl.querySelector("iframe");if(old)old.remove();if(want){var f=document.createElement("iframe");f.src=want;f.allow="autoplay; fullscreen; picture-in-picture";f.allowFullscreen=true;f.title="Эфир";pl.appendChild(f);var ol=document.createElement("a");ol.className="pl-out";ol.href=STREAM_URL||want;ol.target="_blank";ol.rel="noopener";ol.textContent="Не грузится? Открыть эфир в окне ↗";pl.appendChild(ol)}else{var oo=pl.querySelector(".pl-out");if(oo)oo.remove()}c.hidden=!!want}
   }
 
   /* ===== фазы ===== */
   var main=$(".js-main"),lastPh="";
   function order(ph){
-    var S={};["reg","why","gifts","efir","watch","office","lots","faq","final"].forEach(function(id){S[id]=$("#"+id)});var mq=$(".mq");
-    var seq=ph==="live"?[S.watch,S.efir,S.reg,mq,S.why,S.gifts,S.office,S.lots,S.faq,S.final]:(ph==="sale"||ph==="closed")?[S.lots,S.watch,S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]:[S.reg,mq,S.why,S.gifts,S.efir,S.watch,S.office,S.lots,S.faq,S.final];
-    seq.forEach(function(n){main.appendChild(n)});
+    var S={};["reg","why","gifts","efir","watch","office","lots","faq","final","lotinfo","value","how","calc","lfaq","mgr"].forEach(function(id){S[id]=$("#"+id)});var mq=$(".mq");var SALE=[S.lotinfo,S.value,S.how,S.calc,S.lfaq,S.mgr];
+    var seq=ph==="live"?[S.watch,S.lots].concat(SALE,[S.efir,S.reg,mq,S.why,S.gifts,S.office,S.faq,S.final]):(ph==="sale"||ph==="closed")?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):(ph==="early"&&isReg())?[S.watch,S.lots].concat(SALE,[S.reg,mq,S.why,S.gifts,S.efir,S.office,S.faq,S.final]):[S.reg,mq,S.why,S.gifts,S.efir,S.watch,S.office,S.lots].concat(SALE,[S.faq,S.final]);
+    seq.forEach(function(n){main.appendChild(n)});if(!location.hash||location.hash==="#")window.scrollTo(0,0);
     S.watch.style.paddingTop=(ph==="live"||ph==="sale"||ph==="closed")?"":"0";
-    S.lots.style.paddingTop=(ph==="sale"||ph==="closed")?"":"0";
+    S.lots.style.paddingTop="";document.body.classList.toggle("ph-live",ph==="live"||ph==="sale");
   }
   function render(force){
     var ph=phase(),reg=isReg(),pre=ph==="pre"||ph==="early";
-    if(ph!==lastPh){order(ph);lastPh=ph}
+    var phk=ph+(isReg()?"r":"");if(phk!==lastPh){order(ph);lastPh=phk}
     $("#reg").hidden=ph==="closed"||(!pre&&reg);
     $$("#reg .js-cd").forEach(function(x){x.hidden=!pre});
     if(!pre){$(".js-lead").textContent=ph==="live"?"Эфир уже идёт. Зарегистрируйтесь за 30 секунд, и окно эфира откроется":"Зарегистрируйтесь за 30 секунд, чтобы смотреть запись и забрать подарки";$(".js-pill").innerHTML=ph==="live"?"<i></i>Мы в эфире прямо сейчас":"<i></i>Чёрная пятница до 30.11"}
@@ -974,15 +1141,23 @@ footer .cols a,footer .cols span{display:inline-flex;align-items:center;min-heig
     if(open){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">открыта</span>';$(".js-lotsp").textContent=ph==="early"?"Вы видите цены на час раньше всех. Остальные увидят их в 19:00":"До 30 ноября 23:59. Нажмите «Зафиксировать подарки», оставьте имя, телефон и почту, и подарки останутся за вами"}
     if(ph==="early"&&!reg){$(".js-lvb").textContent="Цены уже открыты";$(".js-lvp").textContent="Только для зарегистрированных. Остальные увидят их в 19:00"}
     if(ph==="closed"){$(".js-lotsh").innerHTML='Чёрная пятница <span class="hl">закрыта</span>';$(".js-lotsp").textContent="Спасибо всем, кто был с нами. Вопросы: @puzanovateam"}
-    $(".js-b24").hidden=!pre;
+    $(".js-b24").hidden=!pre;["#lotinfo","#value","#how","#calc","#lfaq","#mgr"].forEach(function(id){$(id).hidden=!open||ph==="closed"});$(".js-wcta").hidden=!(ph==="live"||ph==="sale");
     $$(".lot .price").forEach(function(x){x.hidden=ph==="closed"});$$(".lot").forEach(function(x){x.classList.toggle("lockd",!open||ph==="closed")});
     ["#gifts","#efir","#watch","#office","#why"].forEach(function(id){$(id).hidden=ph==="closed"});$(".mq").hidden=ph==="closed";
     var p1=$(".js-p1");p1.textContent=open?(PRICE1||"Цену скажет менеджер"):"на эфире";p1.classList.toggle("sm",open&&!PRICE1);$(".js-p2").textContent=open?PRICE2:"на эфире";$(".js-p3").textContent=open?PRICE3:"на эфире";
     renderEggs(force);renderPlayer(ph);
   }
   function loadGCW(w,c,what){var sc=document.createElement("script");sc.id=GCW[w];sc.src="https://olgapuzanova.getcourse.ru/pl/lite/widget/script?id="+w;sc.onload=function(){try{var f=window["startWidget"+GCW[w]];if(typeof f==="function")f();else document.dispatchEvent(new Event("StartWidget"+GCW[w]))}catch(x){}};sc.onerror=function(){c.innerHTML='<p>Форма не загрузилась. Напишите менеджеру <a href="'+MANAGER+'" target="_blank" rel="noopener">@puzanovateam</a> '+what+', и он всё зафиксирует.</p>'};c.appendChild(sc)}
-  var GCW={"1691404":"5446513e6189af0a6d0fabd445468fa8e0da1bea","1691313":"7f084d39efc51990466c0e9583000f7d28181dd7","1691317":"a98da54ffd6d935fbb19f82d2afa13802125792d","1691318":"30c88af6f742b075eaf23ce29e528edc104999e7","1691320":"a68a75c337fe20a744fd7ecebed539ee2e8e4f20"};
+  var GCW={"1691497":"35aeddc2b3782afd2a4ef9de1a9ea8103e7eb9fa","1691506":"05a94cd83ea775c1bd205a79e00553e5370af07a","1691507":"333432bb44bad9f7a418bc673ad4cb81b4282c93","1691404":"5446513e6189af0a6d0fabd445468fa8e0da1bea","1691313":"7f084d39efc51990466c0e9583000f7d28181dd7","1691317":"a98da54ffd6d935fbb19f82d2afa13802125792d","1691318":"30c88af6f742b075eaf23ce29e528edc104999e7","1691320":"a68a75c337fe20a744fd7ecebed539ee2e8e4f20"};
   $$(".js-fix").forEach(function(b){b.addEventListener("click",function(){var w=b.getAttribute("data-w"),wd=b.getAttribute("data-word"),of=b.getAttribute("data-of");document.body.style.overflow="hidden";openModal(b.getAttribute("data-lot"),'<p style="margin:0 0 10px">Оставьте имя, телефон и почту: подарки, закрытая встреча 27.11 в 18:00 и эфир по блокировкам Claude закрепятся за вами. Дальше можно сразу оплатить или дождаться менеджера.</p><div class="gcw js-gcw"></div><p style="font-size:14px;margin:10px 0 0">Есть вопрос? <a href="'+MANAGER+'" target="_blank" rel="noopener">Написать менеджеру @puzanovateam</a> · <a href="'+of+'" target="_blank" rel="noopener">Оферта</a></p>');$(".mbox").classList.add("wide");loadGCW(w,$(".js-gcw"),"слово лота");})});
+  /* ===== предоплата ===== */
+  $$(".js-pre").forEach(function(b){b.addEventListener("click",function(){var w=b.getAttribute("data-w");document.body.style.overflow="hidden";openModal("Предоплата 5 000 ₽ · "+b.getAttribute("data-lot"),'<p style="margin:0 0 10px">Внесите 5 000 ₽ сейчас, и все бонусы лота останутся за вами до 5 декабря, включая подарки первых суток. Остаток оплачиваете до 5 декабря, менеджер напишет вам после оплаты.</p><div class="gcw js-gcw"></div><p style="font-size:14px;margin:10px 0 0">Вопрос? <a href="'+MANAGER+'" target="_blank" rel="noopener">Написать менеджеру @puzanovateam</a></p>');$(".mbox").classList.add("wide");loadGCW(w,$(".js-gcw"),"слово ПРЕДОПЛАТА и название лота")})});
+  /* ===== калькулятор ===== */
+  (function(){var lp=73333,mo=12,st=false;function f(n){return Math.round(n).toLocaleString("ru-RU").replace(/ /g," ")+" ₽"}
+    function upd(){var p=Math.max(0,lp-(st?5000:0)),m=p/mo;$(".js-csum").textContent=f(m);$(".js-cnote").textContent="Это около "+f(p/(mo*30.4))+" в день · всего "+f(p)}
+    $$(".js-clot button").forEach(function(x){x.addEventListener("click",function(){$$(".js-clot button").forEach(function(y){y.classList.remove("on")});x.classList.add("on");lp=+x.getAttribute("data-p");upd()})});
+    $$(".js-cmon button").forEach(function(x){x.addEventListener("click",function(){$$(".js-cmon button").forEach(function(y){y.classList.remove("on")});x.classList.add("on");mo=+x.getAttribute("data-m");upd()})});
+    $(".js-cstud").addEventListener("change",function(){st=this.checked;upd()});upd()})();
   $$(".js-mgr").forEach(function(b){b.addEventListener("click",function(){toast("Напишите менеджеру слово «"+b.getAttribute("data-lot")+"»")})});
 
   /* ===== тик ===== */
