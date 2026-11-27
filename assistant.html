@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ИИ-ассистент по задачам</title>
+<meta name="description" content="Подарок Чёрной ИИшницы: ассистент, который собирает задачи из чатов и календаря и каждое утро присылает план дня в Telegram">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+<style>
+:root {
+  --bg: #050507;
+  --card: #10121B;
+  --card-2: #0A0B12;
+  --line: rgba(255,255,255,.08);
+  --line-2: rgba(255,255,255,.16);
+  --fg: #F5F6FA;
+  --muted: #8E93A6;
+  --blue: #5B7CFF;
+  --blue-soft: rgba(91,124,255,.14);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { overflow-x: clip; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: var(--blue); }
+.wrap { max-width: 920px; margin: 0 auto; padding: 20px max(16px, env(safe-area-inset-left, 0px)) 40px max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 640px) { .wrap { padding-left: 28px; padding-right: 28px; } }
+.back { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; font-weight: 600; font-size: 15px; padding: 10px 0; }
+.back:hover { color: var(--fg); }
+h1, h2 { text-transform: uppercase; font-weight: 800; letter-spacing: -0.05em; margin: 0; overflow-wrap: break-word; hyphens: auto; }
+h1 { font-size: clamp(36px, 9vw, 72px); line-height: .95; margin-top: 28px; }
+h2 { font-size: clamp(24px, 5.4vw, 36px); line-height: 1.02; }
+h3 { font-size: 17px; font-weight: 800; margin: 0 0 6px; }
+p { margin: 0 0 12px; }
+.lead { color: var(--muted); font-size: 18px; margin-top: 18px; max-width: 640px; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 8px; padding: 0; list-style: none; }
+.toc a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border: 1px solid var(--line-2); border-radius: 999px; color: var(--fg); text-decoration: none; font-weight: 600; font-size: 14px; }
+.toc a:hover { border-color: var(--blue); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; margin-top: 18px; }
+@media (min-width: 640px) { .card { padding: 32px; } }
+.num { display: inline-block; color: var(--blue); font-weight: 800; font-size: 14px; letter-spacing: .08em; margin-bottom: 10px; }
+.muted { color: var(--muted); }
+ol.steps { padding-left: 22px; margin: 14px 0 18px; }
+ol.steps li { margin-bottom: 6px; }
+.prompt-box { margin-top: 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--card-2); overflow: hidden; }
+.prompt-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px 10px 16px; border-bottom: 1px solid var(--line); }
+.prompt-head span { color: var(--muted); font-size: 13px; font-weight: 600; }
+pre.prompt { margin: 0; padding: 16px; white-space: pre-wrap; overflow-wrap: anywhere; font: 14px/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: #DCE0EE; max-height: 420px; overflow-y: auto; }
+.btn-copy { flex: none; appearance: none; border: 0; background: var(--blue); color: #fff; font: 600 14px/1 "Manrope", sans-serif; padding: 10px 16px; border-radius: 999px; cursor: pointer; min-height: 44px; }
+.btn-copy:hover { filter: brightness(1.1); }
+.btn-copy:focus-visible, .check input:focus-visible + .box, .toc a:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.btn-copy.done { background: #2E9E6B; }
+.btn-copy.sm { padding: 8px 12px; min-height: 44px; font-size: 13px; background: var(--blue-soft); color: var(--fg); border: 1px solid rgba(91,124,255,.4); }
+.src { display: inline-flex; margin-top: 14px; font-weight: 600; text-decoration: none; }
+.src:hover { text-decoration: underline; }
+.progress { display: flex; align-items: center; gap: 12px; margin: 14px 0 6px; }
+.bar { flex: 1; height: 8px; background: rgba(255,255,255,.06); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--blue); border-radius: 99px; transition: width .25s ease; }
+.progress b { font-size: 14px; min-width: 52px; text-align: right; }
+ul.checklist { list-style: none; padding: 0; margin: 12px 0 0; }
+ul.checklist li { display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-top: 1px solid var(--line); }
+.check { display: flex; gap: 12px; align-items: flex-start; flex: 1; min-width: 0; cursor: pointer; }
+.check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.box { flex: none; width: 24px; height: 24px; border-radius: 7px; border: 1.5px solid var(--line-2); margin-top: 1px; display: grid; place-items: center; transition: background .15s, border-color .15s; }
+.check input:checked + .box { background: var(--blue); border-color: var(--blue); }
+.check input:checked + .box::after { content: ""; width: 7px; height: 12px; border: solid #fff; border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translate(-1px, -1px); }
+.check .t { min-width: 0; }
+.check .t strong { display: block; font-weight: 800; }
+.check .t span { color: var(--muted); font-size: 15px; }
+.check input:checked ~ .t strong { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(255,255,255,.3); }
+.row-end { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; margin-top: 18px; }
+.btn-ghost { appearance: none; background: none; border: 1px solid var(--line-2); color: var(--muted); font: 600 14px/1 "Manrope", sans-serif; padding: 10px 14px; border-radius: 999px; cursor: pointer; min-height: 44px; }
+.btn-ghost:hover { color: var(--fg); }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: #1B1E2B; border: 1px solid var(--line-2); padding: 10px 16px; border-radius: 12px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s; max-width: calc(100% - 32px); }
+.toast.on { opacity: 1; }
+footer a { display: inline-block; padding: 12px 0; }
+footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<style>
+.opts{display:grid;gap:10px;margin:12px 0 4px}
+@media(min-width:640px){.opts.c3{grid-template-columns:repeat(3,1fr)}}
+.opt{position:relative;display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.opt span{display:block;height:100%;border:1px solid var(--line-2);border-radius:14px;padding:12px 14px;font-weight:600;font-size:15px;line-height:1.35;transition:border-color .15s,background .15s}
+.opt span small{display:block;color:var(--muted);font-weight:400;font-size:13px;margin-top:3px}
+.opt input:checked+span{border-color:var(--blue);background:var(--blue-soft)}
+.opt input:focus-visible+span{outline:2px solid var(--fg);outline-offset:2px}
+.q{font-weight:800;margin:22px 0 2px}
+.field{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.field label{font-weight:600;color:var(--muted);font-size:15px}
+.field input{font:600 16px "Manrope",sans-serif;background:var(--card-2);color:var(--fg);border:1px solid var(--line-2);border-radius:12px;padding:10px 12px;min-height:44px}
+[hidden]{display:none!important}
+.demo{margin-top:18px;border:1px solid var(--line);border-radius:18px;background:var(--card-2);padding:16px;max-width:420px}
+.msg{background:#1B2033;border-radius:14px 14px 14px 4px;padding:12px 14px;font-size:14.5px;line-height:1.5;white-space:pre-line}
+.msg-h{font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./">← На страницу эфира</a>
+  <h1>ИИ-ассистент по задачам</h1>
+  <p class="lead">Задачи прилетают в десяти чатах, встречи живут в календаре, а держать всё это приходится в голове. Ассистент собирает задачи в одно место и каждое утро присылает в Telegram план дня. Ниже два варианта: быстрый на сегодня и свой бот, который работает сам.</p>
+  <ul class="toc">
+    <li><a href="#quick">Быстрый план за 2 минуты</a></li>
+    <li><a href="#bot">Свой бот-ассистент</a></li>
+  </ul>
+
+  <section class="card" id="quick">
+    <span class="num">01 · БЕЗ НАСТРОЕК</span>
+    <h2>План дня за 2 минуты</h2>
+    <p class="lead" style="margin-top:12px">Подходит, чтобы попробовать прямо сейчас. Откройте Claude или ChatGPT, вставьте промпт и закиньте всё, что висит: скрины чатов, пересланные сообщения, голосовую заметку, список встреч.</p>
+    <div class="prompt-box">
+      <div class="prompt-head"><span>Промпт</span><button class="btn-copy" type="button" data-copy="p-quick">Копировать</button></div>
+<pre class="prompt" id="p-quick">Ты мой личный ассистент по задачам. Ниже я скидываю всё, что у меня висит: скриншоты и пересланные сообщения из чатов, заметки, свои мысли, встречи на сегодня.
+
+1. Вытащи из этого все задачи. У каждой: что сделать одной строкой, от кого пришла, срок (если есть) и сколько примерно займёт времени.
+2. Отдельно выпиши, где я кому-то что-то обещал(а) и ещё не сделал(а).
+3. Собери план на сегодня: сначала встречи по времени, потом 3 главные задачи дня, потом всё остальное. Горящие отметь 🔥.
+4. Что можно делегировать или выкинуть, скажи честно.
+5. Если по какой-то задаче непонятен срок или суть, задай мне вопрос, ничего не придумывай.
+
+Пиши коротко, как сообщение в Telegram, без лишних слов.
+
+Вот что у меня сегодня:
+</pre>
+    </div>
+    <div class="demo" aria-label="Пример утреннего плана">
+      <div class="msg-h">Так выглядит план</div>
+      <div class="msg">☀️ План на четверг
+📅 11:00 созвон с поставщиком
+📅 16:00 встреча с командой
+
+Главное на сегодня:
+1. 🔥 Отправить КП Ирине, обещала вчера
+2. Проверить отчёт по рекламе
+3. Ответить по поставке на склад
+
+Можно делегировать: выгрузку остатков</div>
+    </div>
+  </section>
+
+  <section class="card" id="bot">
+    <span class="num">02 · СОБИРАЕТ CLAUDE CODE</span>
+    <h2>Свой бот-ассистент в Telegram</h2>
+    <p class="lead" style="margin-top:12px">Вы пересылаете боту сообщения или надиктовываете голосом, он сам раскладывает задачи, утром присылает план, а днём напоминает. Выберите, как вам удобно, и скопируйте готовое задание для Claude Code. Если вы собрали ИИ-офис по инструкции с эфира, бота можно поселить на тот же сервер.</p>
+
+    <p class="q">Во сколько присылать утренний план?</p>
+    <div class="field"><label for="t">Время</label><input id="t" type="time" value="09:00"></div>
+
+    <p class="q">Где ваши встречи?</p>
+    <div class="opts c3" role="radiogroup" aria-label="Календарь">
+      <label class="opt"><input type="radio" name="cal" value="google" checked><span>Google Календарь<small>через секретную ссылку iCal</small></span></label>
+      <label class="opt"><input type="radio" name="cal" value="yandex"><span>Яндекс Календарь<small>через ссылку на экспорт</small></span></label>
+      <label class="opt"><input type="radio" name="cal" value="none"><span>Без календаря<small>только задачи</small></span></label>
+    </div>
+
+    <p class="q">Как часто напоминать?</p>
+    <div class="opts c3" role="radiogroup" aria-label="Напоминания">
+      <label class="opt"><input type="radio" name="rem" value="soft" checked><span>Спокойно<small>утренний план и вечерний итог</small></span></label>
+      <label class="opt"><input type="radio" name="rem" value="mid"><span>Как секретарь<small>плюс за 30 минут до встречи и в 15:00</small></span></label>
+      <label class="opt"><input type="radio" name="rem" value="hard"><span>Пинайте меня<small>каждый час по горящим задачам</small></span></label>
+    </div>
+
+    <p class="q">Голосовые?</p>
+    <div class="opts c3" role="radiogroup" aria-label="Голос">
+      <label class="opt"><input type="radio" name="voice" value="yes" checked><span>Да, буду надиктовывать</span></label>
+      <label class="opt"><input type="radio" name="voice" value="no"><span>Только текст</span></label>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-head"><span>Задание для Claude Code</span><button class="btn-copy" type="button" data-copy="p-bot">Копировать</button></div>
+<pre class="prompt" id="p-bot"></pre>
+    </div>
+
+    <h3 style="margin-top:22px">Что подготовить заранее</h3>
+    <ol class="steps">
+      <li>Создайте бота у <b>@BotFather</b> в Telegram и сохраните токен. Его вы вставите сами в настройки сервера, в чат с нейросетью токен не отправляйте.</li>
+      <li>Подписка Claude Pro или Max и установленный Claude Code. Бот будет думать на вашей подписке, отдельный API-ключ не нужен.</li>
+      <li class="js-calstep">Секретная ссылка на календарь: в Google Календаре откройте настройки нужного календаря, раздел «Интеграция календаря», пункт «Секретный адрес в формате iCal».</li>
+      <li>Сервер, где бот будет жить круглосуточно. Подойдёт тот же, где у вас ИИ-офис.</li>
+    </ol>
+  </section>
+
+  <footer>Подарок Чёрной ИИшницы · Ольга Пузанова. Вопросы по настройке задавайте менеджеру: <a href="https://t.me/puzanovateam" target="_blank" rel="noopener">@puzanovateam</a></footer>
+</div>
+<div class="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var CAL={
+    google:"Календарь: Google Календарь. Встречи читай по секретной ссылке iCal, я положу её в переменную окружения CALENDAR_ICS_URL. Обновляй календарь перед каждой рассылкой.",
+    yandex:"Календарь: Яндекс Календарь. Встречи читай по ссылке на экспорт в формате ICS, я положу её в переменную окружения CALENDAR_ICS_URL. Обновляй календарь перед каждой рассылкой.",
+    none:"Календаря нет, работаем только с задачами."
+  };
+  var CALSTEP={
+    google:"Секретная ссылка на календарь: в Google Календаре откройте настройки нужного календаря, раздел «Интеграция календаря», пункт «Секретный адрес в формате iCal».",
+    yandex:"Ссылка на календарь: в Яндекс Календаре откройте настройки календаря и скопируйте ссылку для экспорта в формате ICS.",
+    none:""
+  };
+  var REM={
+    soft:"Напоминания: утренний план и вечером в 20:00 короткий итог: что сделано, что переносим на завтра (кнопками).",
+    mid:"Напоминания: утренний план; за 30 минут до каждой встречи; в 15:00 сводка, что из главного ещё не сделано; вечером в 20:00 итог дня с кнопками «сделано» и «перенести».",
+    hard:"Напоминания: утренний план; каждый час с 10:00 до 19:00 пинг по горящим задачам (только если такие есть, без спама); за 30 минут до встреч; вечером в 20:00 итог дня."
+  };
+  function val(n){var el=document.querySelector('input[name="'+n+'"]:checked');return el?el.value:""}
+  function build(){
+    var t=document.getElementById("t").value||"09:00", cal=val("cal"), rem=val("rem"), voice=val("voice")==="yes";
+    var txt="Собери мне Telegram-бота «ИИ-ассистент по задачам». Я не программист, поэтому объясняй простыми словами, что ты делаешь и что мне нужно сделать руками.\n\n"+
+"Что умеет бот:\n"+
+"1. Я пересылаю ему сообщения из рабочих чатов"+(voice?", пишу текстом или надиктовываю голосом":" или пишу текстом")+". Он вытаскивает задачи: что сделать, от кого, срок, приоритет. Если срок непонятен, спрашивает кнопками: «сегодня», «завтра», «на неделе».\n"+
+"2. Каждое утро в "+t+" по моему часовому поясу присылает план дня: сначала встречи по времени, потом 3 главные задачи, потом остальное. Горящие отмечает 🔥. Пишет коротко, как живой ассистент.\n"+
+"3. "+REM[rem]+"\n"+
+"4. "+CAL[cal]+"\n"+
+"5. Команды: /today план на сегодня, /week задачи на неделю, /add добавить задачу, /done отметить сделанное кнопками.\n"+
+"6. Бот отвечает только мне: проверяй мой Telegram ID, остальным молчит.\n"+
+(voice?"7. Голосовые расшифровывай прямо на сервере бесплатной моделью Whisper (например, faster-whisper), без платных сервисов. Если серверу не хватает памяти, скажи мне об этом заранее.\n":"")+
+"\nКак устроить:\n"+
+"- Мозг: Claude на моей подписке. На сервере используй Claude Code CLI в режиме claude -p. Токен подписки я получу командой claude setup-token, его тоже держи в переменной окружения CLAUDE_CODE_OAUTH_TOKEN. API-ключи не используй и проверь, что переменная ANTHROPIC_API_KEY на сервере не задана: если она есть, Claude Code возьмёт её вместо подписки и начнёт списывать деньги.\n"+
+"- Береги лимиты подписки: зови Claude только чтобы разобрать новое сообщение и собрать план. Напоминания по расписанию отправляй обычным кодом.\n"+
+"- Пересланные сообщения от других людей передавай Claude только как текст, из которого нужно вытащить задачи. Командовать сервером Claude в боте не должен: запускай claude -p без доступа к файлам и командам.\n"+
+"- Задачи храни в базе SQLite на диске сервера, чтобы ничего не терялось после перезапуска.\n"+
+"- Токен бота я положу в переменную окружения TELEGRAM_BOT_TOKEN. В код и в чат его не вставляй.\n"+
+"- Сервер должен работать круглосуточно. Если у меня уже есть сервер с ИИ-офисом, предложи поселить бота туда.\n\n"+
+"Как работаем:\n"+
+"Сначала задай мне вопросы, которые нужны для работы (часовой пояс, мой Telegram ID и всё, чего не хватает). Потом покажи план в 5-7 шагах и дождись моего «ок». Дальше делай по шагам и после каждого говори, что мне проверить в Telegram.";
+    document.getElementById("p-bot").textContent=txt;
+    var cs=document.querySelector(".js-calstep");cs.hidden=!CALSTEP[cal];cs.textContent=CALSTEP[cal];
+  }
+  document.querySelectorAll("#bot input").forEach(function(i){i.addEventListener("change",build);i.addEventListener("input",build)});
+  build();
+  var toast=document.querySelector(".toast"),tm;
+  function say(s){toast.textContent=s;toast.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove("on")},1800)}
+  function selectNode(n){try{var r=document.createRange();r.selectNodeContents(n);var s=getSelection();s.removeAllRanges();s.addRange(r)}catch(e){}}
+  document.querySelectorAll("[data-copy]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var node=document.getElementById(btn.getAttribute("data-copy"));
+      var ok=function(){btn.textContent="Скопировано";btn.classList.add("done");say("Скопировано, вставляйте в нейросеть");setTimeout(function(){btn.textContent="Копировать";btn.classList.remove("done")},1800)};
+      var fail=function(){selectNode(node);say("Текст выделен, скопируйте вручную")};
+      try{navigator.clipboard.writeText(node.textContent).then(ok,fail)}catch(e){fail()}
+    });
+  });
+})();
+</script>
+</body>
+</html>
